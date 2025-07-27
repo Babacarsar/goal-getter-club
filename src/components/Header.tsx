@@ -13,7 +13,7 @@ const Header = () => {
             <div className="w-8 h-8 bg-primary rounded-full flex items-center justify-center">
               <span className="text-white font-bold text-sm">⚽</span>
             </div>
-            <span className="text-xl font-bold text-primary">FootballAcademy</span>
+            <span className="text-xl font-bold text-primary">Girona de Saly</span>
           </div>
 
           {/* Desktop Menu */}

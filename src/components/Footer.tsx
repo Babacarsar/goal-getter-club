@@ -11,7 +11,7 @@ const Footer = () => {
               <div className="w-10 h-10 bg-white rounded-full flex items-center justify-center">
                 <span className="text-primary font-bold">⚽</span>
               </div>
-              <span className="text-2xl font-bold">FootballAcademy</span>
+              <span className="text-2xl font-bold">Girona de Saly</span>
             </div>
             <p className="text-white/80 mb-6 max-w-md">
               L'école de football de référence pour développer vos talents et réaliser vos rêves. 
@@ -64,7 +64,7 @@ const Footer = () => {
         </div>
 
         <div className="border-t border-white/20 mt-8 pt-8 text-center text-white/60">
-          <p>&copy; 2024 FootballAcademy. Tous droits réservés.</p>
+          <p>&copy; 2024 Girona de Saly. Tous droits réservés.</p>
         </div>
       </div>
     </footer>

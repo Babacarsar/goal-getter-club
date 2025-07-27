@@ -20,11 +20,10 @@ const Hero = () => {
       <div className="relative container mx-auto px-4 text-center text-white z-10">
         <div className="max-w-4xl mx-auto">
           <h1 className="text-5xl md:text-7xl font-bold mb-6 animate-fade-in">
-            École de
             <span className="block gradient-sky bg-clip-text text-transparent">
-              Football
+              Girona de Saly
             </span>
-            d'Excellence
+            École de Football
           </h1>
           
           <p className="text-xl md:text-2xl mb-8 text-white/90 max-w-2xl mx-auto">

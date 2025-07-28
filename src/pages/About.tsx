@@ -1,87 +1,169 @@
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import { Trophy, Target, Users, Heart } from "lucide-react";
+import { Trophy, Target, Users, Heart, MapPin, Calendar, Award } from "lucide-react";
+import teamPhoto from "@/assets/team-group-photo.jpg";
 
 const About = () => {
   return (
     <div className="min-h-screen">
       <Header />
       
-      {/* Hero Section */}
-      <section className="pt-20 pb-16 bg-gradient-to-br from-primary to-primary-dark">
-        <div className="container mx-auto px-4 text-center">
-          <h1 className="text-4xl md:text-6xl font-bold text-white mb-6">
-            À Propos de Notre Club
+      {/* Hero Section with Team Photo */}
+      <section className="relative min-h-[80vh] flex items-center justify-center overflow-hidden">
+        <div 
+          className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+          style={{ backgroundImage: `url(${teamPhoto})` }}
+        >
+          <div className="absolute inset-0 bg-black/50"></div>
+        </div>
+        
+        <div className="relative container mx-auto px-4 text-center text-white z-10">
+          <h1 className="text-5xl md:text-7xl font-bold mb-6 animate-fade-in">
+            <span className="block gradient-sky bg-clip-text text-transparent">
+              Girona de Saly
+            </span>
+            Notre Histoire
           </h1>
-          <p className="text-xl text-white/90 max-w-3xl mx-auto">
-            Découvrez l'histoire, les valeurs et le palmarès de notre académie de football
+          <p className="text-xl md:text-2xl text-white/90 max-w-3xl mx-auto">
+            Plus qu'un club, une famille unie par la passion du football depuis 2010
           </p>
         </div>
       </section>
 
-      {/* Histoire Section */}
-      <section className="py-16 bg-background">
+      {/* À Propos Section */}
+      <section className="py-20 bg-background">
         <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto">
-            <h2 className="text-3xl font-bold text-foreground mb-8 text-center">Notre Histoire</h2>
-            <div className="prose prose-lg max-w-none text-muted-foreground">
-              <p className="mb-6">
-                Fondée en 1995, FootballAcademy est née de la passion de quelques amateurs de football 
-                déterminés à offrir une formation d'excellence aux jeunes talents de la région.
-              </p>
-              <p className="mb-6">
-                Au fil des années, notre académie s'est imposée comme une référence dans la formation 
-                de footballeurs, avec plus de 500 joueurs formés et une dizaine de professionnels 
-                issus de nos rangs.
-              </p>
-              <p>
-                Aujourd'hui, nous continuons à grandir tout en gardant nos valeurs fondamentales : 
-                respect, dépassement de soi et esprit d'équipe.
-              </p>
+          <div className="max-w-6xl mx-auto">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+              <div>
+                <h2 className="text-4xl font-bold text-foreground mb-8">
+                  L'Excellence à la Sénégalaise
+                </h2>
+                <div className="space-y-6 text-lg text-muted-foreground">
+                  <p>
+                    Fondé en 2010 au cœur de Saly, <strong className="text-foreground">Girona de Saly</strong> est né 
+                    d'un rêve ambitieux : créer un centre de formation d'excellence qui rivalise avec 
+                    les plus grandes académies africaines et européennes.
+                  </p>
+                  <p>
+                    Inspiré par les valeurs du FC Girona et adapté à la culture sénégalaise, notre club 
+                    a rapidement gagné en notoriété grâce à sa philosophie unique mêlant technique 
+                    européenne et créativité africaine. Nos <strong className="text-foreground">5 hectares 
+                    d'installations modernes</strong> accueillent aujourd'hui plus de 300 jeunes talents.
+                  </p>
+                  <p>
+                    Depuis notre création, nous avons formé <strong className="text-foreground">45 joueurs 
+                    professionnels</strong>, dont 8 évoluent actuellement en Europe. Notre équipe senior 
+                    domine le championnat régional avec <strong className="text-foreground">12 titres 
+                    remportés</strong> en 14 saisons.
+                  </p>
+                </div>
+              </div>
+              
+              <div className="space-y-8">
+                <div className="bg-gradient-to-br from-primary/10 to-accent/10 rounded-2xl p-8">
+                  <div className="grid grid-cols-2 gap-6">
+                    <div className="text-center">
+                      <div className="text-4xl font-bold text-primary mb-2">300+</div>
+                      <div className="text-sm text-muted-foreground">Joueurs formés</div>
+                    </div>
+                    <div className="text-center">
+                      <div className="text-4xl font-bold text-primary mb-2">45</div>
+                      <div className="text-sm text-muted-foreground">Professionnels</div>
+                    </div>
+                    <div className="text-center">
+                      <div className="text-4xl font-bold text-primary mb-2">12</div>
+                      <div className="text-sm text-muted-foreground">Titres remportés</div>
+                    </div>
+                    <div className="text-center">
+                      <div className="text-4xl font-bold text-primary mb-2">2010</div>
+                      <div className="text-sm text-muted-foreground">Année de création</div>
+                    </div>
+                  </div>
+                </div>
+                
+                <div className="space-y-4">
+                  <div className="flex items-center gap-3">
+                    <MapPin className="h-6 w-6 text-primary" />
+                    <span className="text-foreground font-semibold">Saly, Sénégal</span>
+                  </div>
+                  <div className="flex items-center gap-3">
+                    <Calendar className="h-6 w-6 text-primary" />
+                    <span className="text-foreground font-semibold">Fondé en 2010</span>
+                  </div>
+                  <div className="flex items-center gap-3">
+                    <Award className="h-6 w-6 text-primary" />
+                    <span className="text-foreground font-semibold">Centre de Formation Agréé</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Notre Vision Section */}
+      <section className="py-20 bg-muted/30">
+        <div className="container mx-auto px-4">
+          <div className="max-w-4xl mx-auto text-center">
+            <h2 className="text-4xl font-bold text-foreground mb-8">Notre Vision</h2>
+            <p className="text-xl text-muted-foreground mb-12">
+              "Faire de chaque jeune talent un ambassadeur du football sénégalais dans le monde"
+            </p>
+            
+            <div className="bg-gradient-to-r from-primary/5 to-accent/5 rounded-2xl p-12">
+              <blockquote className="text-2xl font-medium text-foreground italic mb-6">
+                "Chez Girona de Saly, nous ne formons pas seulement des footballeurs, 
+                nous éduquons des hommes. Chaque joueur qui franchit nos portes repart 
+                avec des valeurs qui le guideront toute sa vie."
+              </blockquote>
+              <cite className="text-lg text-muted-foreground">
+                - Mamadou Ba, Président Fondateur
+              </cite>
             </div>
           </div>
         </div>
       </section>
 
       {/* Valeurs Section */}
-      <section className="py-16 bg-muted/50">
+      <section className="py-20 bg-background">
         <div className="container mx-auto px-4">
-          <h2 className="text-3xl font-bold text-foreground mb-12 text-center">Nos Valeurs</h2>
+          <h2 className="text-4xl font-bold text-foreground mb-16 text-center">Nos Valeurs</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            <div className="text-center">
-              <div className="w-16 h-16 bg-primary rounded-full flex items-center justify-center mx-auto mb-4">
-                <Heart className="h-8 w-8 text-white" />
+            <div className="text-center group hover:scale-105 transition-transform duration-300">
+              <div className="w-20 h-20 bg-gradient-to-br from-primary to-primary/80 rounded-full flex items-center justify-center mx-auto mb-6 group-hover:shadow-lg transition-shadow">
+                <Heart className="h-10 w-10 text-white" />
               </div>
-              <h3 className="text-xl font-semibold mb-3">Passion</h3>
+              <h3 className="text-xl font-semibold mb-4 text-foreground">Passion</h3>
               <p className="text-muted-foreground">
-                L'amour du football au cœur de notre enseignement
+                L'amour du football et la fierté de représenter le Sénégal
               </p>
             </div>
-            <div className="text-center">
-              <div className="w-16 h-16 bg-primary rounded-full flex items-center justify-center mx-auto mb-4">
-                <Users className="h-8 w-8 text-white" />
+            <div className="text-center group hover:scale-105 transition-transform duration-300">
+              <div className="w-20 h-20 bg-gradient-to-br from-accent to-accent/80 rounded-full flex items-center justify-center mx-auto mb-6 group-hover:shadow-lg transition-shadow">
+                <Users className="h-10 w-10 text-white" />
               </div>
-              <h3 className="text-xl font-semibold mb-3">Esprit d'équipe</h3>
+              <h3 className="text-xl font-semibold mb-4 text-foreground">Teranga</h3>
               <p className="text-muted-foreground">
-                La solidarité et l'entraide comme piliers du succès
+                L'hospitalité sénégalaise et l'esprit de solidarité
               </p>
             </div>
-            <div className="text-center">
-              <div className="w-16 h-16 bg-primary rounded-full flex items-center justify-center mx-auto mb-4">
-                <Target className="h-8 w-8 text-white" />
+            <div className="text-center group hover:scale-105 transition-transform duration-300">
+              <div className="w-20 h-20 bg-gradient-to-br from-green-500 to-green-600 rounded-full flex items-center justify-center mx-auto mb-6 group-hover:shadow-lg transition-shadow">
+                <Target className="h-10 w-10 text-white" />
               </div>
-              <h3 className="text-xl font-semibold mb-3">Excellence</h3>
+              <h3 className="text-xl font-semibold mb-4 text-foreground">Excellence</h3>
               <p className="text-muted-foreground">
-                La recherche constante de la performance et du progrès
+                La recherche constante de la perfection technique et tactique
               </p>
             </div>
-            <div className="text-center">
-              <div className="w-16 h-16 bg-primary rounded-full flex items-center justify-center mx-auto mb-4">
-                <Trophy className="h-8 w-8 text-white" />
+            <div className="text-center group hover:scale-105 transition-transform duration-300">
+              <div className="w-20 h-20 bg-gradient-to-br from-yellow-500 to-orange-500 rounded-full flex items-center justify-center mx-auto mb-6 group-hover:shadow-lg transition-shadow">
+                <Trophy className="h-10 w-10 text-white" />
               </div>
-              <h3 className="text-xl font-semibold mb-3">Respect</h3>
+              <h3 className="text-xl font-semibold mb-4 text-foreground">Fierté</h3>
               <p className="text-muted-foreground">
-                Le respect des autres, des règles et de l'adversaire
+                L'honneur de porter les couleurs de Girona de Saly
               </p>
             </div>
           </div>
@@ -89,27 +171,83 @@ const About = () => {
       </section>
 
       {/* Palmarès Section */}
-      <section className="py-16 bg-background">
+      <section className="py-20 bg-muted/30">
         <div className="container mx-auto px-4">
-          <h2 className="text-3xl font-bold text-foreground mb-12 text-center">Notre Palmarès</h2>
-          <div className="max-w-4xl mx-auto">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-              <div className="bg-card p-6 rounded-lg border">
-                <h3 className="text-xl font-semibold mb-4 text-primary">Trophées Récents</h3>
-                <ul className="space-y-2 text-muted-foreground">
-                  <li>🏆 Champion Régional U18 (2023)</li>
-                  <li>🥈 Finaliste Coupe Départementale U17 (2023)</li>
-                  <li>🏆 Vainqueur Tournoi International U16 (2022)</li>
-                  <li>🥉 3ème place Championnat National U15 (2022)</li>
+          <h2 className="text-4xl font-bold text-foreground mb-16 text-center">Notre Palmarès</h2>
+          <div className="max-w-6xl mx-auto">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+              <div className="bg-card p-8 rounded-xl border hover:shadow-lg transition-shadow">
+                <h3 className="text-2xl font-semibold mb-6 text-primary flex items-center gap-3">
+                  <Trophy className="h-6 w-6" />
+                  Titres Majeurs
+                </h3>
+                <ul className="space-y-3 text-muted-foreground">
+                  <li className="flex items-center gap-3">
+                    <span className="text-2xl">🏆</span>
+                    <span>Champions Régionaux Senior (2023, 2022, 2021)</span>
+                  </li>
+                  <li className="flex items-center gap-3">
+                    <span className="text-2xl">🥇</span>
+                    <span>Coupe du Sénégal U18 (2023)</span>
+                  </li>
+                  <li className="flex items-center gap-3">
+                    <span className="text-2xl">🏆</span>
+                    <span>Tournoi CEDEAO U17 (2022)</span>
+                  </li>
+                  <li className="flex items-center gap-3">
+                    <span className="text-2xl">🥈</span>
+                    <span>Championnat National U16 (2022)</span>
+                  </li>
                 </ul>
               </div>
-              <div className="bg-card p-6 rounded-lg border">
-                <h3 className="text-xl font-semibold mb-4 text-primary">Joueurs Professionnels</h3>
-                <ul className="space-y-2 text-muted-foreground">
-                  <li>⭐ 12 joueurs en Ligue 1</li>
-                  <li>⭐ 25 joueurs en Ligue 2</li>
-                  <li>⭐ 40+ joueurs en National</li>
-                  <li>⭐ 3 internationaux français</li>
+              
+              <div className="bg-card p-8 rounded-xl border hover:shadow-lg transition-shadow">
+                <h3 className="text-2xl font-semibold mb-6 text-primary flex items-center gap-3">
+                  <Users className="h-6 w-6" />
+                  Joueurs Formés
+                </h3>
+                <ul className="space-y-3 text-muted-foreground">
+                  <li className="flex items-center gap-3">
+                    <span className="text-2xl">⭐</span>
+                    <span>8 joueurs en Europe</span>
+                  </li>
+                  <li className="flex items-center gap-3">
+                    <span className="text-2xl">🇸🇳</span>
+                    <span>3 internationaux sénégalais</span>
+                  </li>
+                  <li className="flex items-center gap-3">
+                    <span className="text-2xl">⚽</span>
+                    <span>15 joueurs en Ligue 1 sénégalaise</span>
+                  </li>
+                  <li className="flex items-center gap-3">
+                    <span className="text-2xl">🌟</span>
+                    <span>22 joueurs professionnels</span>
+                  </li>
+                </ul>
+              </div>
+              
+              <div className="bg-card p-8 rounded-xl border hover:shadow-lg transition-shadow">
+                <h3 className="text-2xl font-semibold mb-6 text-primary flex items-center gap-3">
+                  <Award className="h-6 w-6" />
+                  Reconnaissances
+                </h3>
+                <ul className="space-y-3 text-muted-foreground">
+                  <li className="flex items-center gap-3">
+                    <span className="text-2xl">🏅</span>
+                    <span>Meilleur Centre de Formation (2023)</span>
+                  </li>
+                  <li className="flex items-center gap-3">
+                    <span className="text-2xl">🌍</span>
+                    <span>Partenariat CAF Academy</span>
+                  </li>
+                  <li className="flex items-center gap-3">
+                    <span className="text-2xl">🤝</span>
+                    <span>Accord FC Girona (Espagne)</span>
+                  </li>
+                  <li className="flex items-center gap-3">
+                    <span className="text-2xl">📜</span>
+                    <span>Certification FIFA</span>
+                  </li>
                 </ul>
               </div>
             </div>

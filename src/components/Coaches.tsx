@@ -1,38 +1,28 @@
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Star, Award, Users } from "lucide-react";
-import coach1 from "@/assets/coach-1.jpg";
-import coach2 from "@/assets/coach-2.jpg";
+import { useQuery } from "@tanstack/react-query";
 
 const Coaches = () => {
-  const coaches = [
-    {
-      name: "Marc Dubois",
-      title: "Directeur Technique",
-      image: coach1,
-      experience: "15 ans",
-      speciality: "Formation jeunes",
-      achievements: [
-        "Ex-joueur professionnel",
-        "Diplôme d'État",
-        "200+ joueurs formés"
-      ],
-      description: "Passionné par la formation des jeunes talents, Marc apporte son expertise technique et sa vision du jeu moderne."
-    },
-    {
-      name: "Sophie Martin",
-      title: "Entraîneuse Elite",
-      image: coach2,
-      experience: "12 ans",
-      speciality: "Préparation physique",
-      achievements: [
-        "Master en sciences du sport",
-        "Spécialiste préparation physique",
-        "Formation internationale"
-      ],
-      description: "Sophie combine expertise scientifique et passion du football pour optimiser les performances de nos joueurs."
+  const { data: coaches = [], isLoading } = useQuery({
+    queryKey: ['coaches'],
+    queryFn: async () => {
+      const response = await fetch('/api/coaches');
+      if (!response.ok) throw new Error('Failed to fetch coaches');
+      return response.json();
     }
-  ];
+  });
+
+  if (isLoading) {
+    return (
+      <section id="entraineurs" className="py-20 bg-background">
+        <div className="container mx-auto px-4 text-center">
+          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary mx-auto mb-4"></div>
+          <p className="text-muted-foreground">Chargement de l'équipe...</p>
+        </div>
+      </section>
+    );
+  }
 
   return (
     <section id="entraineurs" className="py-20 bg-background">

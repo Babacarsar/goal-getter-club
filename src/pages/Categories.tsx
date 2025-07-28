@@ -4,55 +4,32 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Button } from "@/components/ui/button";
 import { Users, Calendar, Trophy } from "lucide-react";
 import { Link } from "react-router-dom";
+import { useQuery } from "@tanstack/react-query";
 
 const Categories = () => {
-  const categories = [
-    {
-      id: "u14",
-      name: "U14",
-      description: "Catégorie Under 14 - Formation technique et tactique",
-      players: 22,
-      coach: "Marc Dubois",
-      achievements: "Champions Départementaux 2023",
-      age: "12-14 ans"
-    },
-    {
-      id: "u15",
-      name: "U15", 
-      description: "Catégorie Under 15 - Développement physique et mental",
-      players: 25,
-      coach: "Sophie Martin",
-      achievements: "Finalistes Coupe Régionale 2023",
-      age: "13-15 ans"
-    },
-    {
-      id: "u17",
-      name: "U17",
-      description: "Catégorie Under 17 - Préparation au haut niveau",
-      players: 20,
-      coach: "Antoine Leroy",
-      achievements: "3ème place Championnat National 2023",
-      age: "15-17 ans"
-    },
-    {
-      id: "u18",
-      name: "U18",
-      description: "Catégorie Under 18 - Transition vers le football adulte", 
-      players: 18,
-      coach: "Pierre Moreau",
-      achievements: "Champions Régionaux 2023",
-      age: "16-18 ans"
-    },
-    {
-      id: "senior",
-      name: "Senior",
-      description: "Équipe Senior - Compétition de haut niveau",
-      players: 25,
-      coach: "Jean-Paul Bernard",
-      achievements: "Montée en Division Honneur 2023",
-      age: "18+ ans"
+  const { data: categories = [], isLoading } = useQuery({
+    queryKey: ['categories'],
+    queryFn: async () => {
+      const response = await fetch('/api/categories');
+      if (!response.ok) throw new Error('Failed to fetch categories');
+      return response.json();
     }
-  ];
+  });
+
+  if (isLoading) {
+    return (
+      <div className="min-h-screen">
+        <Header />
+        <div className="pt-20 flex items-center justify-center min-h-[50vh]">
+          <div className="text-center">
+            <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary mx-auto mb-4"></div>
+            <p className="text-muted-foreground">Chargement des catégories...</p>
+          </div>
+        </div>
+        <Footer />
+      </div>
+    );
+  }
 
   return (
     <div className="min-h-screen">

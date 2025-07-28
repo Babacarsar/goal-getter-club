@@ -4,78 +4,33 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Calendar, Clock, User } from "lucide-react";
+import { useQuery } from "@tanstack/react-query";
 
 const News = () => {
-  const articles = [
-    {
-      id: 1,
-      title: "Victoire éclatante de nos U18 en finale régionale",
-      excerpt: "L'équipe U18 s'impose 3-1 face à l'AS Étoiles et remporte le championnat régional. Une performance remarquable qui récompense le travail de toute une saison.",
-      content: "Dans un match intense disputé au Stade Régional devant plus de 2000 spectateurs, nos U18 ont livré une prestation de grande qualité...",
-      author: "Marc Dubois",
-      date: "15 Mars 2024",
-      category: "Résultats",
-      image: "/placeholder.svg",
-      featured: true
-    },
-    {
-      id: 2,
-      title: "Nouveau partenariat avec l'équipementier TechSport",
-      excerpt: "FootballAcademy annonce un partenariat stratégique avec TechSport pour équiper toutes nos équipes avec du matériel de dernière génération.",
-      content: "Ce partenariat permettra à tous nos joueurs d'avoir accès aux meilleurs équipements disponibles sur le marché...",
-      author: "Direction",
-      date: "10 Mars 2024", 
-      category: "Actualités",
-      image: "/placeholder.svg",
-      featured: false
-    },
-    {
-      id: 3,
-      title: "Tournoi international de Pâques : 16 équipes attendues",
-      excerpt: "Notre traditionnel tournoi de Pâques accueillera cette année 16 équipes venues de toute l'Europe pour 3 jours de football intense.",
-      content: "Du 29 mars au 31 mars, notre complexe sportif vibrera au rythme du football international...",
-      author: "Sophie Martin",
-      date: "5 Mars 2024",
-      category: "Événements",
-      image: "/placeholder.svg",
-      featured: false
-    },
-    {
-      id: 4,
-      title: "Les U15 filles qualifiées pour la phase nationale",
-      excerpt: "Première historique pour notre section féminine U15 qui se qualifie pour les phases nationales du championnat de France.",
-      content: "Après une saison exceptionnelle, nos U15 filles ont décroché leur billet pour la phase nationale...",
-      author: "Antoine Leroy",
-      date: "28 Février 2024",
-      category: "Résultats",
-      image: "/placeholder.svg",
-      featured: false
-    },
-    {
-      id: 5,
-      title: "Stage d'été 2024 : les inscriptions sont ouvertes",
-      excerpt: "Ne ratez pas l'opportunité de participer à notre stage d'été intensif du 8 au 19 juillet. Places limitées !",
-      content: "Deux semaines d'entraînement intensif avec nos meilleurs coachs pour progresser pendant les vacances...",
-      author: "Pierre Moreau",
-      date: "20 Février 2024",
-      category: "Formation",
-      image: "/placeholder.svg",
-      featured: false
-    },
-    {
-      id: 6,
-      title: "Inauguration du nouveau terrain synthétique",
-      excerpt: "Samedi 15 février a eu lieu l'inauguration officielle de notre nouveau terrain synthétique en présence des autorités locales.",
-      content: "Ce nouvel équipement de dernière génération permettra d'améliorer encore les conditions d'entraînement...",
-      author: "Jean-Paul Bernard",
-      date: "15 Février 2024",
-      category: "Infrastructure",
-      image: "/placeholder.svg",
-      featured: false
+  const { data: articles = [], isLoading } = useQuery({
+    queryKey: ['news'],
+    queryFn: async () => {
+      const response = await fetch('/api/news');
+      if (!response.ok) throw new Error('Failed to fetch news');
+      return response.json();
     }
-  ];
-
+  });
   const categories = ["Tous", "Résultats", "Actualités", "Événements", "Formation", "Infrastructure"];
+
+  if (isLoading) {
+    return (
+      <div className="min-h-screen">
+        <Header />
+        <div className="pt-20 flex items-center justify-center min-h-[50vh]">
+          <div className="text-center">
+            <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary mx-auto mb-4"></div>
+            <p className="text-muted-foreground">Chargement des actualités...</p>
+          </div>
+        </div>
+        <Footer />
+      </div>
+    );
+  }
 
   return (
     <div className="min-h-screen">

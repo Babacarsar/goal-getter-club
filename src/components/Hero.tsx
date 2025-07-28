@@ -23,11 +23,12 @@ const Hero = () => {
             <span className="block gradient-sky bg-clip-text text-transparent">
               Girona de Saly
             </span>
-            École de Football
+            Passion • Excellence • Tradition
           </h1>
           
-          <p className="text-xl md:text-2xl mb-8 text-white/90 max-w-2xl mx-auto">
-            Développez votre passion, perfectionnez votre technique et réalisez vos rêves avec nos programmes d'entraînement de haute qualité.
+          <p className="text-xl md:text-2xl mb-8 text-white/90 max-w-3xl mx-auto">
+            Rejoignez la famille Girona de Saly et découvrez l&apos;école de football qui forme les champions de demain. 
+            Des terrains d&apos;exception, un encadrement professionnel et une ambiance unique vous attendent.
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12">
@@ -41,29 +42,29 @@ const Hero = () => {
           </div>
 
           {/* Stats */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-2xl mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-3xl mx-auto">
             <div className="flex flex-col items-center">
               <div className="w-16 h-16 bg-white/10 rounded-full flex items-center justify-center mb-3">
                 <Trophy className="h-8 w-8 text-accent" />
               </div>
-              <div className="text-3xl font-bold">200+</div>
-              <div className="text-white/80">Joueurs formés</div>
+              <div className="text-3xl font-bold">5</div>
+              <div className="text-white/80">Terrains d&apos;entraînement</div>
             </div>
             
             <div className="flex flex-col items-center">
               <div className="w-16 h-16 bg-white/10 rounded-full flex items-center justify-center mb-3">
                 <Users className="h-8 w-8 text-accent" />
               </div>
-              <div className="text-3xl font-bold">15</div>
-              <div className="text-white/80">Entraîneurs experts</div>
+              <div className="text-3xl font-bold">300+</div>
+              <div className="text-white/80">Jeunes talents</div>
             </div>
             
             <div className="flex flex-col items-center">
               <div className="w-16 h-16 bg-white/10 rounded-full flex items-center justify-center mb-3">
                 <Target className="h-8 w-8 text-accent" />
               </div>
-              <div className="text-3xl font-bold">10</div>
-              <div className="text-white/80">Ans d'expérience</div>
+              <div className="text-3xl font-bold">12</div>
+              <div className="text-white/80">Titres remportés</div>
             </div>
           </div>
         </div>

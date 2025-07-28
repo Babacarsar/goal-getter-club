@@ -7,48 +7,51 @@ import footballIcon from "@/assets/football-icon.jpg";
 const Programs = () => {
   const programs = [
     {
-      title: "École de Football (6-12 ans)",
-      description: "Initiation au football dans un environnement ludique et éducatif. Développement des bases techniques et de l'esprit d'équipe.",
+      title: "École de Football",
+      subtitle: "Formation de base",
+      description: "L&apos;école de football Girona de Saly offre un environnement idéal pour découvrir et apprendre les fondamentaux du football.",
       age: "6-12 ans",
-      duration: "1h30",
-      participants: "12-15",
-      level: "Débutant",
-      price: "45€/mois",
+      duration: "2 séances/semaine",
+      participants: "15 max",
+      level: "Initiation",
       features: [
-        "Apprentissage des gestes techniques",
-        "Jeux éducatifs",
+        "Apprentissage technique progressif",
         "Développement de la coordination",
-        "Esprit d'équipe"
+        "Jeux éducatifs et ludiques",
+        "Formation à l&apos;esprit d&apos;équipe",
+        "Encadrement diplômé d&apos;État"
       ]
     },
     {
-      title: "Formation Jeunes (13-17 ans)",
-      description: "Programme intensif pour les jeunes talents souhaitant progresser rapidement et accéder au football de haut niveau.",
+      title: "Formation Compétitive",
+      subtitle: "Perfectionnement",
+      description: "Nos équipes de jeunes évoluent dans les championnats régionaux avec un encadrement professionnel de qualité.",
       age: "13-17 ans",
-      duration: "2h",
-      participants: "8-12",
-      level: "Intermédiaire",
-      price: "65€/mois",
+      duration: "3 séances/semaine",
+      participants: "18 max",
+      level: "Compétition",
       features: [
-        "Entraînement technique avancé",
-        "Préparation physique",
-        "Tactique et stratégie",
-        "Suivi personnalisé"
+        "Entraînement tactique avancé",
+        "Préparation physique spécialisée",
+        "Matchs en championnat officiel",
+        "Suivi individuel personnalisé",
+        "Stages de perfectionnement"
       ]
     },
     {
-      title: "Elite Academy (16-20 ans)",
-      description: "Formation d'excellence pour les joueurs ambitieux. Préparation aux clubs professionnels et centres de formation.",
+      title: "Section Elite",
+      subtitle: "Haut niveau",
+      description: "Notre section élite prépare les joueurs les plus prometteurs vers les centres de formation et le football professionnel.",
       age: "16-20 ans",
-      duration: "3h",
-      participants: "6-10",
-      level: "Avancé",
-      price: "95€/mois",
+      duration: "5 séances/semaine",
+      participants: "12 max",
+      level: "Excellence",
       features: [
-        "Entraînement professionnel",
-        "Préparation mentale",
-        "Suivi médical",
-        "Détection de talents"
+        "Programme d&apos;entraînement professionnel",
+        "Préparation mentale avec psychologue",
+        "Suivi médical et nutritionnel",
+        "Détection par clubs professionnels",
+        "Formation académique intégrée"
       ]
     }
   ];
@@ -58,10 +61,11 @@ const Programs = () => {
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-6">
-            Nos Programmes
+            Nos Formations
           </h2>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-            Des programmes adaptés à chaque âge et niveau pour accompagner votre progression footballistique
+            Trois niveaux de formation pour accompagner chaque joueur dans sa progression, 
+            des premiers pas sur le terrain jusqu&apos;aux portes du professionnalisme
           </p>
         </div>
 
@@ -81,8 +85,8 @@ const Programs = () => {
                   <Badge variant="outline" className="border-primary text-primary">
                     {program.level}
                   </Badge>
-                  <div className="text-2xl font-bold text-primary">
-                    {program.price}
+                  <div className="text-sm font-medium text-muted-foreground">
+                    {program.subtitle}
                   </div>
                 </div>
                 
@@ -123,7 +127,7 @@ const Programs = () => {
                 </div>
 
                 <Button className="w-full gradient-field text-white hover:opacity-90 group">
-                  S'inscrire maintenant
+                  Découvrir cette formation
                   <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
                 </Button>
               </CardContent>
@@ -131,13 +135,19 @@ const Programs = () => {
           ))}
         </div>
 
-        <div className="text-center mt-12">
-          <p className="text-muted-foreground mb-4">
-            Vous hésitez ? Profitez d'un cours d'essai gratuit !
-          </p>
-          <Button variant="outline" size="lg" className="border-primary text-primary hover:bg-primary hover:text-white">
-            Réserver un cours d'essai
-          </Button>
+        <div className="text-center mt-16">
+          <div className="bg-gradient-to-r from-primary/10 to-accent/10 rounded-3xl p-8 max-w-4xl mx-auto">
+            <h3 className="text-2xl font-bold text-foreground mb-4">
+              Nos Installations d&apos;Exception
+            </h3>
+            <p className="text-muted-foreground mb-6">
+              5 terrains d&apos;entraînement dont 2 en gazon naturel, vestiaires modernes, 
+              salle de musculation, centre médical et espace de convivialité pour les familles.
+            </p>
+            <Button variant="outline" size="lg" className="border-primary text-primary hover:bg-primary hover:text-white">
+              Visiter nos installations
+            </Button>
+          </div>
         </div>
       </div>
     </section>

@@ -1,17 +1,65 @@
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Trophy, Users, Target } from "lucide-react";
-import heroImage from "@/assets/hero-football.jpg";
+import { useEffect, useState } from "react";
+import carousel1 from "@/assets/carousel-1.jpg";
+import carousel2 from "@/assets/carousel-2.jpg";
+import carousel3 from "@/assets/carousel-3.jpg";
+import carousel4 from "@/assets/carousel-4.jpg";
+import carousel5 from "@/assets/carousel-5.jpg";
 
 const Hero = () => {
+  const [currentSlide, setCurrentSlide] = useState(0);
+  
+  const slides = [
+    {
+      image: carousel1,
+      title: "Excellence Sportive",
+      subtitle: "Des installations modernes pour forger les champions"
+    },
+    {
+      image: carousel2,
+      title: "Formation de Qualité",
+      subtitle: "Un encadrement professionnel pour révéler les talents"
+    },
+    {
+      image: carousel3,
+      title: "Esprit d'Équipe",
+      subtitle: "La victoire se construit ensemble"
+    },
+    {
+      image: carousel4,
+      title: "Complexe d'Exception",
+      subtitle: "5 hectares dédiés à votre passion"
+    },
+    {
+      image: carousel5,
+      title: "Académie Girona",
+      subtitle: "L'avenir du football sénégalais"
+    }
+  ];
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrentSlide((prev) => (prev + 1) % slides.length);
+    }, 3000);
+
+    return () => clearInterval(timer);
+  }, [slides.length]);
+
   return (
     <section id="accueil" className="relative min-h-screen flex items-center justify-center overflow-hidden">
-      {/* Background Image */}
-      <div 
-        className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-        style={{ backgroundImage: `url(${heroImage})` }}
-      >
-        <div className="absolute inset-0 bg-black/40"></div>
-      </div>
+      {/* Carousel Background Images */}
+      {slides.map((slide, index) => (
+        <div
+          key={index}
+          className={`absolute inset-0 bg-cover bg-center bg-no-repeat transition-opacity duration-1000 ${
+            index === currentSlide ? 'opacity-100' : 'opacity-0'
+          }`}
+          style={{ backgroundImage: `url(${slide.image})` }}
+        >
+          <div className="absolute inset-0 bg-black/50"></div>
+        </div>
+      ))}
 
       {/* Hero Pattern Overlay */}
       <div className="absolute inset-0 hero-pattern"></div>
@@ -23,12 +71,11 @@ const Hero = () => {
             <span className="block gradient-sky bg-clip-text text-transparent">
               Girona de Saly
             </span>
-            Passion • Excellence • Tradition
+            {slides[currentSlide].title}
           </h1>
           
-          <p className="text-xl md:text-2xl mb-8 text-white/90 max-w-3xl mx-auto">
-            Rejoignez la famille Girona de Saly et découvrez l&apos;école de football qui forme les champions de demain. 
-            Des terrains d&apos;exception, un encadrement professionnel et une ambiance unique vous attendent.
+          <p className="text-xl md:text-2xl mb-8 text-white/90 max-w-3xl mx-auto animate-fade-in">
+            {slides[currentSlide].subtitle}
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12">
@@ -41,9 +88,24 @@ const Hero = () => {
             </Button>
           </div>
 
+          {/* Carousel Indicators */}
+          <div className="flex justify-center space-x-2 mb-8">
+            {slides.map((_, index) => (
+              <button
+                key={index}
+                onClick={() => setCurrentSlide(index)}
+                className={`w-3 h-3 rounded-full transition-all duration-300 ${
+                  index === currentSlide 
+                    ? 'bg-white scale-125' 
+                    : 'bg-white/50 hover:bg-white/70'
+                }`}
+              />
+            ))}
+          </div>
+
           {/* Stats */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-3xl mx-auto">
-            <div className="flex flex-col items-center">
+            <div className="flex flex-col items-center animate-fade-in">
               <div className="w-16 h-16 bg-white/10 rounded-full flex items-center justify-center mb-3">
                 <Trophy className="h-8 w-8 text-accent" />
               </div>
@@ -51,7 +113,7 @@ const Hero = () => {
               <div className="text-white/80">Terrains d&apos;entraînement</div>
             </div>
             
-            <div className="flex flex-col items-center">
+            <div className="flex flex-col items-center animate-fade-in">
               <div className="w-16 h-16 bg-white/10 rounded-full flex items-center justify-center mb-3">
                 <Users className="h-8 w-8 text-accent" />
               </div>
@@ -59,7 +121,7 @@ const Hero = () => {
               <div className="text-white/80">Jeunes talents</div>
             </div>
             
-            <div className="flex flex-col items-center">
+            <div className="flex flex-col items-center animate-fade-in">
               <div className="w-16 h-16 bg-white/10 rounded-full flex items-center justify-center mb-3">
                 <Target className="h-8 w-8 text-accent" />
               </div>
@@ -67,13 +129,6 @@ const Hero = () => {
               <div className="text-white/80">Titres remportés</div>
             </div>
           </div>
-        </div>
-      </div>
-
-      {/* Floating Football */}
-      <div className="absolute bottom-10 right-10 animate-float hidden lg:block">
-        <div className="w-20 h-20 bg-white rounded-full flex items-center justify-center shadow-lg">
-          <span className="text-3xl">⚽</span>
         </div>
       </div>
     </section>

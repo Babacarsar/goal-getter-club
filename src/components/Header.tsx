@@ -31,6 +31,9 @@ const Header = () => {
             <Link to="/about" className="text-foreground hover:text-primary transition-colors">
               À propos
             </Link>
+            <Link to="/staff" className="text-foreground hover:text-primary transition-colors">
+              Staff
+            </Link>
             <DropdownMenu>
               <DropdownMenuTrigger className="flex items-center gap-1 text-foreground hover:text-primary transition-colors">
                 Catégories <ChevronDown className="h-4 w-4" />
@@ -85,6 +88,9 @@ const Header = () => {
               </Link>
               <Link to="/about" className="text-foreground hover:text-primary transition-colors" onClick={() => setIsMenuOpen(false)}>
                 À propos
+              </Link>
+              <Link to="/staff" className="text-foreground hover:text-primary transition-colors" onClick={() => setIsMenuOpen(false)}>
+                Staff
               </Link>
               <div className="space-y-2">
                 <div className="text-foreground font-medium">Catégories</div>

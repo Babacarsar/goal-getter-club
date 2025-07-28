@@ -33,11 +33,11 @@ const Hero = () => {
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12">
             <Button size="lg" className="gradient-field text-white hover:opacity-90 group">
-              Commencer l'aventure
+              Rejoindre le club
               <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
             </Button>
             <Button size="lg" variant="outline" className="bg-white/10 border-white/30 text-white hover:bg-white/20">
-              Découvrir nos programmes
+              Découvrir nos équipes
             </Button>
           </div>
 

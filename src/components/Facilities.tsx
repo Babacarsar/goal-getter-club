@@ -40,11 +40,11 @@ const Facilities = () => {
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-6">
-            Nos Installations
+            Le Complexe Girona de Saly
           </h2>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-            Un complexe sportif moderne et complet pour offrir les meilleures conditions 
-            d&apos;entraînement et d&apos;épanouissement à nos joueurs
+            5 hectares d&apos;installations sportives modernes au cœur de Saly, 
+            conçues pour révéler le potentiel de chaque joueur
           </p>
         </div>
 
@@ -68,16 +68,29 @@ const Facilities = () => {
           ))}
         </div>
 
-        <div className="mt-16 text-center">
-          <div className="bg-gradient-to-r from-primary/5 to-accent/5 rounded-2xl p-8 max-w-4xl mx-auto">
-            <h3 className="text-2xl font-bold text-foreground mb-4">
-              Un Environnement d&apos;Exception
+        <div className="mt-16">
+          <div className="bg-gradient-to-r from-primary/5 to-accent/5 rounded-2xl p-12 text-center">
+            <h3 className="text-3xl font-bold text-foreground mb-6">
+              Excellence & Performance
             </h3>
-            <p className="text-muted-foreground text-lg">
-              Situé au cœur de Saly, notre complexe sportif de 5 hectares offre un cadre privilégié 
-              pour la pratique du football. Chaque installation a été pensée pour garantir sécurité, 
-              performance et convivialité.
+            <p className="text-muted-foreground text-lg mb-8 max-w-3xl mx-auto">
+              Chaque détail compte dans la formation d&apos;un champion. Notre complexe ultra-moderne 
+              offre les conditions idéales pour révéler les talents et forger les caractères.
             </p>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-2xl mx-auto">
+              <div className="text-center">
+                <div className="text-3xl font-bold text-primary mb-2">5000m²</div>
+                <div className="text-muted-foreground">Surface totale</div>
+              </div>
+              <div className="text-center">
+                <div className="text-3xl font-bold text-primary mb-2">2023</div>
+                <div className="text-muted-foreground">Rénovation complète</div>
+              </div>
+              <div className="text-center">
+                <div className="text-3xl font-bold text-primary mb-2">24h/7j</div>
+                <div className="text-muted-foreground">Accès sécurisé</div>
+              </div>
+            </div>
           </div>
         </div>
       </div>

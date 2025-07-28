@@ -13,7 +13,7 @@ const CategoryDetail = () => {
   const { data: category, isLoading } = useQuery({
     queryKey: ['category', categoryId],
     queryFn: async () => {
-      const response = await fetch(`/api/categories/${categoryId}`);
+      const response = await fetch(`/api/categories/${categoryId}?include=players,schedule,achievements`);
       if (!response.ok) throw new Error('Failed to fetch category');
       return response.json();
     },

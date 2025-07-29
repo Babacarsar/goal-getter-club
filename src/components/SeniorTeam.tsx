@@ -1,42 +1,28 @@
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Star, Award, Target, TrendingUp } from "lucide-react";
+import { useQuery } from "@tanstack/react-query";
 
 const SeniorTeam = () => {
-  const players = [
-    {
-      name: "Mamadou Diallo",
-      position: "Attaquant",
-      number: 10,
-      goals: 15,
-      assists: 8,
-      image: "https://images.unsplash.com/photo-1552374196-1ab2a1c593e8?w=400&h=400&fit=crop&crop=face"
-    },
-    {
-      name: "Ousmane Fall",
-      position: "Milieu",
-      number: 8,
-      goals: 6,
-      assists: 12,
-      image: "https://images.unsplash.com/photo-1506629905607-21e051d76be4?w=400&h=400&fit=crop&crop=face"
-    },
-    {
-      name: "Ibrahima Sarr",
-      position: "Défenseur",
-      number: 4,
-      goals: 2,
-      assists: 3,
-      image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=400&fit=crop&crop=face"
-    },
-    {
-      name: "Cheikh Ndiaye",
-      position: "Gardien",
-      number: 1,
-      saves: 45,
-      cleanSheets: 8,
-      image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400&h=400&fit=crop&crop=face"
+  const { data: players = [], isLoading } = useQuery({
+    queryKey: ['joueurs'],
+    queryFn: async () => {
+      const response = await fetch('http://127.0.0.1:8000/api/joueurs');
+      if (!response.ok) throw new Error('Failed to fetch players');
+      return response.json();
     }
-  ];
+  });
+
+  if (isLoading) {
+    return (
+      <section className="py-20 bg-gradient-to-b from-background to-muted/20">
+        <div className="container mx-auto px-4 text-center">
+          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary mx-auto mb-4"></div>
+          <p className="text-muted-foreground">Chargement de l'équipe...</p>
+        </div>
+      </section>
+    );
+  }
 
   const teamStats = [
     { icon: Target, label: "Buts marqués", value: "67", color: "text-green-500" },

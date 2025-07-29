@@ -10,7 +10,7 @@ const Categories = () => {
   const { data: categories = [], isLoading } = useQuery({
     queryKey: ['categories'],
     queryFn: async () => {
-      const response = await fetch('/api/categories?include=players');
+      const response = await fetch('http://127.0.0.1:8000/api/categories');
       if (!response.ok) throw new Error('Failed to fetch categories');
       return response.json();
     }

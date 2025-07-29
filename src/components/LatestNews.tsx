@@ -2,50 +2,28 @@ import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Calendar, Clock, ArrowRight, User } from "lucide-react";
+import { useQuery } from "@tanstack/react-query";
 
 const LatestNews = () => {
-  const news = [
-    {
-      id: 1,
-      title: "Victoire éclatante contre Dakar FC",
-      excerpt: "L'équipe senior de Girona de Saly s'impose 3-1 face au Dakar FC dans un match spectaculaire qui restera dans les mémoires.",
-      image: "https://images.unsplash.com/photo-1574629810360-7efbbe195018?w=600&h=400&fit=crop",
-      category: "Match",
-      author: "Modou Ndiaye",
-      date: "2024-01-15",
-      readTime: "3 min"
-    },
-    {
-      id: 2,
-      title: "Nouveau terrain synthétique inauguré",
-      excerpt: "Le complexe Girona de Saly s'enrichit d'un nouveau terrain synthétique de dernière génération pour améliorer les conditions d'entraînement.",
-      image: "https://images.unsplash.com/photo-1589487391730-58f20eb2c308?w=600&h=400&fit=crop",
-      category: "Installations",
-      author: "Fatou Ba",
-      date: "2024-01-12",
-      readTime: "2 min"
-    },
-    {
-      id: 3,
-      title: "Stage de formation pour les jeunes",
-      excerpt: "Un stage intensif de 5 jours organisé pour les catégories U15 et U17 avec des entraîneurs professionnels européens.",
-      image: "https://images.unsplash.com/photo-1551698618-1dfe5d97d256?w=600&h=400&fit=crop",
-      category: "Formation",
-      author: "Cheikh Sy",
-      date: "2024-01-10",
-      readTime: "4 min"
-    },
-    {
-      id: 4,
-      title: "Partenariat avec l'Académie de Barcelona",
-      excerpt: "Girona de Saly signe un accord de partenariat technique avec l'académie du FC Barcelona pour le développement des jeunes talents.",
-      image: "https://images.unsplash.com/photo-1560272564-c83b66b1ad12?w=600&h=400&fit=crop",
-      category: "Partenariat",
-      author: "Mamadou Cissé",
-      date: "2024-01-08",
-      readTime: "5 min"
+  const { data: news = [], isLoading } = useQuery({
+    queryKey: ['actualites'],
+    queryFn: async () => {
+      const response = await fetch('http://127.0.0.1:8000/api/actualites');
+      if (!response.ok) throw new Error('Failed to fetch news');
+      return response.json();
     }
-  ];
+  });
+
+  if (isLoading) {
+    return (
+      <section className="py-20 bg-background">
+        <div className="container mx-auto px-4 text-center">
+          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary mx-auto mb-4"></div>
+          <p className="text-muted-foreground">Chargement des actualités...</p>
+        </div>
+      </section>
+    );
+  }
 
   const featuredNews = news[0];
   const otherNews = news.slice(1);

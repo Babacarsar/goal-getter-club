@@ -55,7 +55,7 @@ const SeniorTeamCarousel = () => {
             1024: { slidesPerView: 3 },
           }}
           autoplay={{
-            delay: 6000, // ✅ défilement toutes les 3s
+            delay: 4000, // ✅ défilement toutes les 3s
             disableOnInteraction: false, // continue même après interaction
           }}
           navigation

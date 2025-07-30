@@ -8,28 +8,27 @@ const About = () => {
     <div className="min-h-screen">
       <Header />
       
-      {/* Hero Section with Team Photo */}
-      <section className="relative min-h-[80vh] flex items-center justify-center overflow-hidden">
-        <div 
-          className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-          style={{ backgroundImage: `url(${teamPhoto})` }}
-        >
-          <div className="absolute inset-0 bg-black/50"></div>
-        </div>
-        
-        <div className="relative container mx-auto px-4 text-center text-white z-10">
-          <h1 className="text-5xl md:text-7xl font-bold mb-6 animate-fade-in">
-            <span className="block gradient-sky bg-clip-text text-transparent">
-              Girona de Saly
-            </span>
-            Notre Histoire
-          </h1>
-          <p className="text-xl md:text-2xl text-white/90 max-w-3xl mx-auto">
-            Plus qu'un club, une famille unie par la passion du football depuis 2010
-          </p>
-        </div>
-      </section>
+    {/* Hero Section with Team Photo */}
+<section className="relative h-[80vh] flex items-center justify-center overflow-hidden">
+  <div 
+    className="absolute inset-0 bg-cover bg-top bg-no-repeat"
+    style={{ backgroundImage: `url(${teamPhoto})` }}
+  >
+    <div className="absolute inset-0 bg-black/50" />
+  </div>
 
+  <div className="relative container mx-auto px-4 text-center text-white z-10">
+    <h1 className="text-5xl md:text-7xl font-bold mb-6 animate-fade-in">
+      <span className="block gradient-sky bg-clip-text text-transparent">
+        Girona de Saly
+      </span>
+      Notre Histoire
+    </h1>
+    <p className="text-xl md:text-2xl text-white/90 max-w-3xl mx-auto">
+      Plus qu'un club, une famille unie par la passion du football depuis 2010
+    </p>
+  </div>
+</section>
       {/* À Propos Section */}
       <section className="py-20 bg-background">
         <div className="container mx-auto px-4">
@@ -118,7 +117,7 @@ const About = () => {
                 avec des valeurs qui le guideront toute sa vie."
               </blockquote>
               <cite className="text-lg text-muted-foreground">
-                - Mamadou Ba, Président Fondateur
+                - Badou Gueye, Président Fondateur
               </cite>
             </div>
           </div>

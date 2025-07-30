@@ -34,28 +34,37 @@ const Header = () => {
             <Link to="/staff" className="text-foreground hover:text-primary transition-colors">
               Staff
             </Link>
-            <DropdownMenu>
-              <DropdownMenuTrigger className="flex items-center gap-1 text-foreground hover:text-primary transition-colors">
-                Catégories <ChevronDown className="h-4 w-4" />
-              </DropdownMenuTrigger>
-              <DropdownMenuContent>
-                <DropdownMenuItem>
-                  <Link to="/categories/u14" className="w-full">U14 (12-14 ans)</Link>
-                </DropdownMenuItem>
-                <DropdownMenuItem>
-                  <Link to="/categories/u15" className="w-full">U15 (13-15 ans)</Link>
-                </DropdownMenuItem>
-                <DropdownMenuItem>
-                  <Link to="/categories/u17" className="w-full">U17 (15-17 ans)</Link>
-                </DropdownMenuItem>
-                <DropdownMenuItem>
-                  <Link to="/categories/u18" className="w-full">U18 (16-18 ans)</Link>
-                </DropdownMenuItem>
-                <DropdownMenuItem>
-                  <Link to="/categories/senior" className="w-full">Senior (18+ ans)</Link>
-                </DropdownMenuItem>
-              </DropdownMenuContent>
-            </DropdownMenu>
+          <DropdownMenu>
+  <Link to="/categories">
+    <DropdownMenuTrigger asChild>
+      <button className="flex items-center gap-1 text-foreground hover:text-primary transition-colors">
+        Catégories <ChevronDown className="h-4 w-4" />
+      </button>
+    </DropdownMenuTrigger>
+  </Link>
+  
+  <DropdownMenuContent>
+    <DropdownMenuItem>
+      <Link to="/categories" className="w-full">Categories</Link>
+    </DropdownMenuItem>
+    <DropdownMenuItem>
+      <Link to="/categories/1" className="w-full">U14 (12–14 ans)</Link>
+    </DropdownMenuItem>
+    <DropdownMenuItem>
+      <Link to="/categories/2" className="w-full">U15 (13–15 ans)</Link>
+    </DropdownMenuItem>
+    <DropdownMenuItem>
+      <Link to="/categories/3" className="w-full">U17 (15–17 ans)</Link>
+    </DropdownMenuItem>
+    <DropdownMenuItem>
+      <Link to="/categories/4" className="w-full">U18 (16–18 ans)</Link>
+    </DropdownMenuItem>
+    <DropdownMenuItem>
+      <Link to="/categories/3" className="w-full">Senior (18+ ans)</Link>
+    </DropdownMenuItem>
+  </DropdownMenuContent>
+</DropdownMenu>
+
             <Link to="/news" className="text-foreground hover:text-primary transition-colors">
               Actualités
             </Link>

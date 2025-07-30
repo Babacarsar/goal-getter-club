@@ -54,7 +54,7 @@ const Categories = () => {
             {categories.map((category) => (
               <Card key={category.id} className="hover:shadow-lg transition-shadow">
                 <CardHeader>
-                  <CardTitle className="text-2xl text-primary">{category.name}</CardTitle>
+                  <CardTitle className="text-2xl text-primary">{category.nom}</CardTitle>
                   <CardDescription className="text-muted-foreground">
                     {category.age}
                   </CardDescription>
@@ -78,9 +78,7 @@ const Categories = () => {
                   </div>
 
                   <Button asChild className="w-full">
-                    <Link to={`/categories/${category.id}`}>
-                      Voir l'équipe
-                    </Link>
+                   <Link to={`/categories/${category.id}`}>Voir l'équipe</Link>
                   </Button>
                 </CardContent>
               </Card>

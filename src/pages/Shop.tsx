@@ -11,9 +11,9 @@ const Shop = () => {
       id: 1,
       name: "Maillot Domicile 2024",
       description: "Maillot officiel de l'équipe première, tissu respirant DriFit",
-      price: 75,
+      price: 3000,
       originalPrice: null,
-      image: "/placeholder.svg",
+      image: "/produit1.jpg",
       category: "Maillots",
       rating: 4.8,
       inStock: true,
@@ -192,10 +192,10 @@ const Shop = () => {
                 <CardContent className="pt-0">
                   <div className="flex items-center justify-between mb-4">
                     <div className="flex items-center gap-2">
-                      <span className="text-2xl font-bold text-primary">{product.price}€</span>
+                      <span className="text-2xl font-bold text-primary">{product.price}FCFA</span>
                       {product.originalPrice && (
                         <span className="text-sm text-muted-foreground line-through">
-                          {product.originalPrice}€
+                          {product.originalPrice}FCFA
                         </span>
                       )}
                     </div>

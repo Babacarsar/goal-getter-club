@@ -65,7 +65,7 @@ const MediaGallery = () => {
               <Card key={video.id} className="group overflow-hidden hover:shadow-xl hover:scale-105 transition-all">
                 <div className="relative overflow-hidden">
                   <video
-                    src={`https://gironafcsaly-production.up.railway.app/${video.path}`}
+                    src={`https://gironafcsaly-production.up.railway.app/${video.file_path}`}
                     controls
                     className="w-full h-48 object-cover"
                   ></video>
@@ -86,7 +86,7 @@ const MediaGallery = () => {
             {photos.map((photo) => (
               <Card key={photo.id} className="group overflow-hidden hover:shadow-xl hover:scale-105 transition-all">
                 <img
-                  src={`https://gironafcsaly-production.up.railway.app/${photo.path}`}
+                  src={`https://gironafcsaly-production.up.railway.app/${photo.file_path}`}
                   alt={photo.title || "Photo"}
                   className="w-full h-64 object-cover"
                 />

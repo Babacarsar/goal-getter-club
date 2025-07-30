@@ -130,9 +130,6 @@ const Header = () => {
               <a href="#contact" className="text-foreground hover:text-primary transition-colors" onClick={() => setIsMenuOpen(false)}>
                 Contact
               </a>
-              <Button className="gradient-field text-white hover:opacity-90 w-full">
-                Inscription
-              </Button>
             </div>
           </div>
         )}

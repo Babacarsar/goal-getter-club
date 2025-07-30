@@ -8,7 +8,7 @@ const LatestNews = () => {
   const { data: news = [], isLoading } = useQuery({
     queryKey: ["actualites"],
     queryFn: async () => {
-      const response = await fetch("http://127.0.0.1:8000/api/actualites");
+      const response = await fetch("`https://gironafcsaly-production.up.railway.app/api/actualites");
       if (!response.ok) throw new Error("Failed to fetch news");
       return response.json();
     },
@@ -60,7 +60,7 @@ const LatestNews = () => {
                   <img
                     src={
                       featuredNews.image
-                        ? `http://127.0.0.1:8000/${featuredNews.image}`
+                        ? `https://gironafcsaly-production.up.railway.app/${featuredNews.image}`
                         : "https://via.placeholder.com/600x400"
                     }
                     alt={featuredNews.titre}
@@ -104,7 +104,7 @@ const LatestNews = () => {
                 <img
                   src={
                     article.image
-                      ? `http://127.0.0.1:8000/${article.image}`
+                      ? `https://gironafcsaly-production.up.railway.app/${article.image}`
                       : "https://via.placeholder.com/400x250"
                   }
                   alt={article.titre}

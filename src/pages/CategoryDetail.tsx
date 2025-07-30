@@ -14,7 +14,7 @@ const CategoryDetail = () => {
   const { data: category, isLoading: loadingCat } = useQuery({
     queryKey: ["category", categoryId],
     queryFn: async () => {
-      const res = await fetch(`http://127.0.0.1:8000/api/categories/${categoryId}`);
+      const res = await fetch(`https://gironafcsaly-production.up.railway.app/api/categories/${categoryId}`);
       if (!res.ok) throw new Error("Failed to fetch category");
       return res.json();
     },
@@ -24,7 +24,7 @@ const CategoryDetail = () => {
   const { data: allPlayers, isLoading: loadingPlayers } = useQuery({
     queryKey: ["joueurs"],
     queryFn: async () => {
-      const res = await fetch(`http://127.0.0.1:8000/api/joueurs`);
+      const res = await fetch(`https://gironafcsaly-production.up.railway.app/api/joueurs`);
       if (!res.ok) throw new Error("Failed to fetch players");
       return res.json();
     },
@@ -96,7 +96,7 @@ const CategoryDetail = () => {
                 <img
                   src={
                     player.photo
-                      ? `http://127.0.0.1:8000/${player.photo}`
+                      ? `https://gironafcsaly-production.up.railway.app/${player.photo}`
                       : "https://via.placeholder.com/400x250"
                   }
                   alt={`${player.prenom} ${player.nom}`}

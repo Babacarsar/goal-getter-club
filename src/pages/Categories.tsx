@@ -16,7 +16,7 @@ const Categories = () => {
   const { data: categories = [], isLoading: loadingCategories } = useQuery({
     queryKey: ['categories'],
     queryFn: async () => {
-      const response = await fetch('http://127.0.0.1:8000/api/categories');
+      const response = await fetch('https://gironafcsaly-production.up.railway.app/api/categories');
       if (!response.ok) throw new Error('Failed to fetch categories');
       return response.json();
     }
@@ -25,7 +25,7 @@ const Categories = () => {
   const { data: joueurs = [], isLoading: loadingJoueurs } = useQuery({
     queryKey: ['joueurs'],
     queryFn: async () => {
-      const response = await fetch('http://127.0.0.1:8000/api/joueurs');
+      const response = await fetch('https://gironafcsaly-production.up.railway.app/api/joueurs');
       if (!response.ok) throw new Error('Failed to fetch joueurs');
       return response.json();
     }
@@ -34,7 +34,7 @@ const Categories = () => {
   const { data: staff = [], isLoading: loadingStaff } = useQuery({
     queryKey: ['staff'],
     queryFn: async () => {
-      const response = await fetch('http://127.0.0.1:8000/api/staff');
+      const response = await fetch('https://gironafcsaly-production.up.railway.app/api/staff');
       if (!response.ok) throw new Error('Failed to fetch staff');
       return response.json();
     }

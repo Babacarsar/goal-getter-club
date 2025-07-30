@@ -8,7 +8,7 @@ const Staff = () => {
   const { data: staffMembers = [], isLoading } = useQuery({
     queryKey: ['staff'],
     queryFn: async () => {
-      const response = await fetch('http://127.0.0.1:8000/api/staff');
+      const response = await fetch('https://gironafcsaly-production.up.railway.app/api/staff');
       if (!response.ok) throw new Error('Failed to fetch staff');
       return response.json();
     }
@@ -52,7 +52,7 @@ const Staff = () => {
                 <img
                   src={
   member.photo
-    ? `http://127.0.0.1:8000/${member.photo}`
+    ? `https://gironafcsaly-production.up.railway.app/${member.photo}`
     : "https://via.placeholder.com/400x250"
 }
                   alt={`${member.prenom} ${member.nom}`}

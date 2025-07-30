@@ -8,7 +8,7 @@ const LatestNews = () => {
   const { data: news = [], isLoading } = useQuery({
     queryKey: ["actualites"],
     queryFn: async () => {
-      const response = await fetch("`https://gironafcsaly-production.up.railway.app/api/actualites");
+      const response = await fetch("https://gironafcsaly-production.up.railway.app/api/actualites");
       if (!response.ok) throw new Error("Failed to fetch news");
       return response.json();
     },

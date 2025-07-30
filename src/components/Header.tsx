@@ -74,9 +74,7 @@ const Header = () => {
             <a href="#contact" className="text-foreground hover:text-primary transition-colors">
               Contact
             </a>
-            <Button className="gradient-field text-white hover:opacity-90">
-              Inscription
-            </Button>
+         
           </div>
 
           {/* Mobile Menu Button */}

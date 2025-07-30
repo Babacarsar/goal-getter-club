@@ -189,9 +189,15 @@ const MediaGallery = () => {
               <Button variant="outline" size="sm">
                 Facebook
               </Button>
-              <Button variant="outline" size="sm">
-                YouTube
-              </Button>
+             <a
+  href="https://www.youtube.com/@Acad%C3%A9mieGironafcdeSalyofficiel/videos"
+  target="_blank"
+  rel="noopener noreferrer"
+>
+  <Button variant="outline" size="sm">
+    YouTube
+  </Button>
+</a>
             </div>
           </div>
         </div>

@@ -11,7 +11,7 @@ const SeniorTeamCarousel = () => {
   const { data: players = [], isLoading } = useQuery({
     queryKey: ['joueurs'],
     queryFn: async () => {
-      const res = await fetch('http://127.0.0.1:8000/api/joueurs');
+      const res = await fetch('https://gironafcsaly-production.up.railway.app/api/joueurs');
       if (!res.ok) throw new Error("Erreur de chargement");
       return res.json();
     }
@@ -67,7 +67,7 @@ const SeniorTeamCarousel = () => {
                 <img
                   src={
                     player.photo
-                      ? `http://127.0.0.1:8000/${player.photo}`
+                      ? `https://gironafcsaly-production.up.railway.app/${player.photo}`
                       : "https://via.placeholder.com/400x250"
                   }
                   alt={`${player.prenom} ${player.nom}`}

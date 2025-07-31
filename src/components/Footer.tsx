@@ -3,10 +3,10 @@ import { MapPin, Phone, Mail, Facebook, Instagram, Twitter } from "lucide-react"
 const Footer = () => {
   return (
     <footer className="bg-primary text-white">
-      <div className="container mx-auto px-4 py-12">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
+      <div className="container mx-auto px-4 py-8 sm:py-12">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 md:gap-8">
           {/* Logo et description */}
-          <div className="col-span-1 md:col-span-2">
+          <div className="col-span-1 sm:col-span-2 md:col-span-2">
             <div className="flex items-center space-x-2 mb-4">
               <div className="w-10 h-10 bg-white rounded-full flex items-center justify-center">
                 <span className="text-primary font-bold">⚽</span>
@@ -48,8 +48,8 @@ const Footer = () => {
             <h3 className="text-xl font-semibold mb-4">Contact</h3>
             <ul className="space-y-3 text-white/80">
               <li className="flex items-start space-x-3">
-                <MapPin className="h-5 w-5 mt-0.5 text-accent" />
-                <span className="text-sm">123 Avenue du Stade<br />75000 Paris, France</span>
+                <MapPin className="h-4 w-4 sm:h-5 sm:w-5 mt-0.5 text-accent flex-shrink-0" />
+                <span className="text-xs sm:text-sm break-words">123 Avenue du Stade<br />75000 Paris, France</span>
               </li>
               <li className="flex items-center space-x-3">
                 <Phone className="h-5 w-5 text-accent" />

@@ -8,23 +8,23 @@ const About = () => {
     <div className="min-h-screen">
       <Header />
       
-    {/* Hero Section with Team Photo */}
-<section className="relative h-[80vh] flex items-center justify-center overflow-hidden">
+      {/* Hero Section with Team Photo */}
+<section className="relative h-[60vh] sm:h-[70vh] md:h-[80vh] flex items-center justify-center overflow-hidden">
   <div 
-    className="absolute inset-0 bg-cover bg-top bg-no-repeat"
+    className="absolute inset-0 bg-cover bg-center bg-no-repeat"
     style={{ backgroundImage: `url(${teamPhoto})` }}
   >
     <div className="absolute inset-0 bg-black/50" />
   </div>
 
   <div className="relative container mx-auto px-4 text-center text-white z-10">
-    <h1 className="text-5xl md:text-7xl font-bold mb-6 animate-fade-in">
+    <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-bold mb-4 sm:mb-6 animate-fade-in">
       <span className="block gradient-sky bg-clip-text text-transparent">
         Girona de Saly
       </span>
       Notre Histoire
     </h1>
-    <p className="text-xl md:text-2xl text-white/90 max-w-3xl mx-auto">
+    <p className="text-lg sm:text-xl md:text-2xl text-white/90 max-w-3xl mx-auto px-4">
       Plus qu'un club, une famille unie par la passion du football depuis 2010
     </p>
   </div>
@@ -32,10 +32,10 @@ const About = () => {
       {/* À Propos Section */}
       <section className="py-20 bg-background">
         <div className="container mx-auto px-4">
-          <div className="max-w-6xl mx-auto">
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+            <div className="max-w-6xl mx-auto">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-center">
               <div>
-                <h2 className="text-4xl font-bold text-foreground mb-8">
+                <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-foreground mb-6 sm:mb-8">
                   L'Excellence à la Sénégalaise
                 </h2>
                 <div className="space-y-6 text-lg text-muted-foreground">
@@ -60,23 +60,23 @@ const About = () => {
               </div>
               
               <div className="space-y-8">
-                <div className="bg-gradient-to-br from-primary/10 to-accent/10 rounded-2xl p-8">
-                  <div className="grid grid-cols-2 gap-6">
+                <div className="bg-gradient-to-br from-primary/10 to-accent/10 rounded-2xl p-4 sm:p-6 md:p-8">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
                     <div className="text-center">
-                      <div className="text-4xl font-bold text-primary mb-2">300+</div>
-                      <div className="text-sm text-muted-foreground">Joueurs formés</div>
+                      <div className="text-2xl sm:text-3xl md:text-4xl font-bold text-primary mb-2">300+</div>
+                      <div className="text-xs sm:text-sm text-muted-foreground">Joueurs formés</div>
                     </div>
                     <div className="text-center">
-                      <div className="text-4xl font-bold text-primary mb-2">45</div>
-                      <div className="text-sm text-muted-foreground">Professionnels</div>
+                      <div className="text-2xl sm:text-3xl md:text-4xl font-bold text-primary mb-2">45</div>
+                      <div className="text-xs sm:text-sm text-muted-foreground">Professionnels</div>
                     </div>
                     <div className="text-center">
-                      <div className="text-4xl font-bold text-primary mb-2">12</div>
-                      <div className="text-sm text-muted-foreground">Titres remportés</div>
+                      <div className="text-2xl sm:text-3xl md:text-4xl font-bold text-primary mb-2">12</div>
+                      <div className="text-xs sm:text-sm text-muted-foreground">Titres remportés</div>
                     </div>
                     <div className="text-center">
-                      <div className="text-4xl font-bold text-primary mb-2">2010</div>
-                      <div className="text-sm text-muted-foreground">Année de création</div>
+                      <div className="text-2xl sm:text-3xl md:text-4xl font-bold text-primary mb-2">2010</div>
+                      <div className="text-xs sm:text-sm text-muted-foreground">Année de création</div>
                     </div>
                   </div>
                 </div>
@@ -127,8 +127,8 @@ const About = () => {
       {/* Valeurs Section */}
       <section className="py-20 bg-background">
         <div className="container mx-auto px-4">
-          <h2 className="text-4xl font-bold text-foreground mb-16 text-center">Nos Valeurs</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-foreground mb-12 md:mb-16 text-center">Nos Valeurs</h2>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
             <div className="text-center group hover:scale-105 transition-transform duration-300">
               <div className="w-20 h-20 bg-gradient-to-br from-primary to-primary/80 rounded-full flex items-center justify-center mx-auto mb-6 group-hover:shadow-lg transition-shadow">
                 <Heart className="h-10 w-10 text-white" />
@@ -172,9 +172,9 @@ const About = () => {
       {/* Palmarès Section */}
       <section className="py-20 bg-muted/30">
         <div className="container mx-auto px-4">
-          <h2 className="text-4xl font-bold text-foreground mb-16 text-center">Notre Palmarès</h2>
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-foreground mb-12 md:mb-16 text-center">Notre Palmarès</h2>
           <div className="max-w-6xl mx-auto">
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
               <div className="bg-card p-8 rounded-xl border hover:shadow-lg transition-shadow">
                 <h3 className="text-2xl font-semibold mb-6 text-primary flex items-center gap-3">
                   <Trophy className="h-6 w-6" />

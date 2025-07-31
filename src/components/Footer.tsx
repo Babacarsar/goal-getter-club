@@ -32,16 +32,22 @@ const Footer = () => {
             </div>
           </div>
 
-          {/* Liens rapides */}
+          {/* Contact */}
           <div>
-            <h3 className="text-xl font-semibold mb-4">Liens rapides</h3>
-            <ul className="space-y-2 text-muted-foreground">
-              <li><a href="#accueil" className="hover:text-foreground transition-colors">Accueil</a></li>
-              <li><a href="#programmes" className="hover:text-foreground transition-colors">Programmes</a></li>
-              <li><a href="#entraineurs" className="hover:text-foreground transition-colors">Entraîneurs</a></li>
-              <li><a href="#contact" className="hover:text-foreground transition-colors">Contact</a></li>
-              <li><a href="#" className="hover:text-foreground transition-colors">Inscriptions</a></li>
-              <li><a href="#" className="hover:text-foreground transition-colors">Actualités</a></li>
+            <h3 className="text-xl font-semibold mb-4">Contact</h3>
+            <ul className="space-y-3 text-muted-foreground">
+              <li className="flex items-start space-x-3">
+                <MapPin className="h-4 w-4 sm:h-5 sm:w-5 mt-0.5 text-accent flex-shrink-0" />
+                <span className="text-xs sm:text-sm break-words">123 Avenue du Stade<br />75000 Paris, France</span>
+              </li>
+              <li className="flex items-center space-x-3">
+                <Phone className="h-5 w-5 text-accent" />
+                <span className="text-sm">+33 1 23 45 67 89</span>
+              </li>
+              <li className="flex items-center space-x-3">
+                <Mail className="h-5 w-5 text-accent" />
+                <span className="text-sm">info@footballacademy.fr</span>
+              </li>
             </ul>
           </div>
 

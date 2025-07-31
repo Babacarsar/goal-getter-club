@@ -11,7 +11,7 @@ const About = () => {
       {/* Hero Section with Team Photo */}
 <section className="relative h-[60vh] sm:h-[70vh] md:h-[80vh] flex items-center justify-center overflow-hidden">
   <div 
-    className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+    className="absolute inset-0 bg-cover bg-bottom bg-no-repeat"
     style={{ backgroundImage: `url(${teamPhoto})` }}
   >
     <div className="absolute inset-0 bg-black/50" />

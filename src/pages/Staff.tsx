@@ -33,10 +33,12 @@ const Staff = () => {
     <div className="min-h-screen">
       <Header />
 
-      <section className="pt-20 pb-16 bg-gradient-to-br from-primary/20 to-accent/20 text-center">
+      <section className="pt-28 pb-20 bg-gradient-to-br from-primary/20 to-accent/20 text-center">
         <div className="container mx-auto px-4">
-          <h1 className="text-4xl md:text-6xl font-bold text-foreground mb-4">Notre Équipe Technique</h1>
-          <p className="text-muted-foreground text-lg">
+          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-foreground mb-4 sm:mb-6">
+            Notre Équipe Technique
+          </h1>
+          <p className="text-muted-foreground text-base sm:text-lg md:text-xl max-w-3xl mx-auto px-4">
             Découvrez les membres du staff qui accompagnent nos joueurs vers la réussite.
           </p>
         </div>

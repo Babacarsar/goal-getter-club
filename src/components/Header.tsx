@@ -20,9 +20,10 @@ const Header = () => {
         <img
           src="/logo.png"
           alt="Logo Girona"
-         className="w-[70px] h-[70px] object-cover rounded-full shadow-sm"
+         className="w-12 h-12 sm:w-16 sm:h-16 md:w-[70px] md:h-[70px] object-cover rounded-full shadow-sm"
         />
-        <span className="text-xl font-bold text-primary">Girona de Saly</span>
+        <span className="text-lg sm:text-xl font-bold text-primary hidden sm:block">Académie Girona FC de Saly</span>
+        <span className="text-sm font-bold text-primary sm:hidden">Académie Girona FC</span>
       </div>
 
           {/* Desktop Menu */}

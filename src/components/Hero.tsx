@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Trophy, Users, Target } from "lucide-react";
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import carousel1 from "@/assets/carousel-1.jpg";
 import carousel2 from "@/assets/carousel-2.jpg";
 import carousel3 from "@/assets/carousel-3.jpg";
@@ -33,9 +34,9 @@ const Hero = () => {
     },
     {
       image: carousel5,
-      title: "Académie Girona",
+      title: "Académie Girona FC",
       subtitle: "L'avenir du football sénégalais"
-    }
+    },
   ];
 
   useEffect(() => {
@@ -65,11 +66,11 @@ const Hero = () => {
       <div className="absolute inset-0 hero-pattern"></div>
 
       {/* Content */}
-      <div className="relative container mx-auto px-4 text-center text-white z-10">
+      <div className="relative container mx-auto px-4 text-center text-white z-10 md:mt-20">
         <div className="max-w-4xl mx-auto">
           <h1 className="text-5xl md:text-7xl font-bold mb-6 animate-fade-in">
             <span className="block gradient-sky bg-clip-text text-transparent">
-              Girona de Saly
+              Académie Girona FC de Saly
             </span>
             {slides[currentSlide].title}
           </h1>
@@ -78,14 +79,22 @@ const Hero = () => {
             {slides[currentSlide].subtitle}
           </p>
 
-          <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12">
-            <Button size="lg" className="gradient-field text-white hover:opacity-90 group">
-              Rejoindre le club
-              <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
-            </Button>
-            <Button size="lg" variant="outline" className="bg-white/10 border-white/30 text-white hover:bg-white/20">
-              Découvrir nos équipes
-            </Button>
+          <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center mb-8 sm:mb-12">
+            <a href="#contact">
+              <Button size="sm" className="gradient-field text-white hover:opacity-90 group py-2 sm:py-4">
+                Rejoindre le club
+                <ArrowRight className="ml-2 h-4 sm:h-5 w-4 sm:w-5 group-hover:translate-x-1 transition-transform" />
+              </Button>
+            </a>
+            <Link to="/categories">
+              <Button
+                size="sm"
+                variant="outline"
+                className="bg-white/10 border-white/30 text-white hover:bg-white/20 py-2 sm:py-4"
+              >
+                Découvrir nos équipes
+              </Button>
+            </Link>
           </div>
 
           {/* Carousel Indicators */}
@@ -109,7 +118,7 @@ const Hero = () => {
               <div className="w-16 h-16 bg-white/10 rounded-full flex items-center justify-center mb-3">
                 <Trophy className="h-8 w-8 text-accent" />
               </div>
-          <div className="text-3xl font-bold">5</div>
+              <div className="text-3xl font-bold">5</div>
               <div className="text-white/80">Terrains d&apos;entraînement</div> 
             </div>
             

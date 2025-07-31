@@ -7,11 +7,13 @@ const Footer = () => {
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 md:gap-8">
           {/* Logo et description */}
           <div className="col-span-1 sm:col-span-2 md:col-span-2">
-            <div className="flex items-center space-x-2 mb-4">
-              <div className="w-10 h-10 bg-white rounded-full flex items-center justify-center">
-                <span className="text-primary font-bold">⚽</span>
-              </div>
-              <span className="text-2xl font-bold">Girona de Saly</span>
+            <div className="flex items-center space-x-3 mb-4">
+              <img 
+                src="/logo.png" 
+                alt="Académie Girona FC de Saly" 
+                className="w-12 h-12 object-contain"
+              />
+              <span className="text-xl sm:text-2xl font-bold">Académie Girona FC de Saly</span>
             </div>
             <p className="text-white/80 mb-6 max-w-md">
               L'école de football de référence pour développer vos talents et réaliser vos rêves. 

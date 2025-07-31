@@ -3,8 +3,10 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Calendar, ArrowRight } from "lucide-react";
 import { useQuery } from "@tanstack/react-query";
+import { useNavigate } from "react-router-dom";
 
 const LatestNews = () => {
+  const navigate = useNavigate();
   const { data: news = [], isLoading } = useQuery({
     queryKey: ["actualites"],
     queryFn: async () => {
@@ -130,7 +132,7 @@ const LatestNews = () => {
 
         {/* Call to Action */}
         <div className="text-center">
-          <Button size="lg" variant="outline" className="group">
+          <Button size="lg" variant="outline" className="group" onClick={() => navigate('/news')}>
             Voir toutes les actualités
             <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
           </Button>

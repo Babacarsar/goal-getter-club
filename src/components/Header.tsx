@@ -74,9 +74,9 @@ const Header = () => {
             <Link to="/shop" className="text-foreground hover:text-primary transition-colors">
               Boutique
             </Link>
-            <a href="#contact" className="text-foreground hover:text-primary transition-colors">
+            <Link to="/contact" className="text-foreground hover:text-primary transition-colors">
               Contact
-            </a>
+            </Link>
          
           </div>
 
@@ -131,9 +131,9 @@ const Header = () => {
               <Link to="/shop" className="text-foreground hover:text-primary transition-colors" onClick={() => setIsMenuOpen(false)}>
                 Boutique
               </Link>
-              <a href="#contact" className="text-foreground hover:text-primary transition-colors" onClick={() => setIsMenuOpen(false)}>
+              <Link to="/contact" className="text-foreground hover:text-primary transition-colors" onClick={() => setIsMenuOpen(false)}>
                 Contact
-              </a>
+              </Link>
             </div>
           </div>
         )}

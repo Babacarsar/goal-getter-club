@@ -2,7 +2,6 @@ import Header from "@/components/Header";
 import Hero from "@/components/Hero";
 import MediaGallery from "@/components/MediaGallery";
 import LatestNews from "@/components/LatestNews";
-import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
 
 const Index = () => {
@@ -12,7 +11,6 @@ const Index = () => {
       <Hero />
       <MediaGallery />
       <LatestNews />
-      <Contact />
       <Footer />
     </div>
   );

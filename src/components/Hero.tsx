@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Trophy, Users, Target } from "lucide-react";
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import carousel1 from "@/assets/carousel-1.jpg";
 import carousel2 from "@/assets/carousel-2.jpg";
 import carousel3 from "@/assets/carousel-3.jpg";
@@ -79,17 +80,21 @@ const Hero = () => {
           </p>
 
           <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center mb-8 sm:mb-12">
-            <Button size="sm" className="gradient-field text-white hover:opacity-90 group py-2 sm:py-4">
-              Rejoindre le club
-              <ArrowRight className="ml-2 h-4 sm:h-5 w-4 sm:w-5 group-hover:translate-x-1 transition-transform" />
-            </Button>
-            <Button
-              size="sm"
-              variant="outline"
-              className="bg-white/10 border-white/30 text-white hover:bg-white/20 py-2 sm:py-4"
-            >
-              Découvrir nos équipes
-            </Button>
+            <a href="#contact">
+              <Button size="sm" className="gradient-field text-white hover:opacity-90 group py-2 sm:py-4">
+                Rejoindre le club
+                <ArrowRight className="ml-2 h-4 sm:h-5 w-4 sm:w-5 group-hover:translate-x-1 transition-transform" />
+              </Button>
+            </a>
+            <Link to="/categories">
+              <Button
+                size="sm"
+                variant="outline"
+                className="bg-white/10 border-white/30 text-white hover:bg-white/20 py-2 sm:py-4"
+              >
+                Découvrir nos équipes
+              </Button>
+            </Link>
           </div>
 
           {/* Indicators */}

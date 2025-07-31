@@ -65,7 +65,7 @@ const Partners = () => {
 
         <div className="text-center mt-16">
           <p className="text-lg text-muted-foreground mb-6">
-            Vous souhaitez devenir partenaire ?
+            Vous souhaitez intégrer notre équipe ?
           </p>
           <a 
             href="/contact" 

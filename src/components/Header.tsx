@@ -14,14 +14,16 @@ const Header = () => {
 
   return (
     <header className="fixed top-0 w-full bg-white/90 backdrop-blur-sm z-50 border-b border-border">
-      <nav className="container mx-auto px-4 py-4">
-        <div className="flex items-center justify-between">
-          <div className="flex items-center space-x-2">
-            <div className="w-8 h-8 bg-primary rounded-full flex items-center justify-center">
-              <span className="text-white font-bold text-sm">⚽</span>
-            </div>
-            <span className="text-xl font-bold text-primary">Girona de Saly</span>
-          </div>
+  <nav className="container mx-auto px-4 py-4">
+    <div className="flex items-center justify-between">
+      <div className="flex items-center space-x-2">
+        <img
+          src="/logo.png"
+          alt="Logo Girona"
+         className="w-[70px] h-[70px] object-cover rounded-full shadow-sm"
+        />
+        <span className="text-xl font-bold text-primary">Girona de Saly</span>
+      </div>
 
           {/* Desktop Menu */}
           <div className="hidden md:flex items-center space-x-8">
@@ -48,19 +50,19 @@ const Header = () => {
       <Link to="/categories" className="w-full">Categories</Link>
     </DropdownMenuItem>
     <DropdownMenuItem>
-      <Link to="/categories/1" className="w-full">U14 (12–14 ans)</Link>
+      <Link to="/categories/1" className="w-full">U14</Link>
     </DropdownMenuItem>
     <DropdownMenuItem>
-      <Link to="/categories/2" className="w-full">U15 (13–15 ans)</Link>
+      <Link to="/categories/2" className="w-full">U20 </Link>
     </DropdownMenuItem>
     <DropdownMenuItem>
-      <Link to="/categories/3" className="w-full">U17 (15–17 ans)</Link>
+      <Link to="/categories/3" className="w-full">U17</Link>
     </DropdownMenuItem>
     <DropdownMenuItem>
-      <Link to="/categories/4" className="w-full">U18 (16–18 ans)</Link>
+      <Link to="/categories/4" className="w-full">U18</Link>
     </DropdownMenuItem>
     <DropdownMenuItem>
-      <Link to="/categories/3" className="w-full">Senior (18+ ans)</Link>
+      <Link to="/categories/1" className="w-full">Senior (18+ ans)</Link>
     </DropdownMenuItem>
   </DropdownMenuContent>
 </DropdownMenu>
@@ -102,20 +104,23 @@ const Header = () => {
               <div className="space-y-2">
                 <div className="text-foreground font-medium">Catégories</div>
                 <div className="ml-4 space-y-2">
+                   <Link to="/categories" className="block text-muted-foreground hover:text-primary transition-colors" onClick={() => setIsMenuOpen(false)}>
+                    Categories
+                  </Link>
                   <Link to="/categories/u14" className="block text-muted-foreground hover:text-primary transition-colors" onClick={() => setIsMenuOpen(false)}>
-                    U14 (12-14 ans)
+                    U14 
                   </Link>
                   <Link to="/categories/u15" className="block text-muted-foreground hover:text-primary transition-colors" onClick={() => setIsMenuOpen(false)}>
-                    U15 (13-15 ans)
+                    U15
                   </Link>
-                  <Link to="/categories/u17" className="block text-muted-foreground hover:text-primary transition-colors" onClick={() => setIsMenuOpen(false)}>
-                    U17 (15-17 ans)
+                  <Link to="/categories/3" className="block text-muted-foreground hover:text-primary transition-colors" onClick={() => setIsMenuOpen(false)}>
+                    U17 
                   </Link>
-                  <Link to="/categories/u18" className="block text-muted-foreground hover:text-primary transition-colors" onClick={() => setIsMenuOpen(false)}>
-                    U18 (16-18 ans)
+                  <Link to="/categories/2" className="block text-muted-foreground hover:text-primary transition-colors" onClick={() => setIsMenuOpen(false)}>
+                    U20
                   </Link>
-                  <Link to="/categories/senior" className="block text-muted-foreground hover:text-primary transition-colors" onClick={() => setIsMenuOpen(false)}>
-                    Senior (18+ ans)
+                  <Link to="/categories/1" className="block text-muted-foreground hover:text-primary transition-colors" onClick={() => setIsMenuOpen(false)}>
+                    Senior 
                   </Link>
                 </div>
               </div>

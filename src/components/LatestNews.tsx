@@ -7,6 +7,7 @@ import { useNavigate } from "react-router-dom";
 
 const LatestNews = () => {
   const navigate = useNavigate();
+
   const { data: news = [], isLoading } = useQuery({
     queryKey: ["actualites"],
     queryFn: async () => {
@@ -41,6 +42,7 @@ const LatestNews = () => {
   return (
     <section className="py-20 bg-background">
       <div className="container mx-auto px-4">
+        {/* En-tête */}
         <div className="text-center mb-16">
           <Badge variant="outline" className="mb-4 text-lg px-4 py-2">
             Actualités
@@ -54,45 +56,43 @@ const LatestNews = () => {
         </div>
 
         {/* À la une */}
-        {featuredNews && (
-          <div className="mb-16">
-            <Card className="overflow-hidden hover:shadow-xl transition-all duration-300 group">
-              <div className="grid grid-cols-1 lg:grid-cols-2">
-                <div className="relative overflow-hidden">
-                  <img
-                    src={
-                      featuredNews.image
-                        ? `https://gironafcsaly-production.up.railway.app/${featuredNews.image}`
-                        : "https://via.placeholder.com/600x400"
-                    }
-                    alt={featuredNews.titre}
-                    className="w-full h-64 lg:h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                  />
-                  <div className="absolute top-4 left-4">
-                    <Badge className="bg-primary text-white">À la Une</Badge>
-                  </div>
-                </div>
-
-                <div className="p-8 lg:p-12 flex flex-col justify-center">
-                  <h3 className="text-2xl lg:text-3xl font-bold text-foreground mb-4 group-hover:text-primary transition-colors">
-                    {featuredNews.titre}
-                  </h3>
-                  <p className="text-muted-foreground text-base mb-6 line-clamp-5">
-                    {featuredNews.contenu}
-                  </p>
-                  <div className="flex items-center gap-2 text-sm text-muted-foreground mb-6">
-                    <Calendar className="w-4 h-4" />
-                    {new Date(featuredNews.created_at).toLocaleDateString("fr-FR")}
-                  </div>
-                  <Button className="w-fit group">
-                    Lire l'article
-                    <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
-                  </Button>
+        <div className="mb-16">
+          <Card className="overflow-hidden hover:shadow-xl transition-all duration-300 group">
+            <div className="grid grid-cols-1 lg:grid-cols-2">
+              <div className="relative overflow-hidden">
+                <img
+                  src={
+                    featuredNews.image
+                      ? `${featuredNews.image}?c_fill,w_800,h_500,f_auto,q_auto`
+                      : "https://via.placeholder.com/600x400"
+                  }
+                  alt={featuredNews.titre}
+                  className="w-full h-64 lg:h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                />
+                <div className="absolute top-4 left-4">
+                  <Badge className="bg-primary text-white">À la Une</Badge>
                 </div>
               </div>
-            </Card>
-          </div>
-        )}
+
+              <div className="p-8 lg:p-12 flex flex-col justify-center">
+                <h3 className="text-2xl lg:text-3xl font-bold text-foreground mb-4 group-hover:text-primary transition-colors">
+                  {featuredNews.titre}
+                </h3>
+                <p className="text-muted-foreground text-base mb-6 line-clamp-5">
+                  {featuredNews.contenu}
+                </p>
+                <div className="flex items-center gap-2 text-sm text-muted-foreground mb-6">
+                  <Calendar className="w-4 h-4" />
+                  {new Date(featuredNews.created_at).toLocaleDateString("fr-FR")}
+                </div>
+                <Button className="w-fit group">
+                  Lire l'article
+                  <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
+                </Button>
+              </div>
+            </div>
+          </Card>
+        </div>
 
         {/* Autres actualités */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
@@ -106,7 +106,7 @@ const LatestNews = () => {
                 <img
                   src={
                     article.image
-                      ? `https://gironafcsaly-production.up.railway.app/${article.image}`
+                      ? `${article.image}?c_fill,w_400,h_250,f_auto,q_auto`
                       : "https://via.placeholder.com/400x250"
                   }
                   alt={article.titre}
@@ -130,9 +130,9 @@ const LatestNews = () => {
           ))}
         </div>
 
-        {/* Call to Action */}
+        {/* Bouton Voir plus */}
         <div className="text-center">
-          <Button size="lg" variant="outline" className="group" onClick={() => navigate('/news')}>
+          <Button size="lg" variant="outline" className="group" onClick={() => navigate("/news")}>
             Voir toutes les actualités
             <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
           </Button>

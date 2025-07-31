@@ -9,7 +9,7 @@ const About = () => {
       <Header />
       
       {/* Hero Section with Team Photo */}
-<section className="relative h-[60vh] sm:h-[70vh] md:h-[80vh] flex items-center justify-center overflow-hidden">
+<section className="relative h-[40vh] sm:h-[50vh] md:h-[60vh] flex items-center justify-center overflow-hidden">
   <div 
     className="absolute inset-0 bg-cover bg-bottom bg-no-repeat"
     style={{ backgroundImage: `url(${teamPhoto})` }}

@@ -46,18 +46,18 @@ const Contact = () => {
   };
 
   return (
-    <section id="contact" className="py-20 bg-secondary/30">
-      <div className="container mx-auto px-4">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-6">
+    <section id="contact" className="pt-32 pb-20 bg-secondary/30">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="text-center mb-12 sm:mb-16">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-foreground mb-4 sm:mb-6">
             Contactez-nous
           </h2>
-          <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+          <p className="text-lg sm:text-xl text-muted-foreground max-w-3xl mx-auto px-4">
             Une question ? Envie de rejoindre l'académie ? N'hésitez pas à nous contacter !
           </p>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 max-w-6xl mx-auto">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12 max-w-6xl mx-auto">
           {/* Contact Form */}
           <Card>
             <CardHeader>
@@ -65,8 +65,8 @@ const Contact = () => {
                 Envoyez-nous un message
               </CardTitle>
             </CardHeader>
-            <CardContent className="space-y-6">
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <CardContent className="space-y-4 sm:space-y-6">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div>
                   <label className="block text-sm font-medium text-foreground mb-2">
                     Prénom
@@ -99,7 +99,7 @@ const Contact = () => {
                 <label className="block text-sm font-medium text-foreground mb-2">
                   Programme d'intérêt
                 </label>
-                <select className="w-full p-3 border border-input rounded-md bg-background">
+                <select className="w-full p-2 sm:p-3 border border-input rounded-md bg-background text-sm sm:text-base">
                   <option>École de Football (6-12 ans)</option>
                   <option>Formation Jeunes (13-17 ans)</option>
                   <option>Elite Academy (16-20 ans)</option>
@@ -114,20 +114,20 @@ const Contact = () => {
                 </label>
                 <Textarea 
                   placeholder="Décrivez votre demande..."
-                  className="min-h-[120px]"
+                  className="min-h-[100px] sm:min-h-[120px] text-sm sm:text-base"
                 />
               </div>
               
-              <Button className="w-full gradient-field text-white hover:opacity-90">
+              <Button className="w-full gradient-field text-white hover:opacity-90 py-3 sm:py-4 text-sm sm:text-base">
                 Envoyer le message
               </Button>
             </CardContent>
           </Card>
 
           {/* Contact Info */}
-          <div className="space-y-8">
+          <div className="space-y-6 sm:space-y-8">
             <Card>
-              <CardContent className="p-6">
+              <CardContent className="p-4 sm:p-6">
                 <div className="flex items-start space-x-4">
                   <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center">
                     <MapPin className="h-6 w-6 text-primary" />

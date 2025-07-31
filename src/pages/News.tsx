@@ -79,16 +79,17 @@ const News = () => {
                 className="overflow-hidden hover:shadow-lg transition-shadow"
               >
                 <div className="aspect-video">
-                  <img
-                    src={
-                      article.image
-                        ? `https://gironafcsaly-production.up.railway.app/${article.image}`
-                        : "https://via.placeholder.com/400x250"
-                    }
-                    alt={article.titre}
-                    className="w-full h-full object-cover"
-                  />
-                </div>
+  <img
+    src={
+      article.image
+        ? `${article.image}?c_fill,w_400,h_250,f_auto,q_auto`
+        : "https://via.placeholder.com/400x250"
+    }
+    alt={article.titre}
+    className="w-full h-full object-cover"
+  />
+</div>
+
                 <CardHeader>
                   <CardTitle className="line-clamp-2">{article.titre}</CardTitle>
                   <CardDescription className="line-clamp-3">

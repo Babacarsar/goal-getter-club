@@ -45,21 +45,25 @@ const Footer = () => {
             </ul>
           </div>
 
-          {/* Contact */}
+          {/* Horaires d'entraînement */}
           <div>
-            <h3 className="text-xl font-semibold mb-4">Contact</h3>
-            <ul className="space-y-3 text-muted-foreground">
-              <li className="flex items-start space-x-3">
-                <MapPin className="h-4 w-4 sm:h-5 sm:w-5 mt-0.5 text-accent flex-shrink-0" />
-                <span className="text-xs sm:text-sm break-words">123 Avenue du Stade<br />75000 Paris, France</span>
+            <h3 className="text-xl font-semibold mb-4">Horaires d'entraînement</h3>
+            <ul className="space-y-2 text-muted-foreground">
+              <li className="text-sm">
+                <span className="font-medium">Lundi - Vendredi:</span><br />
+                17h - 20h
               </li>
-              <li className="flex items-center space-x-3">
-                <Phone className="h-5 w-5 text-accent" />
-                <span className="text-sm">+33 1 23 45 67 89</span>
+              <li className="text-sm">
+                <span className="font-medium">Mercredi:</span><br />
+                14h - 18h
               </li>
-              <li className="flex items-center space-x-3">
-                <Mail className="h-5 w-5 text-accent" />
-                <span className="text-sm">info@footballacademy.fr</span>
+              <li className="text-sm">
+                <span className="font-medium">Samedi:</span><br />
+                9h - 17h
+              </li>
+              <li className="text-sm">
+                <span className="font-medium">Dimanche:</span><br />
+                9h - 12h
               </li>
             </ul>
           </div>

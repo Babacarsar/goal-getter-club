@@ -32,7 +32,7 @@ const Header = () => {
               Accueil
             </Link>
             <Link to="/about" className="text-foreground hover:text-primary transition-colors">
-              À propos
+              Notre histoire
             </Link>
             <Link to="/staff" className="text-foreground hover:text-primary transition-colors">
               Staff
@@ -97,7 +97,7 @@ const Header = () => {
                 Accueil
               </Link>
               <Link to="/about" className="text-foreground hover:text-primary transition-colors" onClick={() => setIsMenuOpen(false)}>
-                À propos
+                Notre histoire
               </Link>
               <Link to="/staff" className="text-foreground hover:text-primary transition-colors" onClick={() => setIsMenuOpen(false)}>
                 Staff

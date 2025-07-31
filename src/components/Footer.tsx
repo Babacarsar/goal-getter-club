@@ -2,7 +2,7 @@ import { MapPin, Phone, Mail, Facebook, Instagram, Twitter } from "lucide-react"
 
 const Footer = () => {
   return (
-    <footer className="bg-primary text-white">
+    <footer className="bg-secondary text-foreground">
       <div className="container mx-auto px-4 py-8 sm:py-12">
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 md:gap-8">
           {/* Logo et description */}
@@ -15,19 +15,19 @@ const Footer = () => {
               />
               <span className="text-xl sm:text-2xl font-bold">Académie Girona FC de Saly</span>
             </div>
-            <p className="text-white/80 mb-6 max-w-md">
+            <p className="text-muted-foreground mb-6 max-w-md">
               L'école de football de référence pour développer vos talents et réaliser vos rêves. 
               Une formation d'excellence dans un environnement passionné et professionnel.
             </p>
             <div className="flex space-x-4">
-              <a href="#" className="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center hover:bg-white/20 transition-colors">
-                <Facebook className="h-5 w-5" />
+              <a href="#" className="w-10 h-10 bg-primary/10 rounded-full flex items-center justify-center hover:bg-primary/20 transition-colors">
+                <Facebook className="h-5 w-5 text-primary" />
               </a>
-              <a href="#" className="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center hover:bg-white/20 transition-colors">
-                <Instagram className="h-5 w-5" />
+              <a href="#" className="w-10 h-10 bg-primary/10 rounded-full flex items-center justify-center hover:bg-primary/20 transition-colors">
+                <Instagram className="h-5 w-5 text-primary" />
               </a>
-              <a href="#" className="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center hover:bg-white/20 transition-colors">
-                <Twitter className="h-5 w-5" />
+              <a href="#" className="w-10 h-10 bg-primary/10 rounded-full flex items-center justify-center hover:bg-primary/20 transition-colors">
+                <Twitter className="h-5 w-5 text-primary" />
               </a>
             </div>
           </div>
@@ -35,20 +35,20 @@ const Footer = () => {
           {/* Liens rapides */}
           <div>
             <h3 className="text-xl font-semibold mb-4">Liens rapides</h3>
-            <ul className="space-y-2 text-white/80">
-              <li><a href="#accueil" className="hover:text-white transition-colors">Accueil</a></li>
-              <li><a href="#programmes" className="hover:text-white transition-colors">Programmes</a></li>
-              <li><a href="#entraineurs" className="hover:text-white transition-colors">Entraîneurs</a></li>
-              <li><a href="#contact" className="hover:text-white transition-colors">Contact</a></li>
-              <li><a href="#" className="hover:text-white transition-colors">Inscriptions</a></li>
-              <li><a href="#" className="hover:text-white transition-colors">Actualités</a></li>
+            <ul className="space-y-2 text-muted-foreground">
+              <li><a href="#accueil" className="hover:text-foreground transition-colors">Accueil</a></li>
+              <li><a href="#programmes" className="hover:text-foreground transition-colors">Programmes</a></li>
+              <li><a href="#entraineurs" className="hover:text-foreground transition-colors">Entraîneurs</a></li>
+              <li><a href="#contact" className="hover:text-foreground transition-colors">Contact</a></li>
+              <li><a href="#" className="hover:text-foreground transition-colors">Inscriptions</a></li>
+              <li><a href="#" className="hover:text-foreground transition-colors">Actualités</a></li>
             </ul>
           </div>
 
           {/* Contact */}
           <div>
             <h3 className="text-xl font-semibold mb-4">Contact</h3>
-            <ul className="space-y-3 text-white/80">
+            <ul className="space-y-3 text-muted-foreground">
               <li className="flex items-start space-x-3">
                 <MapPin className="h-4 w-4 sm:h-5 sm:w-5 mt-0.5 text-accent flex-shrink-0" />
                 <span className="text-xs sm:text-sm break-words">123 Avenue du Stade<br />75000 Paris, France</span>
@@ -65,8 +65,8 @@ const Footer = () => {
           </div>
         </div>
 
-        <div className="border-t border-white/20 mt-8 pt-8 text-center text-white/60">
-          <p>&copy; 2024 Girona de Saly. Tous droits réservés.</p>
+        <div className="border-t border-border mt-8 pt-8 text-center text-muted-foreground">
+          <p>&copy; 2024 Académie Girona FC de Saly. Tous droits réservés.</p>
         </div>
       </div>
     </footer>

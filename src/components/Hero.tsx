@@ -33,7 +33,7 @@ const Hero = () => {
     },
     {
       image: carousel5,
-      title: "Académie Girona",
+      title: "Académie Girona FC",
       subtitle: "L'avenir du football sénégalais",
     },
   ];
@@ -65,11 +65,11 @@ const Hero = () => {
       <div className="absolute inset-0 hero-pattern"></div>
 
       {/* Content */}
-      <div className="relative container mx-auto px-4 text-center text-white z-10">
+      <div className="relative container mx-auto px-4 text-center text-white z-10 md:mt-20">
         <div className="max-w-4xl mx-auto">
           <h1 className="text-3xl sm:text-5xl md:text-7xl font-bold mb-4 sm:mb-6 animate-fade-in">
             <span className="block gradient-sky bg-clip-text text-transparent">
-              Girona de Saly
+              Académie Girona FC de Saly
             </span>
             {slides[currentSlide].title}
           </h1>

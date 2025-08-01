@@ -14,6 +14,13 @@ const Staff = () => {
     }
   });
 
+  const getOptimizedImage = (url) => {
+    if (!url) return "https://via.placeholder.com/400x250";
+    return url.includes("res.cloudinary.com")
+      ? `${url}?c_fill,w_400,h_300,f_auto,q_auto`
+      : url;
+  };
+
   if (isLoading) {
     return (
       <div className="min-h-screen">
@@ -33,6 +40,7 @@ const Staff = () => {
     <div className="min-h-screen">
       <Header />
 
+      {/* Titre */}
       <section className="pt-28 pb-20 bg-gradient-to-br from-primary/20 to-accent/20 text-center">
         <div className="container mx-auto px-4">
           <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-foreground mb-4 sm:mb-6">
@@ -44,6 +52,7 @@ const Staff = () => {
         </div>
       </section>
 
+      {/* Cartes du staff */}
       <section className="py-20 bg-muted/30">
         <div className="container mx-auto px-4">
           <h2 className="text-3xl font-bold text-foreground text-center mb-12">Membres du Staff</h2>
@@ -52,17 +61,15 @@ const Staff = () => {
             {staffMembers.map((member, index) => (
               <Card key={index} className="overflow-hidden shadow-md hover:shadow-xl transition-all">
                 <img
-                  src={
-  member.photo
-    ? `https://gironafcsaly-production.up.railway.app/${member.photo}`
-    : "https://via.placeholder.com/400x250"
-}
+                  src={getOptimizedImage(member.photo)}
                   alt={`${member.prenom} ${member.nom}`}
-                   className="w-full h-85 object-cover"
+                  className="w-full h-85 object-cover"
                 />
                 <div className="p-4">
-                  <h3 className="text-xl font-bold text-foreground">{member.prenom} {member.nom}</h3>
-                  <p className="text-primary font-semibold">{member.role}</p>
+                  <h3 className="text-xl font-bold text-foreground">
+                    {member.prenom} {member.nom}
+                  </h3>
+                  <p className="text-primary font-semibold">{member.poste ?? member.role}</p>
                   {member.categorie?.nom && (
                     <Badge className="mt-2 bg-accent text-white">
                       Catégorie : {member.categorie.nom}

@@ -18,7 +18,7 @@ const SeniorTeamCarousel = () => {
   });
 
   const seniorPlayers = players.filter(
-    (player) => player.categorie?.nom?.toLowerCase() === "senior"
+    (player) => player.categorie?.nom?.toLowerCase() === "u20"
   );
 
   if (isLoading) {
@@ -67,7 +67,7 @@ const SeniorTeamCarousel = () => {
                 <img
                   src={
                     player.photo
-                      ? `https://gironafcsaly-production.up.railway.app/${player.photo}`
+                      ? `${player.photo}`
                       : "https://via.placeholder.com/400x250"
                   }
                   alt={`${player.prenom} ${player.nom}`}

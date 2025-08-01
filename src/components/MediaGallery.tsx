@@ -3,7 +3,7 @@ import { useState } from "react";
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { Play, Image, ExternalLink } from "lucide-react";
+import { Play, Image } from "lucide-react";
 
 const MediaGallery = () => {
   const [activeTab, setActiveTab] = useState("videos");
@@ -20,6 +20,14 @@ const MediaGallery = () => {
   const videos = media.filter((m) => m.type === "video");
   const photos = media.filter((m) => m.type === "image");
 
+  if (isLoading) {
+    return (
+      <section className="py-20 text-center">
+        <p className="text-muted-foreground">Chargement des médias...</p>
+      </section>
+    );
+  }
+
   return (
     <section className="py-20 bg-muted/30">
       <div className="container mx-auto px-4">
@@ -32,17 +40,17 @@ const MediaGallery = () => {
             Vivez l&apos;Expérience Girona
           </h2>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-            Découvrez l&apos;ambiance unique de notre club à travers nos vidéos et photos exclusives
+            Découvrez l&apos;ambiance unique de notre club à travers nos vidéos et photos exclusives.
           </p>
         </div>
 
         {/* Tabs */}
         <div className="flex justify-center mb-12">
-          <div className="bg-background rounded-full p-1 shadow-lg">
+          <div className="bg-background rounded-full p-1 shadow-lg flex gap-2">
             <Button
               variant={activeTab === "videos" ? "default" : "ghost"}
               onClick={() => setActiveTab("videos")}
-              className="rounded-full px-8"
+              className="rounded-full px-6"
             >
               <Play className="w-4 h-4 mr-2" />
               Vidéos
@@ -50,7 +58,7 @@ const MediaGallery = () => {
             <Button
               variant={activeTab === "photos" ? "default" : "ghost"}
               onClick={() => setActiveTab("photos")}
-              className="rounded-full px-8"
+              className="rounded-full px-6"
             >
               <Image className="w-4 h-4 mr-2" />
               Photos
@@ -65,7 +73,7 @@ const MediaGallery = () => {
               <Card key={video.id} className="group overflow-hidden hover:shadow-xl hover:scale-105 transition-all">
                 <div className="relative overflow-hidden">
                   <video
-                    src={`https://gironafcsaly-production.up.railway.app/${video.file_path}`}
+                    src={video.file_path}
                     controls
                     className="w-full h-48 object-cover"
                   ></video>
@@ -86,7 +94,7 @@ const MediaGallery = () => {
             {photos.map((photo) => (
               <Card key={photo.id} className="group overflow-hidden hover:shadow-xl hover:scale-105 transition-all">
                 <img
-                  src={`https://gironafcsaly-production.up.railway.app/${photo.file_path}`}
+                  src={photo.file_path}
                   alt={photo.title || "Photo"}
                   className="w-full h-64 object-cover"
                 />
@@ -99,7 +107,6 @@ const MediaGallery = () => {
             ))}
           </div>
         )}
-
       </div>
     </section>
   );

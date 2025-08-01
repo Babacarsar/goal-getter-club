@@ -94,31 +94,31 @@ const LatestNews = () => {
           </Card>
         </div>
 
-        {/* Autres actualités */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
+        {/* Autres actualités avec cadre réduit */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-16">
           {otherNews.map((article, index) => (
             <Card
               key={article.id}
-              className="group overflow-hidden hover:shadow-xl transition-all duration-300 hover:scale-105 animate-fade-in"
+              className="group overflow-hidden hover:shadow-md transition-all duration-300 hover:scale-105 animate-fade-in"
               style={{ animationDelay: `${index * 0.1}s` }}
             >
               <div className="relative overflow-hidden">
                 <img
                   src={
                     article.image
-                      ? `${article.image}?c_fill,w_400,h_250,f_auto,q_auto`
+                      ? `${article.image}?c_fill,w_400,h_220,f_auto,q_auto`
                       : "https://via.placeholder.com/400x250"
                   }
                   alt={article.titre}
-                  className="w-full h-48 object-cover group-hover:scale-110 transition-transform duration-500"
+                  className="w-full h-40 object-cover group-hover:scale-110 transition-transform duration-500"
                 />
               </div>
 
-              <div className="p-6">
-                <h3 className="text-lg font-bold text-foreground mb-3 group-hover:text-primary transition-colors line-clamp-2">
+              <div className="p-4">
+                <h3 className="text-base font-bold text-foreground mb-2 group-hover:text-primary transition-colors line-clamp-2">
                   {article.titre}
                 </h3>
-                <p className="text-muted-foreground text-sm mb-4 line-clamp-3">
+                <p className="text-muted-foreground text-sm mb-3 line-clamp-3">
                   {article.contenu}
                 </p>
                 <div className="flex items-center gap-2 text-xs text-muted-foreground">

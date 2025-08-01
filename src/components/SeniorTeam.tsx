@@ -35,7 +35,7 @@ const SeniorTeamCarousel = () => {
       <div className="container mx-auto px-4">
         <div className="text-center mb-12">
           <Badge variant="outline" className="text-lg px-4 py-2 mb-4">
-            Équipe Senior
+            Notre Équipe
           </Badge>
           <h2 className="text-4xl font-bold text-foreground">
             Nos Lions de Saly

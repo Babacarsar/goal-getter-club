@@ -1,18 +1,12 @@
 import { MapPin, Phone, Mail, Facebook, Instagram, Twitter } from "lucide-react";
-
 const Footer = () => {
-  return (
-    <footer className="bg-secondary text-foreground">
+  return <footer className="bg-secondary text-foreground">
       <div className="container mx-auto px-4 py-8 sm:py-12">
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 md:gap-8">
           {/* Logo et description */}
           <div className="col-span-1 sm:col-span-2 md:col-span-2">
             <div className="flex items-center space-x-3 mb-4">
-              <img 
-                src="/logo.png" 
-                alt="Académie Girona FC de Saly" 
-                className="w-12 h-12 object-contain"
-              />
+              <img src="/logo.png" alt="Académie Girona FC de Saly" className="w-12 h-12 object-contain" />
               <span className="text-xl sm:text-2xl font-bold">Académie Girona FC de Saly</span>
             </div>
             <p className="text-muted-foreground mb-6 max-w-md">
@@ -65,7 +59,8 @@ const Footer = () => {
               </li>
               <li className="flex items-center space-x-3">
                 <Phone className="h-5 w-5 text-accent" />
-                <span className="text-sm">+33 1 23 45 67 89</span>
+                <span className="text-sm">+221 77 123 456 78
+              </span>
               </li>
               <li className="flex items-center space-x-3">
                 <Mail className="h-5 w-5 text-accent" />
@@ -79,8 +74,6 @@ const Footer = () => {
           <p>&copy; 2024 Académie Girona FC de Saly. Tous droits réservés.</p>
         </div>
       </div>
-    </footer>
-  );
+    </footer>;
 };
-
 export default Footer;

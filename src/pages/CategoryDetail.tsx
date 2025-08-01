@@ -1,12 +1,9 @@
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
-import { Calendar, MapPin, Trophy, Users } from "lucide-react";
-import { useParams, Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
+import { useParams, Link } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
-import Categories from "./Categories";
 
 const CategoryDetail = () => {
   const { categoryId } = useParams();
@@ -33,6 +30,13 @@ const CategoryDetail = () => {
   const players = allPlayers?.filter(
     (p) => p.categorie?.id?.toString() === categoryId
   );
+
+  const getOptimizedImage = (url) => {
+    if (!url) return "https://via.placeholder.com/400x250";
+    return url.includes("res.cloudinary.com")
+      ? `${url}?c_fill,w_400,h_250,f_auto,q_auto`
+      : url;
+  };
 
   if (loadingCat || loadingPlayers) {
     return (
@@ -68,16 +72,17 @@ const CategoryDetail = () => {
     <div className="min-h-screen">
       <Header />
 
-     <section className="pt-20 pb-16 bg-gradient-to-br from-primary to-primary-dark">
-  <div className="container mx-auto px-4">
-    <Button asChild variant="outline" className="mb-6 text-white border-white hover:bg-white/10">
-      <Link to="/categories">← Retour aux catégories</Link>
-    </Button>
-    <h1 className="text-4xl md:text-6xl font-bold text-white mb-4">
-      Équipe {category.nom}
-    </h1>
-  </div>
-</section>
+      {/* En-tête */}
+      <section className="pt-20 pb-16 bg-gradient-to-br from-primary to-primary-dark">
+        <div className="container mx-auto px-4">
+          <Button asChild variant="outline" className="mb-6 text-white border-white hover:bg-white/10">
+            <Link to="/categories">← Retour aux catégories</Link>
+          </Button>
+          <h1 className="text-4xl md:text-6xl font-bold text-white mb-4">
+            Équipe {category.nom}
+          </h1>
+        </div>
+      </section>
 
       {/* Description */}
       <section className="py-8 bg-background">
@@ -94,11 +99,7 @@ const CategoryDetail = () => {
             {players?.map((player, index) => (
               <Card key={index} className="overflow-hidden hover:shadow-lg transition-shadow">
                 <img
-                  src={
-                    player.photo
-                      ? `https://gironafcsaly-production.up.railway.app/${player.photo}`
-                      : "https://via.placeholder.com/400x250"
-                  }
+                  src={getOptimizedImage(player.photo)}
                   alt={`${player.prenom} ${player.nom}`}
                   className="w-full h-76 object-cover"
                 />
@@ -108,8 +109,8 @@ const CategoryDetail = () => {
                   </CardTitle>
                 </CardHeader>
                 <CardContent>
-                  <p className="text-muted-foreground mb-1">Poste : {player.poste}</p>
-                  <p className="text-muted-foreground">Âge : {player.age} ans</p>
+                  <p className="text-muted-foreground mb-1">Poste : {player.poste || "N/A"}</p>
+                  <p className="text-muted-foreground">Âge : {player.age ?? "Inconnu"} ans</p>
                 </CardContent>
               </Card>
             ))}

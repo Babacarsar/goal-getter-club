@@ -75,6 +75,9 @@ const MediaGallery = () => {
                   <video
                     src={video.file_path}
                     controls
+                    autoPlay
+                    muted
+                    loop
                     className="w-full h-64 object-cover object-center rounded-t-xl"
                   ></video>
                 </div>

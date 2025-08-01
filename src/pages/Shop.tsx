@@ -21,18 +21,45 @@ const Shop = () => {
     },
     {
       id: 2,
-      name: "Maillot Extérieur 2024",
-      description: "Maillot extérieur élégant, design moderne et confortable",
-      price: 75,
+      name: "Maillot Extérieur Rouge Femme",
+      description: "Maillot extérieur rouge SELECT pour femme - Taille S, L disponibles",
+      price: 3500,
       originalPrice: null,
-      image: "/placeholder.svg",
+      image: "/lovable-uploads/58d6d322-3f99-4234-9d79-82b5f3e73ade.png",
       category: "Maillots",
-      rating: 4.7,
+      rating: 4.9,
       inStock: true,
-      popular: false
+      popular: true,
+      sizes: ["S", "L"]
     },
     {
       id: 3,
+      name: "Maillot Extérieur Blanc Homme",
+      description: "Maillot extérieur blanc SELECT pour homme - Taille S, L disponibles",
+      price: 3500,
+      originalPrice: null,
+      image: "/lovable-uploads/848ebddd-ee11-47a8-9eb2-e20dfb6be6be.png",
+      category: "Maillots",
+      rating: 4.8,
+      inStock: true,
+      popular: true,
+      sizes: ["S", "L"]
+    },
+    {
+      id: 4,
+      name: "Maillot Extérieur Rouge Duo",
+      description: "Maillot extérieur rouge SELECT collection duo - Taille S, L disponibles",
+      price: 3500,
+      originalPrice: null,
+      image: "/lovable-uploads/c201e9d9-478c-494c-befb-5199f35e562b.png",
+      category: "Maillots",
+      rating: 4.9,
+      inStock: true,
+      popular: true,
+      sizes: ["S", "L"]
+    },
+    {
+      id: 5,
       name: "Short Officiel",
       description: "Short de match officiel, même qualité que les pros",
       price: 35,
@@ -44,7 +71,7 @@ const Shop = () => {
       popular: false
     },
     {
-      id: 4,
+      id: 6,
       name: "Chaussettes Techniques",
       description: "Chaussettes haute performance avec compression",
       price: 15,
@@ -56,7 +83,7 @@ const Shop = () => {
       popular: false
     },
     {
-      id: 5,
+      id: 7,
       name: "Survêtement Entraînement",
       description: "Survêtement complet pour l'entraînement, matière stretch",
       price: 120,
@@ -68,7 +95,7 @@ const Shop = () => {
       popular: true
     },
     {
-      id: 6,
+      id: 8,
       name: "Sac de Sport Academy",
       description: "Grand sac de sport avec compartiments séparés",
       price: 45,
@@ -80,7 +107,7 @@ const Shop = () => {
       popular: false
     },
     {
-      id: 7,
+      id: 9,
       name: "Ballon Officiel",
       description: "Ballon d'entraînement officiel FootballAcademy",
       price: 25,
@@ -92,7 +119,7 @@ const Shop = () => {
       popular: false
     },
     {
-      id: 8,
+      id: 10,
       name: "Casquette Academy",
       description: "Casquette ajustable avec logo brodé",
       price: 20,
@@ -104,7 +131,7 @@ const Shop = () => {
       popular: false
     },
     {
-      id: 9,
+      id: 11,
       name: "Veste Softshell",
       description: "Veste coupe-vent imperméable pour les jours de pluie",
       price: 85,
@@ -201,6 +228,19 @@ const Shop = () => {
                     </div>
                   </div>
                   
+                  {product.sizes && (
+                    <div className="mb-3">
+                      <p className="text-sm text-muted-foreground mb-2">Tailles disponibles:</p>
+                      <div className="flex gap-2">
+                        {product.sizes.map((size) => (
+                          <Badge key={size} variant="outline" className="text-xs">
+                            {size}
+                          </Badge>
+                        ))}
+                      </div>
+                    </div>
+                  )}
+                  
                   <Button 
                     className="w-full" 
                     disabled={!product.inStock}
@@ -209,7 +249,7 @@ const Shop = () => {
                     {product.inStock ? (
                       <>
                         <ShoppingCart className="h-4 w-4 mr-2" />
-                        Ajouter au panier
+                        Commander maintenant
                       </>
                     ) : (
                       "Rupture de stock"

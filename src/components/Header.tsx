@@ -37,36 +37,9 @@ const Header = () => {
             <Link to="/staff" className="text-foreground hover:text-primary transition-colors">
               Staff
             </Link>
-          <DropdownMenu>
-  <Link to="/categories">
-    <DropdownMenuTrigger asChild>
-      <button className="flex items-center gap-1 text-foreground hover:text-primary transition-colors">
-        Catégories <ChevronDown className="h-4 w-4" />
-      </button>
-    </DropdownMenuTrigger>
-  </Link>
-  
-  <DropdownMenuContent>
-    <DropdownMenuItem>
-      <Link to="/categories" className="w-full">Categories</Link>
-    </DropdownMenuItem>
-    <DropdownMenuItem>
-      <Link to="/categories/1" className="w-full">U14</Link>
-    </DropdownMenuItem>
-    <DropdownMenuItem>
-      <Link to="/categories/2" className="w-full">U20 </Link>
-    </DropdownMenuItem>
-    <DropdownMenuItem>
-      <Link to="/categories/3" className="w-full">U17</Link>
-    </DropdownMenuItem>
-    <DropdownMenuItem>
-      <Link to="/categories/4" className="w-full">U18</Link>
-    </DropdownMenuItem>
-    <DropdownMenuItem>
-      <Link to="/categories/1" className="w-full">Senior (18+ ans)</Link>
-    </DropdownMenuItem>
-  </DropdownMenuContent>
-</DropdownMenu>
+            <Link to="/categories" className="text-foreground hover:text-primary transition-colors">
+              categories
+            </Link>
 
             <Link to="/news" className="text-foreground hover:text-primary transition-colors">
               Actualités
@@ -102,29 +75,10 @@ const Header = () => {
               <Link to="/staff" className="text-foreground hover:text-primary transition-colors" onClick={() => setIsMenuOpen(false)}>
                 Staff
               </Link>
-              <div className="space-y-2">
-                <div className="text-foreground font-medium">Catégories</div>
-                <div className="ml-4 space-y-2">
-                   <Link to="/categories" className="block text-muted-foreground hover:text-primary transition-colors" onClick={() => setIsMenuOpen(false)}>
-                    Categories
-                  </Link>
-                  <Link to="/categories/u14" className="block text-muted-foreground hover:text-primary transition-colors" onClick={() => setIsMenuOpen(false)}>
-                    U14 
-                  </Link>
-                  <Link to="/categories/u15" className="block text-muted-foreground hover:text-primary transition-colors" onClick={() => setIsMenuOpen(false)}>
-                    U15
-                  </Link>
-                  <Link to="/categories/3" className="block text-muted-foreground hover:text-primary transition-colors" onClick={() => setIsMenuOpen(false)}>
-                    U17 
-                  </Link>
-                  <Link to="/categories/2" className="block text-muted-foreground hover:text-primary transition-colors" onClick={() => setIsMenuOpen(false)}>
-                    U20
-                  </Link>
-                  <Link to="/categories/1" className="block text-muted-foreground hover:text-primary transition-colors" onClick={() => setIsMenuOpen(false)}>
-                    Senior 
-                  </Link>
-                </div>
-              </div>
+               <Link to="/categories" className="text-foreground hover:text-primary transition-colors" onClick={() => setIsMenuOpen(false)}>
+                categories
+              </Link>
+        
               <Link to="/news" className="text-foreground hover:text-primary transition-colors" onClick={() => setIsMenuOpen(false)}>
                 Actualités
               </Link>

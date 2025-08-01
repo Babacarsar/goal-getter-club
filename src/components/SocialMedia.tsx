@@ -13,7 +13,13 @@ const SocialMedia = () => {
               Ne manquez aucun moment fort de la vie du club
             </p>
             <div className="flex justify-center space-x-4">
+               <a
+                href="https://www.instagram.com/academie_girona_fc_de_saly?igsh=OXBnOWlpbmw3dG02"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
               <Button variant="outline" size="sm">Instagram</Button>
+              </a>
               <Button variant="outline" size="sm">Facebook</Button>
               <a
                 href="https://www.youtube.com/@Acad%C3%A9mieGironafcdeSalyofficiel/videos"

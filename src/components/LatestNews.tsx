@@ -74,18 +74,18 @@ const LatestNews = () => {
                 </div>
               </div>
 
-              <div className="p-8 lg:p-12 flex flex-col justify-center">
-                <h3 className="text-2xl lg:text-3xl font-bold text-foreground mb-4 group-hover:text-primary transition-colors">
+              <div className="p-6 lg:p-8 flex flex-col justify-center">
+                <h3 className="text-xl lg:text-2xl font-bold text-foreground mb-3 group-hover:text-primary transition-colors">
                   {featuredNews.titre}
                 </h3>
-                <p className="text-muted-foreground text-base mb-6 line-clamp-5">
+                <p className="text-muted-foreground text-sm mb-4 line-clamp-4">
                   {featuredNews.contenu}
                 </p>
-                <div className="flex items-center gap-2 text-sm text-muted-foreground mb-6">
+                <div className="flex items-center gap-2 text-xs text-muted-foreground mb-4">
                   <Calendar className="w-4 h-4" />
                   {new Date(featuredNews.created_at).toLocaleDateString("fr-FR")}
                 </div>
-                <Button className="w-fit group">
+                <Button className="w-fit group text-sm">
                   Lire l'article
                   <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
                 </Button>
@@ -94,35 +94,32 @@ const LatestNews = () => {
           </Card>
         </div>
 
-        {/* Autres actualités avec cadre réduit */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-16">
+        {/* Cartes compactes */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mb-12">
           {otherNews.map((article, index) => (
             <Card
               key={article.id}
-              className="group overflow-hidden hover:shadow-md transition-all duration-300 hover:scale-105 animate-fade-in"
-              style={{ animationDelay: `${index * 0.1}s` }}
+              className="group overflow-hidden hover:shadow-md transition hover:scale-[1.01]"
+              style={{ animationDelay: `${index * 0.05}s` }}
             >
-              <div className="relative overflow-hidden">
-                <img
-                  src={
-                    article.image
-                      ? `${article.image}?c_fill,w_400,h_220,f_auto,q_auto`
-                      : "https://via.placeholder.com/400x250"
-                  }
-                  alt={article.titre}
-                  className="w-full h-40 object-cover group-hover:scale-110 transition-transform duration-500"
-                />
-              </div>
-
-              <div className="p-4">
-                <h3 className="text-base font-bold text-foreground mb-2 group-hover:text-primary transition-colors line-clamp-2">
+              <img
+                src={
+                  article.image
+                    ? `${article.image}?c_fill,w_400,h_200,f_auto,q_auto`
+                    : "https://via.placeholder.com/400x200"
+                }
+                alt={article.titre}
+                className="w-full h-36 object-cover"
+              />
+              <div className="p-3">
+                <h3 className="text-sm font-semibold text-foreground mb-2 group-hover:text-primary line-clamp-2">
                   {article.titre}
                 </h3>
-                <p className="text-muted-foreground text-sm mb-3 line-clamp-3">
+                <p className="text-xs text-muted-foreground line-clamp-2 mb-2">
                   {article.contenu}
                 </p>
-                <div className="flex items-center gap-2 text-xs text-muted-foreground">
-                  <Calendar className="w-4 h-4" />
+                <div className="flex items-center gap-1 text-[11px] text-muted-foreground">
+                  <Calendar className="w-3 h-3" />
                   {new Date(article.created_at).toLocaleDateString("fr-FR")}
                 </div>
               </div>
@@ -132,9 +129,9 @@ const LatestNews = () => {
 
         {/* Bouton Voir plus */}
         <div className="text-center">
-          <Button size="lg" variant="outline" className="group" onClick={() => navigate("/news")}>
+          <Button size="sm" variant="outline" className="group" onClick={() => navigate("/news")}>
             Voir toutes les actualités
-            <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
+            <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
           </Button>
         </div>
       </div>

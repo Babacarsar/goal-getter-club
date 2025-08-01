@@ -75,7 +75,7 @@ const MediaGallery = () => {
                   <video
                     src={video.file_path}
                     controls
-                    className="w-full h-48 object-cover"
+                    className="w-full h-64 object-cover object-center rounded-t-xl"
                   ></video>
                 </div>
                 <div className="p-4">
@@ -96,7 +96,7 @@ const MediaGallery = () => {
                 <img
                   src={photo.file_path}
                   alt={photo.title || "Photo"}
-                  className="w-full h-64 object-cover"
+                  className="w-full h-80 object-cover object-center rounded-t-xl"
                 />
                 <div className="p-4">
                   <h3 className="text-lg font-semibold text-foreground mb-1">

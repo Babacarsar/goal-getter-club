@@ -4,6 +4,7 @@ import MediaGallery from "@/components/MediaGallery";
 import Partners from "@/components/Partners";
 import LatestNews from "@/components/LatestNews";
 import SeniorTeam from "@/components/SeniorTeam";
+import SocialMedia from "@/components/SocialMedia";
 import Footer from "@/components/Footer";
 
 const Index = () => {
@@ -15,6 +16,7 @@ const Index = () => {
       <MediaGallery />
       <Partners />
       <LatestNews />
+      <SocialMedia />
       <Footer />
     </div>
   );

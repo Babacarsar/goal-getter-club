@@ -56,10 +56,10 @@ const Article = () => {
     <div className="min-h-screen">
       <Header />
       
-      <main className="pt-20 pb-16 bg-background">
-        <div className="container mx-auto px-4">
+      <main className="pt-16 md:pt-20 pb-8 md:pb-16 bg-background">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           {/* Bouton retour */}
-          <div className="mb-8">
+          <div className="mb-6 md:mb-8">
             <Button 
               variant="outline" 
               size="sm" 
@@ -74,15 +74,15 @@ const Article = () => {
           {/* Article principal */}
           <article className="max-w-4xl mx-auto">
             {/* En-tête de l'article */}
-            <header className="mb-8 text-center">
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-foreground mb-6 leading-tight">
+            <header className="mb-6 md:mb-8 text-center px-4">
+              <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-foreground mb-4 md:mb-6 leading-tight">
                 {article.titre}
               </h1>
               
-              <div className="flex flex-wrap items-center justify-center gap-6 text-muted-foreground mb-8">
+              <div className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-6 text-muted-foreground mb-6 md:mb-8">
                 <div className="flex items-center gap-2">
-                  <Calendar className="w-5 h-5" />
-                  <span className="text-lg">
+                  <Calendar className="w-4 h-4 md:w-5 md:h-5" />
+                  <span className="text-sm md:text-base lg:text-lg">
                     {new Date(article.created_at).toLocaleDateString("fr-FR", {
                       year: 'numeric',
                       month: 'long',
@@ -92,7 +92,7 @@ const Article = () => {
                 </div>
                 {article.auteur && (
                   <div className="flex items-center gap-2">
-                    <span className="text-lg">Par {article.auteur}</span>
+                    <span className="text-sm md:text-base lg:text-lg">Par {article.auteur}</span>
                   </div>
                 )}
               </div>
@@ -100,19 +100,19 @@ const Article = () => {
 
             {/* Image principale */}
             {article.image && (
-              <div className="mb-12 rounded-xl overflow-hidden shadow-2xl">
+              <div className="mb-8 md:mb-12 rounded-lg md:rounded-xl overflow-hidden shadow-lg md:shadow-2xl">
                 <img
                   src={`${article.image}?c_fill,w_1200,h_600,f_auto,q_auto`}
                   alt={article.titre}
-                  className="w-full h-[300px] md:h-[400px] lg:h-[500px] object-cover"
+                  className="w-full h-[200px] sm:h-[250px] md:h-[350px] lg:h-[450px] xl:h-[500px] object-cover"
                 />
               </div>
             )}
 
             {/* Contenu de l'article */}
-            <div className="bg-card rounded-xl shadow-lg p-8 md:p-12">
-              <div className="prose prose-lg md:prose-xl max-w-none">
-                <div className="text-lg md:text-xl leading-relaxed text-foreground whitespace-pre-line font-light">
+            <div className="bg-card rounded-lg md:rounded-xl shadow-md md:shadow-lg p-4 sm:p-6 md:p-8 lg:p-12">
+              <div className="prose prose-sm sm:prose-base md:prose-lg lg:prose-xl max-w-none">
+                <div className="text-sm sm:text-base md:text-lg lg:text-xl leading-relaxed text-foreground whitespace-pre-line font-light">
                   {article.contenu}
                 </div>
               </div>
@@ -120,8 +120,8 @@ const Article = () => {
           </article>
 
           {/* Bouton de retour en bas */}
-          <div className="mt-12 text-center">
-            <Button size="lg" onClick={() => navigate("/")} className="group">
+          <div className="mt-8 md:mt-12 text-center">
+            <Button size="sm" onClick={() => navigate("/")} className="group w-full sm:w-auto md:size-lg">
               Retour à l'accueil
               <ArrowLeft className="ml-2 h-4 w-4 group-hover:-translate-x-1 transition-transform rotate-180" />
             </Button>

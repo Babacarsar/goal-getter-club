@@ -4,9 +4,11 @@ import { Button } from "@/components/ui/button";
 import { Calendar, ArrowRight } from "lucide-react";
 import { useQuery } from "@tanstack/react-query";
 import { useNavigate } from "react-router-dom";
+import { useState } from "react";
 
 const LatestNews = () => {
   const navigate = useNavigate();
+  const [imageOrientations, setImageOrientations] = useState<{[key: string]: 'portrait' | 'landscape'}>({});
 
   const { data: news = [], isLoading } = useQuery({
     queryKey: ["actualites"],
@@ -39,6 +41,15 @@ const LatestNews = () => {
   const featuredNews = news[0];
   const otherNews = news.slice(1);
 
+  const handleImageLoad = (imageId: string, event: React.SyntheticEvent<HTMLImageElement>) => {
+    const img = event.currentTarget;
+    const orientation = img.naturalWidth > img.naturalHeight ? 'landscape' : 'portrait';
+    setImageOrientations(prev => ({
+      ...prev,
+      [imageId]: orientation
+    }));
+  };
+
   return (
     <section className="py-20 bg-background">
       <div className="container mx-auto px-4">
@@ -67,7 +78,12 @@ const LatestNews = () => {
                       : "https://via.placeholder.com/600x350"
                   }
                   alt={featuredNews.titre}
-                  className="w-full h-48 lg:h-56 object-cover group-hover:scale-105 transition-transform duration-500"
+                  onLoad={(e) => handleImageLoad(`featured-${featuredNews.id}`, e)}
+                  className={`w-full group-hover:scale-105 transition-transform duration-500 ${
+                    imageOrientations[`featured-${featuredNews.id}`] === 'portrait' 
+                      ? 'h-64 lg:h-72 object-cover' 
+                      : 'h-48 lg:h-56 object-cover'
+                  }`}
                 />
                 <div className="absolute top-3 left-3">
                   <Badge className="bg-primary text-white text-xs">À la Une</Badge>
@@ -109,7 +125,12 @@ const LatestNews = () => {
                     : "https://via.placeholder.com/350x180"
                 }
                 alt={article.titre}
-                className="w-full h-32 object-cover"
+                onLoad={(e) => handleImageLoad(`article-${article.id}`, e)}
+                className={`w-full object-cover ${
+                  imageOrientations[`article-${article.id}`] === 'portrait' 
+                    ? 'h-40' 
+                    : 'h-32'
+                }`}
               />
               <div className="p-3">
                 <h3 className="text-sm font-semibold text-foreground mb-2 group-hover:text-primary line-clamp-2">

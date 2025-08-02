@@ -1,12 +1,13 @@
 import { useQuery } from "@tanstack/react-query";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { Play, Image } from "lucide-react";
+import { Play, Image, ChevronLeft, ChevronRight } from "lucide-react";
 
 const MediaGallery = () => {
   const [activeTab, setActiveTab] = useState("videos");
+  const [currentSlide, setCurrentSlide] = useState(0);
 
   const { data: media = [], isLoading } = useQuery({
     queryKey: ["media"],
@@ -19,6 +20,31 @@ const MediaGallery = () => {
 
   const videos = media.filter((m) => m.type === "video");
   const photos = media.filter((m) => m.type === "image");
+  
+  const currentMedia = activeTab === "videos" ? videos : photos;
+
+  // Auto-slide every 3 seconds
+  useEffect(() => {
+    if (currentMedia.length > 0) {
+      const interval = setInterval(() => {
+        setCurrentSlide((prev) => (prev + 1) % currentMedia.length);
+      }, 3000);
+      return () => clearInterval(interval);
+    }
+  }, [currentMedia.length]);
+
+  // Reset slide when switching tabs
+  useEffect(() => {
+    setCurrentSlide(0);
+  }, [activeTab]);
+
+  const nextSlide = () => {
+    setCurrentSlide((prev) => (prev + 1) % currentMedia.length);
+  };
+
+  const prevSlide = () => {
+    setCurrentSlide((prev) => (prev - 1 + currentMedia.length) % currentMedia.length);
+  };
 
   if (isLoading) {
     return (
@@ -66,49 +92,86 @@ const MediaGallery = () => {
           </div>
         </div>
 
-        {/* Videos */}
-        {activeTab === "videos" && (
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {videos.map((video) => (
-              <Card key={video.id} className="group overflow-hidden hover:shadow-xl hover:scale-105 transition-all">
-                <div className="relative overflow-hidden">
-                  <video
-                    src={video.file_path}
-                    controls
-                    autoPlay
-                    muted
-                    loop
-                    playsInline
-                    className="w-full h-64 object-cover object-center rounded-t-xl"
-                  ></video>
-                </div>
-                <div className="p-4">
-                  <h3 className="text-lg font-semibold text-foreground mb-1">
-                    {video.title || "Vidéo sans titre"}
-                  </h3>
-                </div>
-              </Card>
-            ))}
+        {/* Carousel */}
+        {currentMedia.length > 0 && (
+          <div className="relative max-w-4xl mx-auto">
+            <div className="overflow-hidden rounded-xl">
+              <div 
+                className="flex transition-transform duration-500 ease-in-out"
+                style={{ transform: `translateX(-${currentSlide * 100}%)` }}
+              >
+                {currentMedia.map((item) => (
+                  <div key={item.id} className="min-w-full">
+                    <Card className="overflow-hidden">
+                      {activeTab === "videos" ? (
+                        <div className="relative">
+                          <video
+                            src={item.file_path}
+                            controls
+                            autoPlay
+                            muted
+                            loop
+                            playsInline
+                            className="w-full h-96 object-cover"
+                          ></video>
+                        </div>
+                      ) : (
+                        <img
+                          src={item.file_path}
+                          alt={item.title || "Photo"}
+                          className="w-full h-96 object-cover"
+                        />
+                      )}
+                      <div className="p-6">
+                        <h3 className="text-xl font-semibold text-foreground">
+                          {item.title || (activeTab === "videos" ? "Vidéo sans titre" : "Image sans titre")}
+                        </h3>
+                      </div>
+                    </Card>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Navigation Buttons */}
+            <Button
+              variant="outline"
+              size="icon"
+              onClick={prevSlide}
+              className="absolute left-4 top-1/2 transform -translate-y-1/2 bg-background/80 backdrop-blur-sm"
+            >
+              <ChevronLeft className="w-4 h-4" />
+            </Button>
+            <Button
+              variant="outline"
+              size="icon"
+              onClick={nextSlide}
+              className="absolute right-4 top-1/2 transform -translate-y-1/2 bg-background/80 backdrop-blur-sm"
+            >
+              <ChevronRight className="w-4 h-4" />
+            </Button>
+
+            {/* Dots Indicator */}
+            <div className="flex justify-center mt-6 space-x-2">
+              {currentMedia.map((_, index) => (
+                <button
+                  key={index}
+                  onClick={() => setCurrentSlide(index)}
+                  className={`w-3 h-3 rounded-full transition-colors ${
+                    index === currentSlide ? "bg-primary" : "bg-muted-foreground/30"
+                  }`}
+                />
+              ))}
+            </div>
           </div>
         )}
 
-        {/* Photos */}
-        {activeTab === "photos" && (
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {photos.map((photo) => (
-              <Card key={photo.id} className="group overflow-hidden hover:shadow-xl hover:scale-105 transition-all">
-                <img
-                  src={photo.file_path}
-                  alt={photo.title || "Photo"}
-                  className="w-full h-80 object-cover object-center rounded-t-xl"
-                />
-                <div className="p-4">
-                  <h3 className="text-lg font-semibold text-foreground mb-1">
-                    {photo.title || "Image sans titre"}
-                  </h3>
-                </div>
-              </Card>
-            ))}
+        {/* Empty State */}
+        {currentMedia.length === 0 && (
+          <div className="text-center py-16">
+            <p className="text-muted-foreground text-lg">
+              Aucun contenu disponible pour cette section.
+            </p>
           </div>
         )}
       </div>

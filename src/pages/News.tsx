@@ -73,37 +73,37 @@ const News = () => {
         <div className="container mx-auto px-4">
           <h2 className="text-3xl font-bold mb-8">Derniers articles</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {articles.map((article) => (
+            {articles.slice(0, 3).map((article) => (
               <Card
                 key={article.id}
-                className="overflow-hidden hover:shadow-lg transition-shadow"
+                className="overflow-hidden hover:shadow-lg transition-shadow h-[500px] flex flex-col"
               >
-                <div className="aspect-video">
-  <img
-    src={
-      article.image
-        ? `${article.image}?c_fill,w_400,h_250,f_auto,q_auto`
-        : "https://via.placeholder.com/400x250"
-    }
-    alt={article.titre}
-    className="w-full h-full object-cover"
-  />
-</div>
+                <div className="aspect-video flex-shrink-0">
+                  <img
+                    src={
+                      article.image
+                        ? `${article.image}?c_fill,w_400,h_250,f_auto,q_auto`
+                        : "https://via.placeholder.com/400x250"
+                    }
+                    alt={article.titre}
+                    className="w-full h-full object-cover"
+                  />
+                </div>
 
-                <CardHeader>
+                <CardHeader className="flex-shrink-0">
                   <CardTitle className="line-clamp-2">{article.titre}</CardTitle>
-                  <CardDescription className="line-clamp-3">
-                    {article.contenu.length > 150
-                      ? `${article.contenu.substring(0, 150)}...`
+                  <CardDescription className="line-clamp-4">
+                    {article.contenu.length > 200
+                      ? `${article.contenu.substring(0, 200)}...`
                       : article.contenu}
                   </CardDescription>
                 </CardHeader>
-                <CardContent>
-                  <div className="flex items-center gap-2 text-sm text-muted-foreground">
+                <CardContent className="flex-grow flex flex-col justify-end">
+                  <div className="flex items-center gap-2 text-sm text-muted-foreground mb-4">
                     <Calendar className="h-4 w-4" />
                     {new Date(article.created_at).toLocaleDateString("fr-FR")}
                   </div>
-                  <Button variant="outline" size="sm" className="w-full mt-4">
+                  <Button variant="outline" size="sm" className="w-full">
                     Lire plus
                   </Button>
                 </CardContent>

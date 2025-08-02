@@ -14,9 +14,9 @@ const Index = () => {
       <Hero />
       <SeniorTeam />
       <MediaGallery />
-      <Partners />
-      <LatestNews />
       <SocialMedia />
+      <LatestNews />
+      <Partners />
       <Footer />
     </div>
   );

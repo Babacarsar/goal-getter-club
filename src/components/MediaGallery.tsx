@@ -25,9 +25,12 @@ const MediaGallery = () => {
 
   // Auto-slide every 3 seconds
   useEffect(() => {
-    if (currentMedia.length > 0) {
+    if (currentMedia.length > 3) {
       const interval = setInterval(() => {
-        setCurrentSlide((prev) => (prev + 1) % currentMedia.length);
+        setCurrentSlide((prev) => {
+          const maxSlides = Math.ceil(currentMedia.length / 3) - 1;
+          return prev >= maxSlides ? 0 : prev + 1;
+        });
       }, 3000);
       return () => clearInterval(interval);
     }
@@ -39,11 +42,13 @@ const MediaGallery = () => {
   }, [activeTab]);
 
   const nextSlide = () => {
-    setCurrentSlide((prev) => (prev + 1) % currentMedia.length);
+    const maxSlides = Math.ceil(currentMedia.length / 3) - 1;
+    setCurrentSlide((prev) => prev >= maxSlides ? 0 : prev + 1);
   };
 
   const prevSlide = () => {
-    setCurrentSlide((prev) => (prev - 1 + currentMedia.length) % currentMedia.length);
+    const maxSlides = Math.ceil(currentMedia.length / 3) - 1;
+    setCurrentSlide((prev) => prev <= 0 ? maxSlides : prev - 1);
   };
 
   if (isLoading) {
@@ -94,40 +99,44 @@ const MediaGallery = () => {
 
         {/* Carousel */}
         {currentMedia.length > 0 && (
-          <div className="relative max-w-4xl mx-auto">
+          <div className="relative max-w-7xl mx-auto">
             <div className="overflow-hidden rounded-xl">
               <div 
                 className="flex transition-transform duration-500 ease-in-out"
                 style={{ transform: `translateX(-${currentSlide * 100}%)` }}
               >
-                {currentMedia.map((item) => (
-                  <div key={item.id} className="min-w-full">
-                    <Card className="overflow-hidden">
-                      {activeTab === "videos" ? (
-                        <div className="relative">
-                          <video
-                            src={item.file_path}
-                            controls
-                            autoPlay
-                            muted
-                            loop
-                            playsInline
-                            className="w-full h-96 object-cover"
-                          ></video>
-                        </div>
-                      ) : (
-                        <img
-                          src={item.file_path}
-                          alt={item.title || "Photo"}
-                          className="w-full h-96 object-cover"
-                        />
-                      )}
-                      <div className="p-6">
-                        <h3 className="text-xl font-semibold text-foreground">
-                          {item.title || (activeTab === "videos" ? "Vidéo sans titre" : "Image sans titre")}
-                        </h3>
+                {Array.from({ length: Math.ceil(currentMedia.length / 3) }).map((_, slideIndex) => (
+                  <div key={slideIndex} className="min-w-full grid grid-cols-1 md:grid-cols-3 gap-6 px-2">
+                    {currentMedia.slice(slideIndex * 3, slideIndex * 3 + 3).map((item) => (
+                    <div key={item.id} className="w-full">
+                        <Card className="overflow-hidden h-full">
+                          {activeTab === "videos" ? (
+                            <div className="relative">
+                              <video
+                                src={item.file_path}
+                                controls
+                                autoPlay
+                                muted
+                                loop
+                                playsInline
+                                className="w-full h-64 object-cover"
+                              ></video>
+                            </div>
+                          ) : (
+                            <img
+                              src={item.file_path}
+                              alt={item.title || "Photo"}
+                              className="w-full h-64 object-cover"
+                            />
+                          )}
+                          <div className="p-4">
+                            <h3 className="text-lg font-semibold text-foreground">
+                              {item.title || (activeTab === "videos" ? "Vidéo sans titre" : "Image sans titre")}
+                            </h3>
+                          </div>
+                        </Card>
                       </div>
-                    </Card>
+                    ))}
                   </div>
                 ))}
               </div>
@@ -153,7 +162,7 @@ const MediaGallery = () => {
 
             {/* Dots Indicator */}
             <div className="flex justify-center mt-6 space-x-2">
-              {currentMedia.map((_, index) => (
+              {Array.from({ length: Math.ceil(currentMedia.length / 3) }).map((_, index) => (
                 <button
                   key={index}
                   onClick={() => setCurrentSlide(index)}

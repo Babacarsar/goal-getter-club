@@ -104,7 +104,7 @@ const Article = () => {
                 <img
                   src={`${article.image}?c_fill,w_1200,h_600,f_auto,q_auto`}
                   alt={article.titre}
-                  className="w-full h-[200px] sm:h-[250px] md:h-[350px] lg:h-[450px] xl:h-[500px] object-cover"
+                  className="w-full h-[250px] sm:h-[300px] md:h-[400px] lg:h-[500px] xl:h-[550px] object-cover"
                 />
               </div>
             )}

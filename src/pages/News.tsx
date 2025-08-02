@@ -11,8 +11,10 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Calendar } from "lucide-react";
 import { useQuery } from "@tanstack/react-query";
+import { useNavigate } from "react-router-dom";
 
 const News = () => {
+  const navigate = useNavigate();
   const { data: articles = [], isLoading } = useQuery({
     queryKey: ["news"],
     queryFn: async () => {
@@ -103,7 +105,12 @@ const News = () => {
                     <Calendar className="h-4 w-4" />
                     {new Date(article.created_at).toLocaleDateString("fr-FR")}
                   </div>
-                  <Button variant="outline" size="sm" className="w-full mt-4">
+                  <Button 
+                    variant="outline" 
+                    size="sm" 
+                    className="w-full mt-4"
+                    onClick={() => navigate(`/article/${article.id}`)}
+                  >
                     Lire plus
                   </Button>
                 </CardContent>

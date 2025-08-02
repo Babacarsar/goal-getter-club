@@ -56,33 +56,33 @@ const Article = () => {
     <div className="min-h-screen">
       <Header />
       
-      <main className="pt-16 md:pt-20 pb-8 md:pb-16 bg-background">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+      <main className="pt-16 md:pt-20 pb-8 md:pb-16 bg-background min-h-screen">
+        <div className="container mx-auto px-3 sm:px-4 md:px-6 lg:px-8 max-w-6xl">
           {/* Bouton retour */}
-          <div className="mb-6 md:mb-8">
+          <div className="mb-4 md:mb-8">
             <Button 
               variant="outline" 
               size="sm" 
-              className="group"
+              className="group text-xs sm:text-sm"
               onClick={() => navigate(-1)}
             >
-              <ArrowLeft className="mr-2 h-4 w-4 group-hover:-translate-x-1 transition-transform" />
+              <ArrowLeft className="mr-1 sm:mr-2 h-3 w-3 sm:h-4 sm:w-4 group-hover:-translate-x-1 transition-transform" />
               Retour
             </Button>
           </div>
 
           {/* Article principal */}
-          <article className="max-w-4xl mx-auto">
+          <article className="max-w-5xl mx-auto">
             {/* En-tête de l'article */}
-            <header className="mb-6 md:mb-8 text-center px-4">
-              <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-foreground mb-4 md:mb-6 leading-tight">
+            <header className="mb-4 sm:mb-6 md:mb-8 text-center px-2 sm:px-4">
+              <h1 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-bold text-foreground mb-3 sm:mb-4 md:mb-6 leading-tight px-2">
                 {article.titre}
               </h1>
               
-              <div className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-6 text-muted-foreground mb-6 md:mb-8">
-                <div className="flex items-center gap-2">
-                  <Calendar className="w-4 h-4 md:w-5 md:h-5" />
-                  <span className="text-sm md:text-base lg:text-lg">
+              <div className="flex flex-col sm:flex-row items-center justify-center gap-2 sm:gap-4 md:gap-6 text-muted-foreground mb-4 sm:mb-6 md:mb-8">
+                <div className="flex items-center gap-1 sm:gap-2">
+                  <Calendar className="w-3 h-3 sm:w-4 sm:h-4 md:w-5 md:h-5" />
+                  <span className="text-xs sm:text-sm md:text-base lg:text-lg">
                     {new Date(article.created_at).toLocaleDateString("fr-FR", {
                       year: 'numeric',
                       month: 'long',
@@ -91,8 +91,8 @@ const Article = () => {
                   </span>
                 </div>
                 {article.auteur && (
-                  <div className="flex items-center gap-2">
-                    <span className="text-sm md:text-base lg:text-lg">Par {article.auteur}</span>
+                  <div className="flex items-center gap-1 sm:gap-2">
+                    <span className="text-xs sm:text-sm md:text-base lg:text-lg">Par {article.auteur}</span>
                   </div>
                 )}
               </div>
@@ -100,19 +100,19 @@ const Article = () => {
 
             {/* Image principale */}
             {article.image && (
-              <div className="mb-8 md:mb-12 rounded-lg md:rounded-xl overflow-hidden shadow-lg md:shadow-2xl">
+              <div className="mb-6 sm:mb-8 md:mb-12 rounded-md sm:rounded-lg md:rounded-xl overflow-hidden shadow-md sm:shadow-lg md:shadow-2xl mx-2 sm:mx-0">
                 <img
                   src={`${article.image}?c_fill,w_1200,h_600,f_auto,q_auto`}
                   alt={article.titre}
-                  className="w-full h-[400px] sm:h-[450px] md:h-[550px] lg:h-[650px] xl:h-[700px] object-cover"
+                  className="w-full h-[250px] xs:h-[280px] sm:h-[320px] md:h-[400px] lg:h-[500px] xl:h-[550px] 2xl:h-[600px] object-cover"
                 />
               </div>
             )}
 
             {/* Contenu de l'article */}
-            <div className="bg-card rounded-lg md:rounded-xl shadow-md md:shadow-lg p-4 sm:p-6 md:p-8 lg:p-12">
+            <div className="bg-card rounded-md sm:rounded-lg md:rounded-xl shadow-sm sm:shadow-md md:shadow-lg p-3 sm:p-4 md:p-6 lg:p-8 xl:p-10 mx-2 sm:mx-0">
               <div className="prose prose-sm sm:prose-base md:prose-lg lg:prose-xl max-w-none">
-                <div className="text-sm sm:text-base md:text-lg lg:text-xl leading-relaxed text-foreground whitespace-pre-line font-light">
+                <div className="text-sm sm:text-base md:text-lg lg:text-xl leading-relaxed sm:leading-loose text-foreground whitespace-pre-line font-light">
                   {article.contenu}
                 </div>
               </div>
@@ -120,10 +120,14 @@ const Article = () => {
           </article>
 
           {/* Bouton de retour en bas */}
-          <div className="mt-8 md:mt-12 text-center">
-            <Button size="sm" onClick={() => navigate("/")} className="group w-full sm:w-auto md:size-lg">
+          <div className="mt-6 sm:mt-8 md:mt-12 text-center px-2">
+            <Button 
+              size="sm" 
+              onClick={() => navigate("/")} 
+              className="group w-full sm:w-auto text-xs sm:text-sm md:text-base px-4 sm:px-6 md:px-8 py-2 sm:py-3"
+            >
               Retour à l'accueil
-              <ArrowLeft className="ml-2 h-4 w-4 group-hover:-translate-x-1 transition-transform rotate-180" />
+              <ArrowLeft className="ml-1 sm:ml-2 h-3 w-3 sm:h-4 sm:w-4 group-hover:-translate-x-1 transition-transform rotate-180" />
             </Button>
           </div>
         </div>

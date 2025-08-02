@@ -128,8 +128,8 @@ const LatestNews = () => {
                 onLoad={(e) => handleImageLoad(`article-${article.id}`, e)}
                 className={`w-full object-cover ${
                   imageOrientations[`article-${article.id}`] === 'portrait' 
-                    ? 'h-72' 
-                    : 'h-56'
+                    ? 'h-80' 
+                    : 'h-64'
                 }`}
               />
               <div className="p-3">

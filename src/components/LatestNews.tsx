@@ -101,7 +101,7 @@ const LatestNews = () => {
                   <Calendar className="w-4 h-4" />
                   {new Date(featuredNews.created_at).toLocaleDateString("fr-FR")}
                 </div>
-                <Button size="sm" className="w-fit group">
+                <Button size="sm" className="w-fit group" onClick={() => navigate(`/article/${featuredNews.id}`)}>
                   Lire l'article
                   <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
                 </Button>
@@ -139,10 +139,14 @@ const LatestNews = () => {
                 <p className="text-xs text-muted-foreground line-clamp-2 mb-2">
                   {article.contenu}
                 </p>
-                <div className="flex items-center gap-1 text-[11px] text-muted-foreground">
+                <div className="flex items-center gap-1 text-[11px] text-muted-foreground mb-3">
                   <Calendar className="w-3 h-3" />
                   {new Date(article.created_at).toLocaleDateString("fr-FR")}
                 </div>
+                <Button size="sm" className="w-full text-xs" onClick={() => navigate(`/article/${article.id}`)}>
+                  Lire l'article
+                  <ArrowRight className="ml-1 h-3 w-3" />
+                </Button>
               </div>
             </Card>
           ))}

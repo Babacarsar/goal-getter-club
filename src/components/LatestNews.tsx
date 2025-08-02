@@ -39,7 +39,7 @@ const LatestNews = () => {
   }
 
   const featuredNews = news[0];
-  const otherNews = news.slice(1);
+  const otherNews = news.slice(1, 3); // Limite à 2 autres actualités (total 3)
 
   const handleImageLoad = (imageId: string, event: React.SyntheticEvent<HTMLImageElement>) => {
     const img = event.currentTarget;
@@ -128,8 +128,8 @@ const LatestNews = () => {
                 onLoad={(e) => handleImageLoad(`article-${article.id}`, e)}
                 className={`w-full object-cover ${
                   imageOrientations[`article-${article.id}`] === 'portrait' 
-                    ? 'h-40' 
-                    : 'h-32'
+                    ? 'h-56' 
+                    : 'h-48'
                 }`}
               />
               <div className="p-3">

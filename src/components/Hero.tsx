@@ -82,12 +82,12 @@ const Hero = () => {
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center mb-8 sm:mb-10 md:mb-12 px-4">
-            <a href="#contact" className="w-full sm:w-auto">
+            <Link to="/contact" className="w-full sm:w-auto">
               <Button size="lg" className="gradient-field text-white hover:opacity-90 group w-full sm:w-auto px-6 py-3 text-base">
                 Rejoindre le club
                 <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
               </Button>
-            </a>
+            </Link>
             <Link to="/categories" className="w-full sm:w-auto">
               <Button
                 size="lg"

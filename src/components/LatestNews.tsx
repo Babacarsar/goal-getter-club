@@ -56,36 +56,36 @@ const LatestNews = () => {
         </div>
 
         {/* À la une */}
-        <div className="mb-16">
-          <Card className="overflow-hidden hover:shadow-xl transition-all duration-300 group">
+        <div className="mb-12 max-w-4xl mx-auto">
+          <Card className="overflow-hidden hover:shadow-lg transition-all duration-300 group">
             <div className="grid grid-cols-1 lg:grid-cols-2">
               <div className="relative overflow-hidden">
                 <img
                   src={
                     featuredNews.image
-                      ? `${featuredNews.image}?c_fill,w_800,h_500,f_auto,q_auto`
-                      : "https://via.placeholder.com/600x400"
+                      ? `${featuredNews.image}?c_fill,w_600,h_350,f_auto,q_auto`
+                      : "https://via.placeholder.com/600x350"
                   }
                   alt={featuredNews.titre}
-                  className="w-full h-64 lg:h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                  className="w-full h-48 lg:h-56 object-cover group-hover:scale-105 transition-transform duration-500"
                 />
-                <div className="absolute top-4 left-4">
-                  <Badge className="bg-primary text-white">À la Une</Badge>
+                <div className="absolute top-3 left-3">
+                  <Badge className="bg-primary text-white text-xs">À la Une</Badge>
                 </div>
               </div>
 
-              <div className="p-6 lg:p-8 flex flex-col justify-center">
-                <h3 className="text-xl lg:text-2xl font-bold text-foreground mb-3 group-hover:text-primary transition-colors">
+              <div className="p-4 lg:p-6 flex flex-col justify-center">
+                <h3 className="text-lg lg:text-xl font-bold text-foreground mb-3 group-hover:text-primary transition-colors">
                   {featuredNews.titre}
                 </h3>
-                <p className="text-muted-foreground text-sm mb-4 line-clamp-4">
+                <p className="text-muted-foreground text-sm mb-3 line-clamp-3">
                   {featuredNews.contenu}
                 </p>
                 <div className="flex items-center gap-2 text-xs text-muted-foreground mb-4">
                   <Calendar className="w-4 h-4" />
                   {new Date(featuredNews.created_at).toLocaleDateString("fr-FR")}
                 </div>
-                <Button className="w-fit group text-sm">
+                <Button size="sm" className="w-fit group">
                   Lire l'article
                   <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
                 </Button>
@@ -95,7 +95,7 @@ const LatestNews = () => {
         </div>
 
         {/* Cartes compactes */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mb-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mb-10 max-w-5xl mx-auto">
           {otherNews.map((article, index) => (
             <Card
               key={article.id}
@@ -105,11 +105,11 @@ const LatestNews = () => {
               <img
                 src={
                   article.image
-                    ? `${article.image}?c_fill,w_400,h_200,f_auto,q_auto`
-                    : "https://via.placeholder.com/400x200"
+                    ? `${article.image}?c_fill,w_350,h_180,f_auto,q_auto`
+                    : "https://via.placeholder.com/350x180"
                 }
                 alt={article.titre}
-                className="w-full h-36 object-cover"
+                className="w-full h-32 object-cover"
               />
               <div className="p-3">
                 <h3 className="text-sm font-semibold text-foreground mb-2 group-hover:text-primary line-clamp-2">

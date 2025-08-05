@@ -1,6 +1,7 @@
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
+import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
 import { Calendar, ArrowRight } from "lucide-react";
 import { useQuery } from "@tanstack/react-query";
 import { useNavigate } from "react-router-dom";
@@ -71,20 +72,31 @@ const LatestNews = () => {
           <Card className="overflow-hidden hover:shadow-lg transition-all duration-300 group">
             <div className="grid grid-cols-1 lg:grid-cols-2">
               <div className="relative overflow-hidden">
-                <img
-                  src={
-                    featuredNews.image
-                      ? `${featuredNews.image}?c_fill,w_600,h_350,f_auto,q_auto`
-                      : "https://via.placeholder.com/600x350"
-                  }
-                  alt={featuredNews.titre}
-                  onLoad={(e) => handleImageLoad(`featured-${featuredNews.id}`, e)}
-                  className={`w-full group-hover:scale-105 transition-transform duration-500 ${
-                    imageOrientations[`featured-${featuredNews.id}`] === 'portrait' 
-                      ? 'h-64 lg:h-72 object-cover' 
-                      : 'h-48 lg:h-56 object-cover'
-                  }`}
-                />
+                <Dialog>
+                  <DialogTrigger asChild>
+                    <img
+                      src={
+                        featuredNews.image
+                          ? `${featuredNews.image}?c_fill,w_600,h_350,f_auto,q_auto`
+                          : "https://via.placeholder.com/600x350"
+                      }
+                      alt={featuredNews.titre}
+                      onLoad={(e) => handleImageLoad(`featured-${featuredNews.id}`, e)}
+                      className={`w-full group-hover:scale-105 transition-transform duration-500 cursor-pointer ${
+                        imageOrientations[`featured-${featuredNews.id}`] === 'portrait' 
+                          ? 'h-64 lg:h-72 object-cover' 
+                          : 'h-48 lg:h-56 object-cover'
+                      }`}
+                    />
+                  </DialogTrigger>
+                  <DialogContent className="max-w-4xl">
+                    <img
+                      src={featuredNews.image || "https://via.placeholder.com/600x350"}
+                      alt={featuredNews.titre}
+                      className="w-full h-auto max-h-[80vh] object-contain"
+                    />
+                  </DialogContent>
+                </Dialog>
                 <div className="absolute top-3 left-3">
                   <Badge className="bg-primary text-white text-xs">À la Une</Badge>
                 </div>
@@ -118,20 +130,31 @@ const LatestNews = () => {
               className="group overflow-hidden hover:shadow-md transition hover:scale-[1.01]"
               style={{ animationDelay: `${index * 0.05}s` }}
             >
-              <img
-                src={
-                  article.image
-                    ? `${article.image}?c_fill,w_350,h_180,f_auto,q_auto`
-                    : "https://via.placeholder.com/350x180"
-                }
-                alt={article.titre}
-                onLoad={(e) => handleImageLoad(`article-${article.id}`, e)}
-                className={`w-full object-cover ${
-                  imageOrientations[`article-${article.id}`] === 'portrait' 
-                    ? 'h-80' 
-                    : 'h-64'
-                }`}
-              />
+              <Dialog>
+                <DialogTrigger asChild>
+                  <img
+                    src={
+                      article.image
+                        ? `${article.image}?c_fill,w_350,h_180,f_auto,q_auto`
+                        : "https://via.placeholder.com/350x180"
+                    }
+                    alt={article.titre}
+                    onLoad={(e) => handleImageLoad(`article-${article.id}`, e)}
+                    className={`w-full object-cover cursor-pointer ${
+                      imageOrientations[`article-${article.id}`] === 'portrait' 
+                        ? 'h-80' 
+                        : 'h-64'
+                    }`}
+                  />
+                </DialogTrigger>
+                <DialogContent className="max-w-4xl">
+                  <img
+                    src={article.image || "https://via.placeholder.com/350x180"}
+                    alt={article.titre}
+                    className="w-full h-auto max-h-[80vh] object-contain"
+                  />
+                </DialogContent>
+              </Dialog>
               <div className="p-3">
                 <h3 className="text-sm font-semibold text-foreground mb-2 group-hover:text-primary line-clamp-2">
                   {article.titre}

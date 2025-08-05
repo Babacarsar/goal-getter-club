@@ -107,7 +107,7 @@ const Article = () => {
                     <img
                       src={`${article.image}?c_fill,w_1200,h_600,f_auto,q_auto`}
                       alt={article.titre}
-                      className="w-full h-[500px] xs:h-[550px] sm:h-[600px] md:h-[700px] lg:h-[800px] xl:h-[850px] 2xl:h-[900px] object-cover cursor-pointer hover:opacity-90 transition-opacity"
+                      className="w-full h-[600px] xs:h-[650px] sm:h-[700px] md:h-[800px] lg:h-[900px] xl:h-[950px] 2xl:h-[1000px] object-cover cursor-pointer hover:opacity-90 transition-opacity"
                     />
                   </DialogTrigger>
                   <DialogContent className="max-w-6xl max-h-[90vh] overflow-auto">

@@ -1,4 +1,4 @@
-import { MapPin, Phone, Mail, Facebook, Instagram, Twitter } from "lucide-react";
+import { MapPin, Phone, Mail, Facebook, Instagram, Youtube } from "lucide-react";
 const Footer = () => {
   return <footer className="bg-secondary text-foreground">
       <div className="container mx-auto px-4 py-8 sm:py-12">
@@ -17,11 +17,11 @@ const Footer = () => {
               <a href="#" className="w-10 h-10 bg-primary/10 rounded-full flex items-center justify-center hover:bg-primary/20 transition-colors">
                 <Facebook className="h-5 w-5 text-primary" />
               </a>
-              <a href="#" className="w-10 h-10 bg-primary/10 rounded-full flex items-center justify-center hover:bg-primary/20 transition-colors">
+              <a href="https://www.instagram.com/academie_girona_fc_de_saly?igsh=OXBnOWlpbmw3dG02" target="_blank" rel="noopener noreferrer" className="w-10 h-10 bg-primary/10 rounded-full flex items-center justify-center hover:bg-primary/20 transition-colors">
                 <Instagram className="h-5 w-5 text-primary" />
               </a>
               <a href="#" className="w-10 h-10 bg-primary/10 rounded-full flex items-center justify-center hover:bg-primary/20 transition-colors">
-                <Twitter className="h-5 w-5 text-primary" />
+                <Youtube className="h-5 w-5 text-primary" />
               </a>
             </div>
           </div>

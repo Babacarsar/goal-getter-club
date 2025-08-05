@@ -9,6 +9,7 @@ import {
 } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
+import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
 import { Calendar } from "lucide-react";
 import { useQuery } from "@tanstack/react-query";
 import { useNavigate } from "react-router-dom";
@@ -81,16 +82,27 @@ const News = () => {
                 className="overflow-hidden hover:shadow-lg transition-shadow"
               >
                 <div className="aspect-video">
-  <img
-    src={
-      article.image
-        ? `${article.image}?c_fill,w_400,h_250,f_auto,q_auto`
-        : "https://via.placeholder.com/400x250"
-    }
-    alt={article.titre}
-    className="w-full h-full object-cover"
-  />
-</div>
+                  <Dialog>
+                    <DialogTrigger asChild>
+                      <img
+                        src={
+                          article.image
+                            ? `${article.image}?c_fill,w_400,h_250,f_auto,q_auto`
+                            : "https://via.placeholder.com/400x250"
+                        }
+                        alt={article.titre}
+                        className="w-full h-full object-cover cursor-pointer hover:opacity-90 transition-opacity"
+                      />
+                    </DialogTrigger>
+                    <DialogContent className="max-w-6xl max-h-[90vh] overflow-auto">
+                      <img
+                        src={article.image || "https://via.placeholder.com/400x250"}
+                        alt={article.titre}
+                        className="w-full h-auto object-contain"
+                      />
+                    </DialogContent>
+                  </Dialog>
+                </div>
 
                 <CardHeader>
                   <CardTitle className="line-clamp-2">{article.titre}</CardTitle>

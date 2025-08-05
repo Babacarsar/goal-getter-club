@@ -3,6 +3,7 @@ import { useQuery } from "@tanstack/react-query";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
+import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
 import { Calendar, ArrowLeft } from "lucide-react";
 
 const Article = () => {
@@ -101,11 +102,22 @@ const Article = () => {
             {/* Image principale */}
             {article.image && (
               <div className="mb-6 sm:mb-8 md:mb-12 rounded-md sm:rounded-lg md:rounded-xl overflow-hidden shadow-md sm:shadow-lg md:shadow-2xl mx-2 sm:mx-0">
-                <img
-                  src={`${article.image}?c_fill,w_1200,h_600,f_auto,q_auto`}
-                  alt={article.titre}
-                  className="w-full h-[500px] xs:h-[550px] sm:h-[600px] md:h-[700px] lg:h-[800px] xl:h-[850px] 2xl:h-[900px] object-cover"
-                />
+                <Dialog>
+                  <DialogTrigger asChild>
+                    <img
+                      src={`${article.image}?c_fill,w_1200,h_600,f_auto,q_auto`}
+                      alt={article.titre}
+                      className="w-full h-[500px] xs:h-[550px] sm:h-[600px] md:h-[700px] lg:h-[800px] xl:h-[850px] 2xl:h-[900px] object-cover cursor-pointer hover:opacity-90 transition-opacity"
+                    />
+                  </DialogTrigger>
+                  <DialogContent className="max-w-6xl max-h-[90vh] overflow-auto">
+                    <img
+                      src={article.image}
+                      alt={article.titre}
+                      className="w-full h-auto object-contain"
+                    />
+                  </DialogContent>
+                </Dialog>
               </div>
             )}
 

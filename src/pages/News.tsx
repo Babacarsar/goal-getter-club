@@ -14,6 +14,7 @@ import { Calendar } from "lucide-react";
 import { useQuery } from "@tanstack/react-query";
 import { useNavigate } from "react-router-dom";
 import { apiUrl } from "@/lib/api";
+import { stripHtml } from "@/lib/html";
 
 const News = () => {
   const navigate = useNavigate();
@@ -108,9 +109,10 @@ const News = () => {
                 <CardHeader>
                   <CardTitle className="line-clamp-2">{article.titre}</CardTitle>
                   <CardDescription className="line-clamp-3">
-                    {article.contenu.length > 150
-                      ? `${article.contenu.substring(0, 150)}...`
-                      : article.contenu}
+                    {(() => {
+                      const plain = stripHtml(article.contenu);
+                      return plain.length > 150 ? `${plain.slice(0, 150)}…` : plain;
+                    })()}
                   </CardDescription>
                 </CardHeader>
                 <CardContent>

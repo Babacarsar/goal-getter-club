@@ -6,7 +6,9 @@ import "swiper/css/navigation";
 import "swiper/css/pagination";
 import { Badge } from "@/components/ui/badge";
 import { Card } from "@/components/ui/card";
+import { SectionHeader } from "@/components/layout/SectionHeader";
 import { apiUrl, resolveMediaUrl } from "@/lib/api";
+import { Link } from "react-router-dom";
 
 const SeniorTeamCarousel = () => {
   const { data: players = [], isLoading } = useQuery({
@@ -32,19 +34,13 @@ const SeniorTeamCarousel = () => {
   }
 
   return (
-    <section className="py-20 bg-background">
+    <section className="section-padding bg-muted/40">
       <div className="container mx-auto px-4">
-        <div className="text-center mb-12">
-          <Badge variant="outline" className="text-lg px-4 py-2 mb-4">
-            Notre Équipe
-          </Badge>
-          <h2 className="text-4xl font-bold text-foreground">
-            Nos Lions de Saly
-          </h2>
-          <p className="text-muted-foreground max-w-xl mx-auto mt-2">
-            Faites connaissance avec notre talentueuse équipe senior.
-          </p>
-        </div>
+        <SectionHeader
+          eyebrow="Effectif"
+          title="Nos Lions de Saly"
+          description="Découvrez les talents de l'équipe U20 et leurs parcours au sein de l'académie."
+        />
 
         <Swiper
           modules={[Navigation, Pagination, Autoplay]} // ✅ ajout d’Autoplay
@@ -62,29 +58,31 @@ const SeniorTeamCarousel = () => {
           navigation
           pagination={{ clickable: true }}
         >
-          {seniorPlayers.map((player, index) => (
-            <SwiperSlide key={index}>
-              <Card className="overflow-hidden shadow-md hover:shadow-lg transition-all">
-                <img
-                  src={resolveMediaUrl(player.photo)}
-                  alt={`${player.prenom} ${player.nom}`}
-                  className="w-full h-74 object-cover"
-                />
-                <div className="p-4">
-                  <h3 className="text-xl font-bold text-foreground mb-1">
-                    {player.prenom} {player.nom}
-                  </h3>
-                  <p className="text-primary font-medium mb-1">{player.poste}</p>
-                  <p className="text-sm text-muted-foreground mb-2">
-                    Âge : {player.age} ans
-                  </p>
-                  {player.categorie?.nom && (
-                    <Badge className="bg-accent text-white">
-                      {player.categorie.nom}
-                    </Badge>
-                  )}
-                </div>
-              </Card>
+          {seniorPlayers.map((player) => (
+            <SwiperSlide key={player.id}>
+              <Link to={`/joueurs/${player.id}`} className="block h-full">
+                <Card className="overflow-hidden border-0 shadow-lg card-hover-lift h-full">
+                  <img
+                    src={resolveMediaUrl(player.photo)}
+                    alt={`${player.prenom} ${player.nom}`}
+                    className="w-full h-72 object-cover"
+                  />
+                  <div className="p-5">
+                    <h3 className="text-xl font-bold text-foreground mb-1">
+                      {player.prenom} {player.nom}
+                    </h3>
+                    <p className="text-primary font-semibold mb-1">{player.poste}</p>
+                    <p className="text-sm text-muted-foreground mb-3">
+                      {player.age ? `${player.age} ans` : ""}
+                    </p>
+                    {player.categorie?.nom && (
+                      <Badge className="bg-primary text-primary-foreground">
+                        {player.categorie.nom}
+                      </Badge>
+                    )}
+                  </div>
+                </Card>
+              </Link>
             </SwiperSlide>
           ))}
         </Swiper>

@@ -8,6 +8,7 @@ import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { apiUrl } from "@/lib/api";
 import { stripHtml } from "@/lib/html";
+import { SectionHeader } from "@/components/layout/SectionHeader";
 
 const LatestNews = () => {
   const navigate = useNavigate();
@@ -54,20 +55,13 @@ const LatestNews = () => {
   };
 
   return (
-    <section className="py-20 bg-background">
+    <section className="section-padding bg-background">
       <div className="container mx-auto px-4">
-        {/* En-tête */}
-        <div className="text-center mb-16">
-          <Badge variant="outline" className="mb-4 text-lg px-4 py-2">
-            Actualités
-          </Badge>
-          <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-6">
-            Dernières Nouvelles
-          </h2>
-          <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-            Restez informé de toutes les actualités du club Girona de Saly
-          </p>
-        </div>
+        <SectionHeader
+          eyebrow="Actualités"
+          title="Dernières nouvelles"
+          description="Restez informés de la vie de l'académie Girona de Saly."
+        />
 
         {/* À la une */}
         <div className="mb-12 max-w-4xl mx-auto">

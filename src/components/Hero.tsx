@@ -10,136 +10,122 @@ import carousel5 from "@/assets/carousel-5.jpg";
 
 const Hero = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
-  
+
   const slides = [
     {
       image: carousel1,
-      title: "Excellence Sportive",
-      subtitle: "Des installations modernes pour forger les champions"
+      title: "Excellence sportive",
+      subtitle: "Des installations modernes pour forger les champions de demain",
     },
     {
       image: carousel2,
-      title: "Formation de Qualité",
-      subtitle: "Un encadrement professionnel pour révéler les talents"
+      title: "Formation d'élite",
+      subtitle: "Encadrement professionnel et valeurs Girona FC",
     },
     {
       image: carousel3,
-      title: "Esprit d'Équipe",
-      subtitle: "La victoire se construit ensemble"
+      title: "Esprit d'équipe",
+      subtitle: "Rouge et blanc — une identité, une famille",
     },
     {
       image: carousel4,
-      title: "Complexe d'Exception",
-      subtitle: "5 hectares dédiés à votre passion"
+      title: "Complexe d'exception",
+      subtitle: "Un cadre unique à Saly pour progresser chaque jour",
     },
     {
       image: carousel5,
-      title: "Académie Girona FC",
-      subtitle: "L'avenir du football sénégalais"
+      title: "L'avenir du ballon",
+      subtitle: "Rejoignez l'académie Girona FC de Saly",
     },
   ];
 
   useEffect(() => {
     const timer = setInterval(() => {
       setCurrentSlide((prev) => (prev + 1) % slides.length);
-    }, 3000);
-
+    }, 5000);
     return () => clearInterval(timer);
   }, [slides.length]);
 
   return (
-    <section id="accueil" className="relative min-h-screen flex items-center justify-center overflow-hidden">
-      {/* Carousel Background Images */}
+    <section className="relative min-h-[100svh] flex items-end md:items-center overflow-hidden">
       {slides.map((slide, index) => (
         <div
           key={index}
-          className={`absolute inset-0 bg-cover bg-center bg-no-repeat transition-opacity duration-1000 ${
-            index === currentSlide ? 'opacity-100' : 'opacity-0'
+          className={`absolute inset-0 bg-cover bg-center transition-opacity duration-1000 ${
+            index === currentSlide ? "opacity-100" : "opacity-0"
           }`}
           style={{ backgroundImage: `url(${slide.image})` }}
         >
-          <div className="absolute inset-0 bg-black/50"></div>
+          <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/50 to-primary/30" />
         </div>
       ))}
 
-      {/* Hero Pattern Overlay */}
-      <div className="absolute inset-0 hero-pattern"></div>
+      <div className="absolute inset-0 hero-pattern pointer-events-none" />
 
-      {/* Content */}
-      <div className="relative container mx-auto px-4 sm:px-6 lg:px-8 text-center text-white z-10 py-20 sm:py-24 md:py-32">
-        <div className="max-w-5xl mx-auto">
-          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold mb-4 sm:mb-6 md:mb-8 animate-fade-in leading-tight">
-            <span className="block gradient-sky bg-clip-text text-transparent mb-2 sm:mb-4">
-              Académie Girona FC de Saly
-            </span>
-            <span className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl">
+      <div className="relative container mx-auto px-4 pb-16 pt-32 md:py-32 z-10 text-white">
+        <div className="max-w-4xl">
+          <p className="text-sm font-bold uppercase tracking-[0.25em] text-white/80 mb-4 animate-fade-in">
+            Académie Girona FC · Saly
+          </p>
+          <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold leading-[1.05] tracking-tight animate-fade-in-up">
+            <span className="block text-gradient-girona mb-2">
               {slides[currentSlide].title}
             </span>
           </h1>
-          
-          <p className="text-base sm:text-lg md:text-xl lg:text-2xl mb-6 sm:mb-8 md:mb-10 text-white/90 max-w-4xl mx-auto animate-fade-in px-4">
+          <p className="mt-6 text-lg md:text-xl text-white/90 max-w-2xl leading-relaxed animate-fade-in">
             {slides[currentSlide].subtitle}
           </p>
 
-          <div className="flex flex-col sm:flex-row gap-4 justify-center mb-8 sm:mb-10 md:mb-12 px-4">
-            <Link to="/contact" className="w-full sm:w-auto">
-              <Button size="lg" className="gradient-field text-white hover:opacity-90 group w-full sm:w-auto px-6 py-3 text-base">
-                Rejoindre le club
-                <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
-              </Button>
-            </Link>
-            <Link to="/categories" className="w-full sm:w-auto">
-              <Button
-                size="lg"
-                variant="outline"
-                className="bg-white/10 border-white/30 text-white hover:bg-white/20 w-full sm:w-auto px-6 py-3 text-base"
-              >
-                Découvrir nos équipes
-              </Button>
-            </Link>
+          <div className="flex flex-col sm:flex-row gap-4 mt-10">
+            <Button
+              asChild
+              size="lg"
+              className="gradient-field h-12 px-8 text-base font-semibold shadow-lg shadow-primary/30 border-0"
+            >
+              <Link to="/inscription">
+                Pré-inscription
+                <ArrowRight className="ml-2 h-5 w-5" />
+              </Link>
+            </Button>
+            <Button
+              asChild
+              size="lg"
+              variant="outline"
+              className="h-12 px-8 border-white/40 bg-white/5 text-white hover:bg-white/15 backdrop-blur-sm"
+            >
+              <Link to="/categories">Découvrir les équipes</Link>
+            </Button>
           </div>
 
-          {/* Carousel Indicators */}
-          <div className="flex justify-center space-x-2 mb-8">
+          <div className="flex gap-2 mt-10">
             {slides.map((_, index) => (
               <button
                 key={index}
+                type="button"
                 onClick={() => setCurrentSlide(index)}
-                className={`w-3 h-3 rounded-full transition-all duration-300 ${
-                  index === currentSlide 
-                    ? 'bg-white scale-125' 
-                    : 'bg-white/50 hover:bg-white/70'
+                className={`h-1.5 rounded-full transition-all duration-300 ${
+                  index === currentSlide
+                    ? "w-10 bg-white"
+                    : "w-3 bg-white/40 hover:bg-white/70"
                 }`}
+                aria-label={`Slide ${index + 1}`}
               />
             ))}
           </div>
+        </div>
 
-          {/* Stats */}
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 sm:gap-8 max-w-4xl mx-auto px-4">
-            <div className="flex flex-col items-center animate-fade-in">
-              <div className="w-12 h-12 sm:w-16 sm:h-16 bg-white/10 rounded-full flex items-center justify-center mb-2 sm:mb-3">
-                <Trophy className="h-6 w-6 sm:h-8 sm:w-8 text-accent" />
-              </div>
-              <div className="text-2xl sm:text-3xl font-bold">5</div>
-              <div className="text-sm sm:text-base text-white/80 text-center">Terrains d&apos;entraînement</div> 
+        <div className="grid grid-cols-3 gap-4 md:gap-8 max-w-2xl mt-16 md:mt-20 pt-8 border-t border-white/20">
+          {[
+            { icon: Trophy, value: "5", label: "Terrains" },
+            { icon: Users, value: "300+", label: "Jeunes" },
+            { icon: Target, value: "12", label: "Titres" },
+          ].map(({ icon: Icon, value, label }) => (
+            <div key={label} className="text-center md:text-left">
+              <Icon className="h-5 w-5 text-primary-light mb-2 mx-auto md:mx-0" />
+              <div className="text-2xl md:text-3xl font-bold">{value}</div>
+              <div className="text-xs md:text-sm text-white/70">{label}</div>
             </div>
-            
-            <div className="flex flex-col items-center animate-fade-in">
-              <div className="w-12 h-12 sm:w-16 sm:h-16 bg-white/10 rounded-full flex items-center justify-center mb-2 sm:mb-3">
-                <Users className="h-6 w-6 sm:h-8 sm:w-8 text-accent" />
-              </div>
-              <div className="text-2xl sm:text-3xl font-bold">300+</div>
-              <div className="text-sm sm:text-base text-white/80 text-center">Jeunes talents</div>
-            </div>
-            
-            <div className="flex flex-col items-center animate-fade-in">
-              <div className="w-12 h-12 sm:w-16 sm:h-16 bg-white/10 rounded-full flex items-center justify-center mb-2 sm:mb-3">
-                <Target className="h-6 w-6 sm:h-8 sm:w-8 text-accent" />
-              </div>
-              <div className="text-2xl sm:text-3xl font-bold">12</div>
-              <div className="text-sm sm:text-base text-white/80 text-center">Titres remportés</div>
-            </div>
-          </div>
+          ))}
         </div>
       </div>
     </section>

@@ -6,17 +6,21 @@ import LatestNews from "@/components/LatestNews";
 import SeniorTeam from "@/components/SeniorTeam";
 import SocialMedia from "@/components/SocialMedia";
 import Footer from "@/components/Footer";
+import CtaStrip from "@/components/CtaStrip";
 
 const Index = () => {
   return (
     <div className="min-h-screen">
       <Header />
-      <Hero />
-      <SeniorTeam />
-      <MediaGallery />
-      <SocialMedia />
-      <LatestNews />
-      <Partners />
+      <main>
+        <Hero />
+        <SeniorTeam />
+        <LatestNews />
+        <MediaGallery />
+        <CtaStrip />
+        <Partners />
+        <SocialMedia />
+      </main>
       <Footer />
     </div>
   );

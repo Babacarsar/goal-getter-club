@@ -12,6 +12,7 @@ import { Users, Calendar, Trophy } from "lucide-react";
 import { Link } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
 import { apiUrl } from "@/lib/api";
+import { PageHero } from "@/components/layout/PageHero";
 
 const Categories = () => {
   const { data: categories = [], isLoading: loadingCategories } = useQuery({
@@ -47,17 +48,10 @@ const Categories = () => {
     <div className="min-h-screen">
       <Header />
       
-      {/* Hero Section */}
-      <section className="pt-20 pb-16 bg-gradient-to-br from-primary to-primary-dark">
-        <div className="container mx-auto px-4 text-center">
-          <h1 className="text-4xl md:text-6xl font-bold text-white mb-6">
-            Nos Catégories
-          </h1>
-          <p className="text-xl text-white/90 max-w-3xl mx-auto">
-            Découvrez toutes nos équipes et leur progression dans chaque catégorie d'âge
-          </p>
-        </div>
-      </section>
+      <PageHero
+        title="Nos catégories"
+        subtitle="Parcourez chaque équipe, l'effectif et l'encadrement par tranche d'âge."
+      />
 
       {/* Loading */}
       {isLoading ? (
@@ -77,7 +71,7 @@ const Categories = () => {
                 );
 
                 return (
-                  <Card key={category.id} className="hover:shadow-lg transition-shadow">
+                  <Card key={category.id} className="card-hover-lift border-border/80 shadow-md">
                     <CardHeader>
                       <CardTitle className="text-2xl text-primary">{category.nom}</CardTitle>
                       <CardDescription className="text-muted-foreground">

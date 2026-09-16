@@ -1,5 +1,6 @@
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import { PageHero } from "@/components/layout/PageHero";
 import { Badge } from "@/components/ui/badge";
 import { useQuery } from "@tanstack/react-query";
 import { apiUrl } from "@/lib/api";
@@ -78,9 +79,11 @@ const CalendarPage = () => {
   return (
     <div className="min-h-screen">
       <Header />
-      <main className="pt-24 pb-16 container mx-auto px-4 max-w-4xl">
-        <h1 className="text-4xl font-bold mb-2">Calendrier & résultats</h1>
-        <p className="text-muted-foreground mb-10">Matchs amicaux et tournois de l&apos;académie.</p>
+      <PageHero
+        title="Calendrier & résultats"
+        subtitle="Matchs amicaux et tournois — à venir et résultats officiels."
+      />
+      <main className="pb-16 container mx-auto px-4 max-w-4xl -mt-6">
         {isLoading ? (
           <p>Chargement…</p>
         ) : (

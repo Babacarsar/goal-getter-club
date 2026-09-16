@@ -1,7 +1,7 @@
-import { Badge } from "@/components/ui/badge";
 import { useQuery } from "@tanstack/react-query";
 import { Link } from "react-router-dom";
 import { apiUrl } from "@/lib/api";
+import { SectionHeader } from "@/components/layout/SectionHeader";
 
 const Partners = () => {
   const { data: partners = [], isLoading } = useQuery({
@@ -14,16 +14,13 @@ const Partners = () => {
   });
 
   return (
-    <section className="py-20 bg-secondary/20">
+    <section className="section-padding bg-background">
       <div className="container mx-auto px-4">
-        <div className="text-center mb-16">
-          <Badge variant="outline" className="text-lg px-4 py-2 mb-4">
-            Nos Partenaires
-          </Badge>
-          <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-6">
-            Ils nous font confiance
-          </h2>
-        </div>
+        <SectionHeader
+          eyebrow="Partenaires"
+          title="Ils nous font confiance"
+          description="Entreprises et institutions qui soutiennent le projet Girona de Saly."
+        />
 
         {isLoading ? (
           <p className="text-center text-muted-foreground">Chargement…</p>

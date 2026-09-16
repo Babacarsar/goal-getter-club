@@ -3,6 +3,7 @@ import Footer from "@/components/Footer";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { useParams, Link } from "react-router-dom";
+import { PageHero } from "@/components/layout/PageHero";
 import { useQuery } from "@tanstack/react-query";
 import { apiUrl, resolveMediaUrl } from "@/lib/api";
 
@@ -73,17 +74,12 @@ const CategoryDetail = () => {
     <div className="min-h-screen">
       <Header />
 
-      {/* En-tête */}
-      <section className="pt-20 pb-16 bg-gradient-to-br from-primary to-primary-dark">
-        <div className="container mx-auto px-4">
-          <Button asChild variant="outline" className="mb-6 text-white border-white hover:bg-white/10">
-            <Link to="/categories">← Retour aux catégories</Link>
-          </Button>
-          <h1 className="text-4xl md:text-6xl font-bold text-white mb-4">
-            Équipe {category.nom}
-          </h1>
-        </div>
-      </section>
+      <PageHero
+        title={`Équipe ${category.nom}`}
+        subtitle={category.description}
+        backTo="/categories"
+        backLabel="Toutes les catégories"
+      />
 
       {/* Description */}
       <section className="py-8 bg-background">

@@ -1,5 +1,6 @@
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import { PageHero } from "@/components/layout/PageHero";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -53,12 +54,12 @@ const InscriptionPage = () => {
   return (
     <div className="min-h-screen">
       <Header />
-      <main className="pt-24 pb-16 container mx-auto px-4 max-w-xl">
-        <h1 className="text-3xl font-bold mb-2">Pré-inscription</h1>
-        <p className="text-muted-foreground mb-8">
-          Inscrivez votre enfant à l&apos;académie Girona de Saly. Notre équipe vous recontactera.
-        </p>
-        <form onSubmit={handleSubmit} className="space-y-4 bg-card border rounded-xl p-6 shadow-sm">
+      <PageHero
+        title="Pré-inscription"
+        subtitle="Une demande simple — notre équipe vous recontacte rapidement."
+      />
+      <main className="pb-16 container mx-auto px-4 max-w-xl -mt-8">
+        <form onSubmit={handleSubmit} className="space-y-4 bg-card border rounded-2xl p-6 md:p-8 shadow-xl">
           <div className="grid grid-cols-2 gap-4">
             <div>
               <label className="text-sm font-medium">Prénom</label>

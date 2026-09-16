@@ -1,79 +1,108 @@
 import { MapPin, Phone, Mail, Facebook, Instagram, Youtube } from "lucide-react";
-const Footer = () => {
-  return <footer className="bg-secondary text-foreground">
-      <div className="container mx-auto px-4 py-8 sm:py-12">
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 md:gap-8">
-          {/* Logo et description */}
-          <div className="col-span-1 sm:col-span-2 md:col-span-2">
-            <div className="flex items-center space-x-3 mb-4">
-              <img src="/logo.png" alt="Académie Girona FC de Saly" className="w-12 h-12 object-contain" />
-              <span className="text-xl sm:text-2xl font-bold">Académie Girona FC de Saly</span>
-            </div>
-            <p className="text-muted-foreground mb-6 max-w-md">
-              L'école de football de référence pour développer vos talents et réaliser vos rêves. 
-              Une formation d'excellence dans un environnement passionné et professionnel.
-            </p>
-            <div className="flex space-x-4">
-              <a href="#" className="w-10 h-10 bg-primary/10 rounded-full flex items-center justify-center hover:bg-primary/20 transition-colors">
-                <Facebook className="h-5 w-5 text-primary" />
-              </a>
-              <a href="https://www.instagram.com/academie_girona_fc_de_saly?igsh=OXBnOWlpbmw3dG02" target="_blank" rel="noopener noreferrer" className="w-10 h-10 bg-primary/10 rounded-full flex items-center justify-center hover:bg-primary/20 transition-colors">
-                <Instagram className="h-5 w-5 text-primary" />
-              </a>
-              <a href="https://www.youtube.com/@Acad%C3%A9mieGironafcdeSalyofficiel" target="_blank" rel="noopener noreferrer" className="w-10 h-10 bg-primary/10 rounded-full flex items-center justify-center hover:bg-primary/20 transition-colors">
-                <Youtube className="h-5 w-5 text-primary" />
-              </a>
+import { Link } from "react-router-dom";
+
+const footerLinks = {
+  Club: [
+    { to: "/about", label: "Notre histoire" },
+    { to: "/categories", label: "Équipes" },
+    { to: "/staff", label: "Staff" },
+    { to: "/news", label: "Actualités" },
+  ],
+  Rejoindre: [
+    { to: "/inscription", label: "Pré-inscription" },
+    { to: "/calendrier", label: "Calendrier" },
+    { to: "/contact", label: "Contact" },
+  ],
+};
+
+const Footer = () => (
+  <footer className="bg-[hsl(220_20%_8%)] text-neutral-300">
+    <div className="container mx-auto px-4 py-14 md:py-16">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10">
+        <div className="lg:col-span-5">
+          <div className="flex items-center gap-3 mb-5">
+            <img
+              src="/logo.png"
+              alt=""
+              className="w-14 h-14 rounded-full ring-2 ring-primary/50 object-cover"
+            />
+            <div>
+              <p className="text-white font-bold text-lg">Girona de Saly</p>
+              <p className="text-sm text-neutral-400">Académie officielle</p>
             </div>
           </div>
-
-          {/* Horaires d'entraînement */}
-          <div>
-            <h3 className="text-xl font-semibold mb-4">Horaires d'entraînement</h3>
-            <ul className="space-y-2 text-muted-foreground">
-              <li className="text-sm">
-                <span className="font-medium">Lundi - Vendredi:</span><br />
-                17h - 20h
-              </li>
-              <li className="text-sm">
-                <span className="font-medium">Mercredi:</span><br />
-                14h - 18h
-              </li>
-              <li className="text-sm">
-                <span className="font-medium">Samedi:</span><br />
-                9h - 17h
-              </li>
-              <li className="text-sm">
-                <span className="font-medium">Dimanche:</span><br />
-                9h - 12h
-              </li>
-            </ul>
-          </div>
-
-          {/* Contact */}
-          <div>
-            <h3 className="text-xl font-semibold mb-4">Contact</h3>
-            <ul className="space-y-3 text-muted-foreground">
-              <li className="flex items-start space-x-3">
-                <MapPin className="h-4 w-4 sm:h-5 sm:w-5 mt-0.5 text-accent flex-shrink-0" />
-                <span className="text-xs sm:text-sm break-words">Mbour Saly</span>
-              </li>
-              <li className="flex items-center space-x-3">
-                <Phone className="h-5 w-5 text-accent" />
-                <span className="text-sm">+221 77 123 456 78
-              </span>
-              </li>
-              <li className="flex items-center space-x-3">
-                <Mail className="h-5 w-5 text-accent" />
-                <span className="text-sm">info@footballacademy.fr</span>
-              </li>
-            </ul>
+          <p className="text-neutral-400 leading-relaxed max-w-md mb-6">
+            Former les talents de demain dans l&apos;esprit Girona FC — passion,
+            discipline et excellence à Mbour Saly.
+          </p>
+          <div className="flex gap-3">
+            {[
+              { Icon: Facebook, href: "#" },
+              {
+                Icon: Instagram,
+                href: "https://www.instagram.com/academie_girona_fc_de_saly",
+              },
+              {
+                Icon: Youtube,
+                href: "https://www.youtube.com/@Acad%C3%A9mieGironafcdeSalyofficiel",
+              },
+            ].map(({ Icon, href }, i) => (
+              <a
+                key={i}
+                href={href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-primary hover:text-white transition-colors"
+              >
+                <Icon className="h-5 w-5" />
+              </a>
+            ))}
           </div>
         </div>
 
-        <div className="border-t border-border mt-8 pt-8 text-center text-muted-foreground">
-          <p>&copy; 2024 Académie Girona FC de Saly. Tous droits réservés.</p>
+        {Object.entries(footerLinks).map(([title, links]) => (
+          <div key={title} className="lg:col-span-2">
+            <h3 className="text-white font-semibold mb-4">{title}</h3>
+            <ul className="space-y-2">
+              {links.map((l) => (
+                <li key={l.to}>
+                  <Link
+                    to={l.to}
+                    className="text-neutral-400 hover:text-white transition-colors text-sm"
+                  >
+                    {l.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+        ))}
+
+        <div className="lg:col-span-3">
+          <h3 className="text-white font-semibold mb-4">Contact</h3>
+          <ul className="space-y-3 text-sm text-neutral-400">
+            <li className="flex gap-3">
+              <MapPin className="h-5 w-5 text-primary shrink-0" />
+              Mbour Saly, Sénégal
+            </li>
+            <li className="flex gap-3">
+              <Phone className="h-5 w-5 text-primary shrink-0" />
+              +221 77 123 45 67
+            </li>
+            <li className="flex gap-3">
+              <Mail className="h-5 w-5 text-primary shrink-0" />
+              contact@gironadesaly.com
+            </li>
+          </ul>
         </div>
       </div>
-    </footer>;
-};
+
+      <div className="mt-12 pt-8 border-t border-white/10 flex flex-col sm:flex-row justify-between gap-4 text-sm text-neutral-500">
+        <p>© {new Date().getFullYear()} Académie Girona FC de Saly. Tous droits réservés.</p>
+        <p className="text-primary/80 font-medium">Rouge & blanc · Força Girona</p>
+      </div>
+    </div>
+  </footer>
+);
+
 export default Footer;

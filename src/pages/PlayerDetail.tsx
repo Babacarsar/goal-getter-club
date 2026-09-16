@@ -1,11 +1,10 @@
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import { Button } from "@/components/ui/button";
+import { PageHero } from "@/components/layout/PageHero";
 import { Badge } from "@/components/ui/badge";
-import { useParams, Link } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
 import { apiUrl, resolveMediaUrl } from "@/lib/api";
-import { ArrowLeft } from "lucide-react";
 
 const PlayerDetail = () => {
   const { id } = useParams();
@@ -23,16 +22,18 @@ const PlayerDetail = () => {
   return (
     <div className="min-h-screen">
       <Header />
-      <main className="pt-20 pb-16">
+      {player && (
+        <PageHero
+          title={`${player.prenom} ${player.nom}`}
+          subtitle={[player.poste, player.categorie?.nom].filter(Boolean).join(" · ")}
+          backTo={player.categorie?.id ? `/categories/${player.categorie.id}` : "/categories"}
+          backLabel="Retour à l'effectif"
+        />
+      )}
+      <main className="pb-16 -mt-6">
         <div className="container mx-auto px-4 max-w-3xl">
-          <Button asChild variant="outline" size="sm" className="mb-6">
-            <Link to={player?.categorie?.id ? `/categories/${player.categorie.id}` : "/categories"}>
-              <ArrowLeft className="mr-2 h-4 w-4" /> Retour à l&apos;effectif
-            </Link>
-          </Button>
-
-          {isLoading && <p className="text-muted-foreground">Chargement…</p>}
-          {isError && <p className="text-destructive">Joueur introuvable.</p>}
+          {isLoading && <p className="text-muted-foreground pt-8">Chargement…</p>}
+          {isError && <p className="text-destructive pt-8">Joueur introuvable.</p>}
 
           {player && (
             <div className="bg-card rounded-2xl shadow-lg overflow-hidden border">
@@ -43,10 +44,7 @@ const PlayerDetail = () => {
               />
               <div className="p-8">
                 <Badge className="mb-3">{player.categorie?.nom ?? "Académie"}</Badge>
-                <h1 className="text-3xl md:text-4xl font-bold text-foreground mb-2">
-                  {player.prenom} {player.nom}
-                </h1>
-                <dl className="grid grid-cols-2 gap-4 mt-6 text-sm">
+                <dl className="grid grid-cols-2 gap-4 text-sm">
                   <div>
                     <dt className="text-muted-foreground">Poste</dt>
                     <dd className="font-semibold">{player.poste || "—"}</dd>

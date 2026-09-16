@@ -97,8 +97,8 @@ const CategoryDetail = () => {
         <div className="container mx-auto px-4">
           <h2 className="text-2xl font-bold text-foreground mb-6">Effectif</h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {players?.map((player, index) => (
-              <Card key={index} className="overflow-hidden hover:shadow-lg transition-shadow">
+            {players?.map((player) => (
+              <Card key={player.id} className="overflow-hidden hover:shadow-lg transition-shadow">
                 <img
                   src={getOptimizedImage(player.photo)}
                   alt={`${player.prenom} ${player.nom}`}
@@ -111,7 +111,10 @@ const CategoryDetail = () => {
                 </CardHeader>
                 <CardContent>
                   <p className="text-muted-foreground mb-1">Poste : {player.poste || "N/A"}</p>
-                  <p className="text-muted-foreground">Âge : {player.age ?? "Inconnu"} ans</p>
+                  <p className="text-muted-foreground mb-4">Âge : {player.age ?? "Inconnu"} ans</p>
+                  <Button asChild variant="outline" size="sm" className="w-full">
+                    <Link to={`/joueurs/${player.id}`}>Voir la fiche</Link>
+                  </Button>
                 </CardContent>
               </Card>
             ))}

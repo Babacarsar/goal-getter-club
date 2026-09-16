@@ -41,8 +41,8 @@ const LatestNews = () => {
     );
   }
 
-  const featuredNews = news[0];
-  const otherNews = news.slice(1, 4); // Limite à 4 actualités au total
+  const featuredNews = news.find((a: { a_la_une?: boolean }) => a.a_la_une) ?? news[0];
+  const otherNews = news.filter((a: { id: number }) => a.id !== featuredNews?.id).slice(0, 3);
 
   const handleImageLoad = (imageId: string, event: React.SyntheticEvent<HTMLImageElement>) => {
     const img = event.currentTarget;

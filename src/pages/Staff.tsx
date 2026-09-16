@@ -3,22 +3,23 @@ import Footer from "@/components/Footer";
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { useQuery } from "@tanstack/react-query";
+import { apiUrl, resolveMediaUrl } from "@/lib/api";
 
 const Staff = () => {
   const { data: staffMembers = [], isLoading } = useQuery({
     queryKey: ['staff'],
     queryFn: async () => {
-      const response = await fetch('https://gironafcsaly-production.up.railway.app/api/staff');
+      const response = await fetch(apiUrl("/api/staff"));
       if (!response.ok) throw new Error('Failed to fetch staff');
       return response.json();
     }
   });
 
-  const getOptimizedImage = (url) => {
-    if (!url) return "https://via.placeholder.com/400x250";
-    return url.includes("res.cloudinary.com")
-      ? `${url}?c_fill,w_400,h_300,f_auto,q_auto`
-      : url;
+  const getOptimizedImage = (url: string | null | undefined) => {
+    const resolved = resolveMediaUrl(url);
+    return resolved.includes("res.cloudinary.com")
+      ? `${resolved}?c_fill,w_400,h_300,f_auto,q_auto`
+      : resolved;
   };
 
   if (isLoading) {

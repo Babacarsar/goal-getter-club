@@ -1,11 +1,12 @@
 import { Card, CardContent } from "@/components/ui/card";
 import { useQuery } from "@tanstack/react-query";
+import { apiUrl, resolveMediaUrl } from "@/lib/api";
 
 const Coaches = () => {
   const { data: coaches = [], isLoading } = useQuery({
     queryKey: ['coaches'],
     queryFn: async () => {
-      const response = await fetch('https://gironafcsaly-production.up.railway.app/api/staff');
+      const response = await fetch(apiUrl("/api/staff"));
       if (!response.ok) throw new Error('Failed to fetch coaches');
       return response.json();
     }
@@ -35,11 +36,7 @@ const Coaches = () => {
             <Card key={index} className="overflow-hidden shadow-md hover:shadow-lg transition-all">
               <CardContent className="p-0">
                 <img
-                  src={
-  coach.photo
-    ? `https://gironafcsaly-production.up.railway.app/${coach.photo}`
-    : "https://via.placeholder.com/400x250"
-}
+                  src={resolveMediaUrl(coach.photo)}
 
                   alt={`${coach.prenom} ${coach.nom}`}
                     className="w-full h-85 object-cover"

@@ -4,6 +4,7 @@ import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Play, Image, ChevronLeft, ChevronRight } from "lucide-react";
+import { apiUrl } from "@/lib/api";
 
 const MediaGallery = () => {
   const [activeTab, setActiveTab] = useState("videos");
@@ -12,7 +13,7 @@ const MediaGallery = () => {
   const { data: media = [], isLoading } = useQuery({
     queryKey: ["media"],
     queryFn: async () => {
-      const res = await fetch("https://gironafcsaly-production.up.railway.app/api/media");
+      const res = await fetch(apiUrl("/api/media"));
       if (!res.ok) throw new Error("Erreur de chargement des médias");
       return res.json();
     },

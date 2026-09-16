@@ -13,13 +13,14 @@ import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
 import { Calendar } from "lucide-react";
 import { useQuery } from "@tanstack/react-query";
 import { useNavigate } from "react-router-dom";
+import { apiUrl } from "@/lib/api";
 
 const News = () => {
   const navigate = useNavigate();
   const { data: articles = [], isLoading } = useQuery({
     queryKey: ["news"],
     queryFn: async () => {
-      const response = await fetch("https://gironafcsaly-production.up.railway.app/api/actualites");
+      const response = await fetch(apiUrl("/api/actualites"));
       if (!response.ok) throw new Error("Failed to fetch news");
       return response.json();
     },

@@ -11,12 +11,13 @@ import { Button } from "@/components/ui/button";
 import { Users, Calendar, Trophy } from "lucide-react";
 import { Link } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
+import { apiUrl } from "@/lib/api";
 
 const Categories = () => {
   const { data: categories = [], isLoading: loadingCategories } = useQuery({
     queryKey: ['categories'],
     queryFn: async () => {
-      const response = await fetch('https://gironafcsaly-production.up.railway.app/api/categories');
+      const response = await fetch(apiUrl("/api/categories"));
       if (!response.ok) throw new Error('Failed to fetch categories');
       return response.json();
     }
@@ -25,7 +26,7 @@ const Categories = () => {
   const { data: joueurs = [], isLoading: loadingJoueurs } = useQuery({
     queryKey: ['joueurs'],
     queryFn: async () => {
-      const response = await fetch('https://gironafcsaly-production.up.railway.app/api/joueurs');
+      const response = await fetch(apiUrl("/api/joueurs"));
       if (!response.ok) throw new Error('Failed to fetch joueurs');
       return response.json();
     }
@@ -34,7 +35,7 @@ const Categories = () => {
   const { data: staff = [], isLoading: loadingStaff } = useQuery({
     queryKey: ['staff'],
     queryFn: async () => {
-      const response = await fetch('https://gironafcsaly-production.up.railway.app/api/staff');
+      const response = await fetch(apiUrl("/api/staff"));
       if (!response.ok) throw new Error('Failed to fetch staff');
       return response.json();
     }

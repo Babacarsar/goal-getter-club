@@ -6,12 +6,13 @@ import "swiper/css/navigation";
 import "swiper/css/pagination";
 import { Badge } from "@/components/ui/badge";
 import { Card } from "@/components/ui/card";
+import { apiUrl, resolveMediaUrl } from "@/lib/api";
 
 const SeniorTeamCarousel = () => {
   const { data: players = [], isLoading } = useQuery({
     queryKey: ['joueurs'],
     queryFn: async () => {
-      const res = await fetch('https://gironafcsaly-production.up.railway.app/api/joueurs');
+      const res = await fetch(apiUrl("/api/joueurs"));
       if (!res.ok) throw new Error("Erreur de chargement");
       return res.json();
     }
@@ -65,11 +66,7 @@ const SeniorTeamCarousel = () => {
             <SwiperSlide key={index}>
               <Card className="overflow-hidden shadow-md hover:shadow-lg transition-all">
                 <img
-                  src={
-                    player.photo
-                      ? `${player.photo}`
-                      : "https://via.placeholder.com/400x250"
-                  }
+                  src={resolveMediaUrl(player.photo)}
                   alt={`${player.prenom} ${player.nom}`}
                   className="w-full h-74 object-cover"
                 />

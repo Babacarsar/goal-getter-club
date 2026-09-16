@@ -5,6 +5,7 @@ import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
 import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
 import { Calendar, ArrowLeft } from "lucide-react";
+import { apiUrl } from "@/lib/api";
 
 const Article = () => {
   const { id } = useParams();
@@ -13,7 +14,7 @@ const Article = () => {
   const { data: articles = [], isLoading } = useQuery({
     queryKey: ["actualites"],
     queryFn: async () => {
-      const response = await fetch("https://gironafcsaly-production.up.railway.app/api/actualites");
+      const response = await fetch(apiUrl("/api/actualites"));
       if (!response.ok) throw new Error("Failed to fetch news");
       return response.json();
     },

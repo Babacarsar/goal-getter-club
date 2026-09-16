@@ -4,6 +4,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { useParams, Link } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
+import { apiUrl, resolveMediaUrl } from "@/lib/api";
 
 const CategoryDetail = () => {
   const { categoryId } = useParams();
@@ -11,7 +12,7 @@ const CategoryDetail = () => {
   const { data: category, isLoading: loadingCat } = useQuery({
     queryKey: ["category", categoryId],
     queryFn: async () => {
-      const res = await fetch(`https://gironafcsaly-production.up.railway.app/api/categories/${categoryId}`);
+      const res = await fetch(apiUrl(`/api/categories/${categoryId}`));
       if (!res.ok) throw new Error("Failed to fetch category");
       return res.json();
     },
@@ -21,7 +22,7 @@ const CategoryDetail = () => {
   const { data: allPlayers, isLoading: loadingPlayers } = useQuery({
     queryKey: ["joueurs"],
     queryFn: async () => {
-      const res = await fetch(`https://gironafcsaly-production.up.railway.app/api/joueurs`);
+      const res = await fetch(apiUrl("/api/joueurs"));
       if (!res.ok) throw new Error("Failed to fetch players");
       return res.json();
     },
@@ -31,11 +32,11 @@ const CategoryDetail = () => {
     (p) => p.categorie?.id?.toString() === categoryId
   );
 
-  const getOptimizedImage = (url) => {
-    if (!url) return "https://via.placeholder.com/400x250";
-    return url.includes("res.cloudinary.com")
-      ? `${url}?c_fill,w_400,h_250,f_auto,q_auto`
-      : url;
+  const getOptimizedImage = (url: string | null | undefined) => {
+    const resolved = resolveMediaUrl(url);
+    return resolved.includes("res.cloudinary.com")
+      ? `${resolved}?c_fill,w_400,h_250,f_auto,q_auto`
+      : resolved;
   };
 
   if (loadingCat || loadingPlayers) {

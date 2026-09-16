@@ -1,5 +1,6 @@
 /** Base URL of the Laravel API (no trailing slash). */
-const DEFAULT_API_URL = "https://gironafcsaly-production.up.railway.app";
+const DEFAULT_API_URL =
+  "https://gironafcsaly-production-9141.up.railway.app";
 
 export const API_BASE_URL = (
   import.meta.env.VITE_API_URL || DEFAULT_API_URL

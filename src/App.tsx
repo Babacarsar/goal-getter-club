@@ -12,6 +12,9 @@ import News from "./pages/News";
 import Article from "./pages/Article";
 import Shop from "./pages/Shop";
 import ContactPage from "./pages/Contact";
+import CalendarPage from "./pages/Calendar";
+import InscriptionPage from "./pages/Inscription";
+import PlayerDetail from "./pages/PlayerDetail";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -32,6 +35,9 @@ const App = () => (
           <Route path="/article/:id" element={<Article />} />
           <Route path="/shop" element={<Shop />} />
           <Route path="/contact" element={<ContactPage />} />
+          <Route path="/calendrier" element={<CalendarPage />} />
+          <Route path="/inscription" element={<InscriptionPage />} />
+          <Route path="/joueurs/:id" element={<PlayerDetail />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>

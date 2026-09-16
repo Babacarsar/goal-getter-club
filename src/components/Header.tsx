@@ -44,6 +44,12 @@ const Header = () => {
             <Link to="/news" className="text-foreground hover:text-primary transition-colors">
               Actualités
             </Link>
+            <Link to="/calendrier" className="text-foreground hover:text-primary transition-colors">
+              Calendrier
+            </Link>
+            <Link to="/inscription" className="text-foreground hover:text-primary transition-colors">
+              Inscription
+            </Link>
             <Link to="/shop" className="text-foreground hover:text-primary transition-colors">
               Boutique
             </Link>
@@ -81,6 +87,12 @@ const Header = () => {
         
               <Link to="/news" className="text-foreground hover:text-primary transition-colors" onClick={() => setIsMenuOpen(false)}>
                 Actualités
+              </Link>
+              <Link to="/calendrier" className="text-foreground hover:text-primary transition-colors" onClick={() => setIsMenuOpen(false)}>
+                Calendrier
+              </Link>
+              <Link to="/inscription" className="text-foreground hover:text-primary transition-colors" onClick={() => setIsMenuOpen(false)}>
+                Inscription
               </Link>
               <Link to="/shop" className="text-foreground hover:text-primary transition-colors" onClick={() => setIsMenuOpen(false)}>
                 Boutique

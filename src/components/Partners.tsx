@@ -1,32 +1,17 @@
 import { Badge } from "@/components/ui/badge";
+import { useQuery } from "@tanstack/react-query";
+import { Link } from "react-router-dom";
+import { apiUrl } from "@/lib/api";
 
 const Partners = () => {
-  const partners = [
-    {
-      id: 1,
-      name: "Girona FC",
-      logo: "/logo.png",
-      description: "Club partenaire principal"
+  const { data: partners = [], isLoading } = useQuery({
+    queryKey: ["partenaires"],
+    queryFn: async () => {
+      const res = await fetch(apiUrl("/api/partenaires"));
+      if (!res.ok) throw new Error("Partenaires");
+      return res.json();
     },
-    {
-      id: 2,
-      name: "Nike",
-      logo: "https://logos-world.net/wp-content/uploads/2020/04/Nike-Logo.png",
-      description: "Équipementier officiel"
-    },
-    {
-      id: 3,
-      name: "Coca-Cola",
-      logo: "https://logoeps.com/wp-content/uploads/2013/03/coca-cola-vector-logo.png",
-      description: "Partenaire boisson"
-    },
-    {
-      id: 4,
-      name: "Orange",
-      logo: "https://1000logos.net/wp-content/uploads/2017/04/Orange-Logo.png",
-      description: "Partenaire télécommunication"
-    }
-  ];
+  });
 
   return (
     <section className="py-20 bg-secondary/20">
@@ -38,41 +23,45 @@ const Partners = () => {
           <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-6">
             Ils nous font confiance
           </h2>
-          <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-            Découvrez les entreprises et organisations qui soutiennent notre académie
-          </p>
         </div>
 
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-8 max-w-5xl mx-auto">
-          {partners.map((partner) => (
-            <div key={partner.id} className="flex flex-col items-center group">
-              <div className="w-32 h-32 bg-white rounded-xl shadow-md flex items-center justify-center p-4 group-hover:shadow-lg transition-shadow duration-300">
-                <img
-                  src={partner.logo}
-                  alt={partner.name}
-                  className="max-w-full max-h-full object-contain filter group-hover:scale-110 transition-transform duration-300"
-                />
-              </div>
-              <h3 className="text-lg font-semibold text-foreground mt-4 text-center">
-                {partner.name}
-              </h3>
-              <p className="text-sm text-muted-foreground text-center mt-2">
-                {partner.description}
-              </p>
-            </div>
-          ))}
-        </div>
+        {isLoading ? (
+          <p className="text-center text-muted-foreground">Chargement…</p>
+        ) : partners.length === 0 ? (
+          <p className="text-center text-muted-foreground">Partenaires à venir.</p>
+        ) : (
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 max-w-5xl mx-auto">
+            {partners.map((partner: { id: number; nom: string; logo: string; description?: string; url?: string }) => {
+              const inner = (
+                <>
+                  <div className="w-32 h-32 bg-white rounded-xl shadow-md flex items-center justify-center p-4 group-hover:shadow-lg transition-shadow duration-300">
+                    <img
+                      src={partner.logo}
+                      alt={partner.nom}
+                      className="max-w-full max-h-full object-contain filter group-hover:scale-110 transition-transform duration-300"
+                    />
+                  </div>
+                  <h3 className="text-lg font-semibold text-foreground mt-4 text-center">{partner.nom}</h3>
+                  {partner.description && (
+                    <p className="text-sm text-muted-foreground text-center mt-2">{partner.description}</p>
+                  )}
+                </>
+              );
+              return partner.url ? (
+                <a key={partner.id} href={partner.url} target="_blank" rel="noopener noreferrer" className="flex flex-col items-center group">
+                  {inner}
+                </a>
+              ) : (
+                <div key={partner.id} className="flex flex-col items-center group">{inner}</div>
+              );
+            })}
+          </div>
+        )}
 
         <div className="text-center mt-16">
-          <p className="text-lg text-muted-foreground mb-6">
-            Vous souhaitez intégrer notre équipe ?
-          </p>
-          <a 
-            href="/contact" 
-            className="inline-flex items-center px-6 py-3 bg-primary text-white rounded-lg hover:bg-primary/90 transition-colors font-medium"
-          >
+          <Link to="/contact" className="inline-flex items-center px-6 py-3 bg-primary text-white rounded-lg hover:bg-primary/90 transition-colors font-medium">
             Contactez-nous
-          </a>
+          </Link>
         </div>
       </div>
     </section>

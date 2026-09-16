@@ -125,9 +125,10 @@ const Article = () => {
             {/* Contenu de l'article */}
             <div className="bg-card rounded-md sm:rounded-lg md:rounded-xl shadow-sm sm:shadow-md md:shadow-lg p-3 sm:p-4 md:p-6 lg:p-8 xl:p-10 mx-2 sm:mx-0">
               <div className="prose prose-sm sm:prose-base md:prose-lg lg:prose-xl max-w-none">
-                <div className="text-sm sm:text-base md:text-lg lg:text-xl leading-relaxed sm:leading-loose text-foreground whitespace-pre-line font-light">
-                  {article.contenu}
-                </div>
+                <div
+                  className="text-sm sm:text-base md:text-lg lg:text-xl leading-relaxed sm:leading-loose text-foreground font-light prose prose-neutral max-w-none [&_a]:text-primary"
+                  dangerouslySetInnerHTML={{ __html: article.contenu }}
+                />
               </div>
             </div>
           </article>

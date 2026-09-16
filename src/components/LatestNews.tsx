@@ -7,6 +7,7 @@ import { useQuery } from "@tanstack/react-query";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { apiUrl } from "@/lib/api";
+import { stripHtml } from "@/lib/html";
 
 const LatestNews = () => {
   const navigate = useNavigate();
@@ -108,7 +109,7 @@ const LatestNews = () => {
                   {featuredNews.titre}
                 </h3>
                 <p className="text-muted-foreground text-sm mb-3 line-clamp-3">
-                  {featuredNews.contenu}
+                  {stripHtml(featuredNews.contenu)}
                 </p>
                 <div className="flex items-center gap-2 text-xs text-muted-foreground mb-4">
                   <Calendar className="w-4 h-4" />
@@ -161,7 +162,7 @@ const LatestNews = () => {
                   {article.titre}
                 </h3>
                 <p className="text-xs text-muted-foreground line-clamp-2 mb-2">
-                  {article.contenu}
+                  {stripHtml(article.contenu)}
                 </p>
                 <div className="flex items-center gap-1 text-[11px] text-muted-foreground mb-3">
                   <Calendar className="w-3 h-3" />

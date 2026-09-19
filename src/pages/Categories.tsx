@@ -8,10 +8,11 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { Users, Calendar, Trophy } from "lucide-react";
+import { Users, Calendar, Trophy, User } from "lucide-react";
 import { Link } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
-import { apiUrl } from "@/lib/api";
+import { apiUrl, resolveMediaUrl } from "@/lib/api";
+import { hasPlayerPhoto } from "@/components/PlayerPhoto";
 import { PageHero } from "@/components/layout/PageHero";
 
 const Categories = () => {
@@ -70,8 +71,35 @@ const Categories = () => {
                   s => s.role?.toLowerCase() === "entraineur" && s.categorie_id === category.id
                 );
 
+                const coachName = coach
+                  ? `${coach.prenom} ${coach.nom}`
+                  : "Entraîneur";
+
                 return (
-                  <Card key={category.id} className="card-hover-lift border-border/80 shadow-md">
+                  <Card key={category.id} className="card-hover-lift overflow-hidden border-border/80 shadow-md">
+                    <div className="relative aspect-[4/3] w-full bg-muted">
+                      {coach && hasPlayerPhoto(coach.photo) ? (
+                        <img
+                          src={resolveMediaUrl(coach.photo)}
+                          alt={`Coach ${coachName} — ${category.nom}`}
+                          className="h-full w-full object-cover object-top"
+                        />
+                      ) : (
+                        <div
+                          className="flex h-full w-full flex-col items-center justify-center gap-2 bg-gradient-to-br from-primary/15 via-muted to-primary/5 text-muted-foreground"
+                          role="img"
+                          aria-label={`Photo coach — ${category.nom}`}
+                        >
+                          <User className="h-14 w-14 text-primary/40" strokeWidth={1.25} aria-hidden />
+                          <span className="text-sm">Photo à venir</span>
+                        </div>
+                      )}
+                      {coach && (
+                        <p className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/75 to-transparent px-4 pb-3 pt-8 text-sm font-medium text-white">
+                          Coach · {coachName}
+                        </p>
+                      )}
+                    </div>
                     <CardHeader>
                       <CardTitle className="text-2xl text-primary">{category.nom}</CardTitle>
                       <CardDescription className="text-muted-foreground">
@@ -86,12 +114,14 @@ const Categories = () => {
                           <Users className="h-4 w-4 text-primary" />
                           <span className="text-sm">{joueurCount} joueur{joueurCount > 1 ? "s" : ""}</span>
                         </div>
-                        <div className="flex items-center gap-2">
-                          <Calendar className="h-4 w-4 text-primary" />
-                          <span className="text-sm">
-                            Coach : {coach ? `${coach.prenom} ${coach.nom}` : "Non défini"}
-                          </span>
-                        </div>
+                        {(!coach || !hasPlayerPhoto(coach.photo)) && (
+                          <div className="flex items-center gap-2">
+                            <Calendar className="h-4 w-4 text-primary" />
+                            <span className="text-sm">
+                              Coach : {coach ? coachName : "Non défini"}
+                            </span>
+                          </div>
+                        )}
                         <div className="flex items-center gap-2">
                           <Trophy className="h-4 w-4 text-primary" />
                           <span className="text-sm">{category.achievements ?? "—"}</span>

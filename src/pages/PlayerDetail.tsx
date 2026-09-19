@@ -4,7 +4,8 @@ import { PageHero } from "@/components/layout/PageHero";
 import { Badge } from "@/components/ui/badge";
 import { useParams } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
-import { apiUrl, resolveMediaUrl } from "@/lib/api";
+import { apiUrl } from "@/lib/api";
+import { PlayerPhoto } from "@/components/PlayerPhoto";
 
 const PlayerDetail = () => {
   const { id } = useParams();
@@ -37,10 +38,12 @@ const PlayerDetail = () => {
 
           {player && (
             <div className="bg-card rounded-2xl shadow-lg overflow-hidden border">
-              <img
-                src={resolveMediaUrl(player.photo)}
-                alt={`${player.prenom} ${player.nom}`}
-                className="w-full h-80 object-cover"
+              <PlayerPhoto
+                photo={player.photo}
+                prenom={player.prenom}
+                nom={player.nom}
+                className="w-full h-80"
+                optimizeCloudinary
               />
               <div className="p-8">
                 <Badge className="mb-3">{player.categorie?.nom ?? "Académie"}</Badge>

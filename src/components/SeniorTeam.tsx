@@ -7,7 +7,8 @@ import "swiper/css/pagination";
 import { Badge } from "@/components/ui/badge";
 import { Card } from "@/components/ui/card";
 import { SectionHeader } from "@/components/layout/SectionHeader";
-import { apiUrl, resolveMediaUrl } from "@/lib/api";
+import { apiUrl } from "@/lib/api";
+import { PlayerPhoto } from "@/components/PlayerPhoto";
 import { Link } from "react-router-dom";
 
 const SeniorTeamCarousel = () => {
@@ -62,10 +63,12 @@ const SeniorTeamCarousel = () => {
             <SwiperSlide key={player.id}>
               <Link to={`/joueurs/${player.id}`} className="block h-full">
                 <Card className="overflow-hidden border-0 shadow-lg card-hover-lift h-full">
-                  <img
-                    src={resolveMediaUrl(player.photo)}
-                    alt={`${player.prenom} ${player.nom}`}
-                    className="w-full h-72 object-cover"
+                  <PlayerPhoto
+                    photo={player.photo}
+                    prenom={player.prenom}
+                    nom={player.nom}
+                    className="w-full h-72"
+                    optimizeCloudinary
                   />
                   <div className="p-5">
                     <h3 className="text-xl font-bold text-foreground mb-1">

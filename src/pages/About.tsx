@@ -21,7 +21,7 @@ const About = () => {
           aria-hidden
         />
 
-        <div className="absolute inset-x-0 top-[34%] sm:top-[36%] md:top-[38%] lg:top-[40%] z-10 px-4 sm:px-6 text-center">
+        <div className="absolute inset-x-0 top-[42%] sm:top-[44%] md:top-[46%] lg:top-[48%] z-10 px-4 sm:px-6 text-center">
           <div className="mx-auto max-w-2xl animate-fade-in-up">
             <p className="mb-2 text-xs sm:text-sm font-semibold uppercase tracking-[0.25em] text-white/80">
               Girona de Saly

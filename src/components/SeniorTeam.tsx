@@ -41,7 +41,7 @@ const SeniorTeamCarousel = () => {
         <SectionHeader
           eyebrow="Effectif"
           title="Nos Lions de Saly"
-          description="Découvrez les talents de l'équipe U20 et leurs parcours au sein de l'académie."
+          description="Découvrez les talents de l'équipe Senior et leurs parcours au sein de l'académie."
         />
 
         <Swiper

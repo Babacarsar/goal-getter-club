@@ -9,31 +9,32 @@ const About = () => {
       <Header />
       
       {/* Hero Section with Team Photo */}
-<section className="relative flex min-h-[420px] h-[55vh] sm:h-[60vh] md:h-[65vh] items-center justify-center overflow-hidden">
-  <img
-    src={teamPhoto}
-    alt="Président fondateur — Académie Girona FC de Saly"
-    className="absolute inset-0 h-full w-full object-cover object-[50%_0%] sm:object-[50%_6%] md:object-[50%_12%]"
-    fetchPriority="high"
-  />
-  <div className="absolute inset-0 bg-black/50" aria-hidden />
+      <section className="relative min-h-[420px] h-[55vh] sm:h-[60vh] md:h-[65vh] overflow-hidden">
+        <img
+          src={teamPhoto}
+          alt="Président fondateur — Académie Girona FC de Saly"
+          className="absolute inset-0 h-full w-full object-cover object-[50%_0%] sm:object-[50%_6%] md:object-[50%_12%]"
+          fetchPriority="high"
+        />
+        <div
+          className="absolute inset-0 bg-gradient-to-b from-black/20 via-black/35 to-black/70"
+          aria-hidden
+        />
 
-  <div className="relative container mx-auto px-4 sm:px-6 lg:px-8 text-center text-white z-10 py-16 sm:py-20">
-    <div className="max-w-5xl mx-auto">
-      <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold mb-4 sm:mb-6 md:mb-8 animate-fade-in leading-tight">
-        <span className="block gradient-sky bg-clip-text text-transparent mb-2 sm:mb-4">
-          Girona de Saly
-        </span>
-        <span className="text-xl sm:text-2xl md:text-3xl lg:text-4xl">
-          Notre Histoire
-        </span>
-      </h1>
-      <p className="text-base sm:text-lg md:text-xl lg:text-2xl text-white/90 max-w-4xl mx-auto px-4">
-        Plus qu'un club, une famille unie par la passion du football depuis 2010
-      </p>
-    </div>
-  </div>
-</section>
+        <div className="absolute inset-x-0 top-[34%] sm:top-[36%] md:top-[38%] lg:top-[40%] z-10 px-4 sm:px-6 text-center">
+          <div className="mx-auto max-w-2xl animate-fade-in-up">
+            <p className="mb-2 text-xs sm:text-sm font-semibold uppercase tracking-[0.25em] text-white/80">
+              Girona de Saly
+            </p>
+            <h1 className="font-display text-4xl sm:text-5xl md:text-6xl lg:text-[3.25rem] font-semibold italic leading-[1.1] text-white [text-shadow:0_2px_24px_rgba(0,0,0,0.45)]">
+              Notre Histoire
+            </h1>
+            <p className="mt-4 sm:mt-5 text-sm sm:text-base md:text-lg font-medium leading-relaxed text-white/95 max-w-lg mx-auto [text-shadow:0_1px_12px_rgba(0,0,0,0.5)]">
+              Plus qu&apos;un club, une famille unie par la passion du football depuis 2010
+            </p>
+          </div>
+        </div>
+      </section>
       {/* À Propos Section */}
       <section className="py-20 bg-background">
         <div className="container mx-auto px-4">

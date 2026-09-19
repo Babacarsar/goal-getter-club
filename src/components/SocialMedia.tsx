@@ -1,4 +1,23 @@
+import { Facebook, Instagram, Youtube } from "lucide-react";
 import { Button } from "@/components/ui/button";
+
+const socialLinks = [
+  {
+    label: "Instagram",
+    href: "https://www.instagram.com/academie_girona_fc_de_saly?igsh=OXBnOWlpbmw3dG02",
+    Icon: Instagram,
+  },
+  {
+    label: "Facebook",
+    href: "#",
+    Icon: Facebook,
+  },
+  {
+    label: "YouTube",
+    href: "https://www.youtube.com/@Acad%C3%A9mieGironafcdeSalyofficiel/videos",
+    Icon: Youtube,
+  },
+] as const;
 
 const SocialMedia = () => {
   return (
@@ -12,22 +31,25 @@ const SocialMedia = () => {
             <p className="text-muted-foreground mb-6">
               Ne manquez aucun moment fort de la vie du club
             </p>
-            <div className="flex justify-center space-x-4">
-               <a
-                href="https://www.instagram.com/academie_girona_fc_de_saly?igsh=OXBnOWlpbmw3dG02"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-              <Button variant="outline" size="sm">Instagram</Button>
-              </a>
-              <Button variant="outline" size="sm">Facebook</Button>
-              <a
-                href="https://www.youtube.com/@Acad%C3%A9mieGironafcdeSalyofficiel/videos"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <Button variant="outline" size="sm">YouTube</Button>
-              </a>
+            <div className="flex justify-center gap-4">
+              {socialLinks.map(({ label, href, Icon }) => (
+                <a
+                  key={label}
+                  href={href}
+                  target={href === "#" ? undefined : "_blank"}
+                  rel={href === "#" ? undefined : "noopener noreferrer"}
+                  aria-label={label}
+                >
+                  <Button
+                    variant="outline"
+                    size="icon"
+                    className="h-12 w-12 rounded-full bg-background shadow-sm hover:bg-primary hover:text-primary-foreground hover:border-primary transition-colors"
+                  >
+                    <Icon className="h-6 w-6" aria-hidden />
+                    <span className="sr-only">{label}</span>
+                  </Button>
+                </a>
+              ))}
             </div>
           </div>
         </div>

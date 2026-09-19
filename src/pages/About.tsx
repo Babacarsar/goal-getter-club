@@ -13,7 +13,7 @@ const About = () => {
   <img
     src={teamPhoto}
     alt="Président fondateur — Académie Girona FC de Saly"
-    className="absolute inset-0 h-full w-full object-cover object-[50%_18%] sm:object-[50%_24%] md:object-[50%_30%]"
+    className="absolute inset-0 h-full w-full object-cover object-[50%_26%] sm:object-[50%_32%] md:object-[50%_38%]"
     fetchPriority="high"
   />
   <div className="absolute inset-0 bg-black/50" aria-hidden />

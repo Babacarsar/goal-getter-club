@@ -9,16 +9,20 @@ type PlayerPhotoProps = {
   className?: string;
   /** Apply Cloudinary crop/transform when URL is from Cloudinary */
   optimizeCloudinary?: boolean;
+  /** Cloudinary crop ratio when optimizeCloudinary is true */
+  cloudinaryCrop?: "landscape" | "portrait";
 };
 
 export function hasPlayerPhoto(photo?: string | null): boolean {
   return typeof photo === "string" && photo.trim().length > 0;
 }
 
-function cloudinaryThumb(url: string): string {
-  return url.includes("res.cloudinary.com")
-    ? `${url}?c_fill,w_400,h_250,f_auto,q_auto`
-    : url;
+function cloudinaryThumb(url: string, crop: "landscape" | "portrait"): string {
+  if (!url.includes("res.cloudinary.com")) return url;
+  if (crop === "portrait") {
+    return `${url}?c_fill,g_face,w_720,h_960,f_auto,q_auto`;
+  }
+  return `${url}?c_fill,w_400,h_250,f_auto,q_auto`;
 }
 
 export function PlayerPhoto({
@@ -27,6 +31,7 @@ export function PlayerPhoto({
   nom,
   className,
   optimizeCloudinary = false,
+  cloudinaryCrop = "landscape",
 }: PlayerPhotoProps) {
   const alt = [prenom, nom].filter(Boolean).join(" ") || "Joueur";
 
@@ -49,8 +54,18 @@ export function PlayerPhoto({
 
   let src = resolveMediaUrl(photo);
   if (optimizeCloudinary) {
-    src = cloudinaryThumb(src);
+    src = cloudinaryThumb(src, cloudinaryCrop);
   }
 
-  return <img src={src} alt={alt} className={cn("object-cover", className)} />;
+  return (
+    <img
+      src={src}
+      alt={alt}
+      className={cn(
+        "object-cover",
+        cloudinaryCrop === "portrait" && "object-top",
+        className
+      )}
+    />
+  );
 }

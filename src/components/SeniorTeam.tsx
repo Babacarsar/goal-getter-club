@@ -46,12 +46,14 @@ const SeniorTeamCarousel = () => {
 
         <Swiper
           modules={[Navigation, Pagination, Autoplay]} // ✅ ajout d’Autoplay
-          spaceBetween={30}
+          className="senior-players-swiper !pb-14"
+          spaceBetween={24}
           slidesPerView={1}
+          centeredSlides
           breakpoints={{
-            640: { slidesPerView: 1 },
-            768: { slidesPerView: 2 },
-            1024: { slidesPerView: 3 },
+            640: { slidesPerView: 1.05, centeredSlides: true, spaceBetween: 28 },
+            768: { slidesPerView: 2, centeredSlides: false, spaceBetween: 32 },
+            1280: { slidesPerView: 2, spaceBetween: 40 },
           }}
           autoplay={{
             delay: 4000, // ✅ défilement toutes les 3s
@@ -63,16 +65,17 @@ const SeniorTeamCarousel = () => {
           {seniorPlayers.map((player) => (
             <SwiperSlide key={player.id}>
               <Link to={`/joueurs/${player.id}`} className="block h-full">
-                <Card className="overflow-hidden border-0 shadow-lg card-hover-lift h-full">
+                <Card className="mx-auto w-full max-w-md overflow-hidden border-0 shadow-lg card-hover-lift h-full">
                   <PlayerPhoto
                     photo={player.photo}
                     prenom={player.prenom}
                     nom={player.nom}
-                    className="w-full h-72"
+                    className="w-full aspect-[3/4] min-h-[22rem] sm:min-h-[26rem]"
                     optimizeCloudinary
+                    cloudinaryCrop="portrait"
                   />
-                  <div className="p-5">
-                    <h3 className="text-xl font-bold text-foreground mb-1">
+                  <div className="p-6">
+                    <h3 className="text-2xl font-bold text-foreground mb-1">
                       {player.prenom} {player.nom}
                     </h3>
                     <p className="text-primary font-semibold mb-3">{player.poste}</p>

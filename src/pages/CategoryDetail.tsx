@@ -5,7 +5,8 @@ import { Button } from "@/components/ui/button";
 import { useParams, Link } from "react-router-dom";
 import { PageHero } from "@/components/layout/PageHero";
 import { useQuery } from "@tanstack/react-query";
-import { apiUrl, resolveMediaUrl } from "@/lib/api";
+import { apiUrl } from "@/lib/api";
+import { PlayerPhoto } from "@/components/PlayerPhoto";
 
 const CategoryDetail = () => {
   const { categoryId } = useParams();
@@ -32,13 +33,6 @@ const CategoryDetail = () => {
   const players = allPlayers?.filter(
     (p) => p.categorie?.id?.toString() === categoryId
   );
-
-  const getOptimizedImage = (url: string | null | undefined) => {
-    const resolved = resolveMediaUrl(url);
-    return resolved.includes("res.cloudinary.com")
-      ? `${resolved}?c_fill,w_400,h_250,f_auto,q_auto`
-      : resolved;
-  };
 
   if (loadingCat || loadingPlayers) {
     return (
@@ -95,10 +89,12 @@ const CategoryDetail = () => {
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {players?.map((player) => (
               <Card key={player.id} className="overflow-hidden hover:shadow-lg transition-shadow">
-                <img
-                  src={getOptimizedImage(player.photo)}
-                  alt={`${player.prenom} ${player.nom}`}
-                  className="w-full h-76 object-cover"
+                <PlayerPhoto
+                  photo={player.photo}
+                  prenom={player.prenom}
+                  nom={player.nom}
+                  className="w-full h-76"
+                  optimizeCloudinary
                 />
                 <CardHeader>
                   <CardTitle className="text-primary">

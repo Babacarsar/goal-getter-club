@@ -102,8 +102,7 @@ const CategoryDetail = () => {
                   </CardTitle>
                 </CardHeader>
                 <CardContent>
-                  <p className="text-muted-foreground mb-1">Poste : {player.poste || "N/A"}</p>
-                  <p className="text-muted-foreground mb-4">Âge : {player.age ?? "Inconnu"} ans</p>
+                  <p className="text-muted-foreground mb-4">Poste : {player.poste || "N/A"}</p>
                   <Button asChild variant="outline" size="sm" className="w-full">
                     <Link to={`/joueurs/${player.id}`}>Voir la fiche</Link>
                   </Button>

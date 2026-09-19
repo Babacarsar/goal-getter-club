@@ -21,9 +21,10 @@ const SeniorTeamCarousel = () => {
     }
   });
 
-  const seniorPlayers = players.filter(
-    (player) => player.categorie?.nom?.toLowerCase() === "u20"
-  );
+  const seniorPlayers = players.filter((player) => {
+    const cat = player.categorie?.nom?.toLowerCase() ?? "";
+    return cat === "senior" || cat === "seniors" || cat === "u20";
+  });
 
   if (isLoading) {
     return (
@@ -74,10 +75,7 @@ const SeniorTeamCarousel = () => {
                     <h3 className="text-xl font-bold text-foreground mb-1">
                       {player.prenom} {player.nom}
                     </h3>
-                    <p className="text-primary font-semibold mb-1">{player.poste}</p>
-                    <p className="text-sm text-muted-foreground mb-3">
-                      {player.age ? `${player.age} ans` : ""}
-                    </p>
+                    <p className="text-primary font-semibold mb-3">{player.poste}</p>
                     {player.categorie?.nom && (
                       <Badge className="bg-primary text-primary-foreground">
                         {player.categorie.nom}

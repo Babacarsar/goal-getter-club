@@ -47,14 +47,10 @@ const PlayerDetail = () => {
               />
               <div className="p-8">
                 <Badge className="mb-3">{player.categorie?.nom ?? "Académie"}</Badge>
-                <dl className="grid grid-cols-2 gap-4 text-sm">
+                <dl className="grid grid-cols-1 gap-4 text-sm">
                   <div>
                     <dt className="text-muted-foreground">Poste</dt>
                     <dd className="font-semibold">{player.poste || "—"}</dd>
-                  </div>
-                  <div>
-                    <dt className="text-muted-foreground">Âge</dt>
-                    <dd className="font-semibold">{player.age ? `${player.age} ans` : "—"}</dd>
                   </div>
                 </dl>
               </div>

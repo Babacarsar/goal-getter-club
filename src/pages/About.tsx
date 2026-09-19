@@ -9,13 +9,14 @@ const About = () => {
       <Header />
       
       {/* Hero Section with Team Photo */}
-<section className="relative h-[50vh] sm:h-[60vh] md:h-[70vh] lg:h-[80vh] flex items-center justify-center overflow-hidden">
-  <div 
-    className="absolute inset-0 bg-cover bg-[center_80%] bg-no-repeat"
-    style={{ backgroundImage: `url(${teamPhoto})` }}
-  >
-    <div className="absolute inset-0 bg-black/50" />
-  </div>
+<section className="relative flex min-h-[420px] h-[55vh] sm:h-[60vh] md:h-[65vh] items-center justify-center overflow-hidden">
+  <img
+    src={teamPhoto}
+    alt="Président fondateur — Académie Girona FC de Saly"
+    className="absolute inset-0 h-full w-full object-cover object-[50%_18%] sm:object-[50%_24%] md:object-[50%_30%]"
+    fetchPriority="high"
+  />
+  <div className="absolute inset-0 bg-black/50" aria-hidden />
 
   <div className="relative container mx-auto px-4 sm:px-6 lg:px-8 text-center text-white z-10 py-16 sm:py-20">
     <div className="max-w-5xl mx-auto">

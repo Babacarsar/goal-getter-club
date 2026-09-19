@@ -42,12 +42,12 @@ const Header = () => {
           <Link to="/" className="flex items-center gap-3 group shrink-0">
             <img
               src="/logo.png"
-              alt="Girona de Saly"
+              alt="Girona FC de Saly"
               className="w-11 h-11 md:w-12 md:h-12 object-cover rounded-full ring-2 ring-primary/20 group-hover:ring-primary/50 transition-all"
             />
             <div className="hidden sm:block leading-tight">
               <span className="block text-sm font-bold text-primary tracking-tight">
-                Girona de Saly
+                Girona FC de Saly
               </span>
               <span className="block text-[11px] text-muted-foreground font-medium">
                 Académie officielle

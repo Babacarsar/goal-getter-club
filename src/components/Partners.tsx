@@ -28,15 +28,21 @@ const Partners = () => {
           <p className="text-center text-muted-foreground">Partenaires à venir.</p>
         ) : (
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8 max-w-5xl mx-auto">
-            {partners.map((partner: { id: number; nom: string; logo: string; url?: string }) => {
+            {partners.map((partner: { id: number; nom: string; logo: string; description?: string; url?: string }) => {
               const inner = (
-                <div className="w-32 h-32 bg-white rounded-xl shadow-md flex items-center justify-center p-4 group-hover:shadow-lg transition-shadow duration-300">
-                  <img
-                    src={partner.logo}
-                    alt={partner.nom}
-                    className="max-w-full max-h-full object-contain filter group-hover:scale-110 transition-transform duration-300"
-                  />
-                </div>
+                <>
+                  <div className="w-32 h-32 bg-white rounded-xl shadow-md flex items-center justify-center p-4 group-hover:shadow-lg transition-shadow duration-300">
+                    <img
+                      src={partner.logo}
+                      alt={partner.nom}
+                      className="max-w-full max-h-full object-contain filter group-hover:scale-110 transition-transform duration-300"
+                    />
+                  </div>
+                  <h3 className="text-lg font-semibold text-foreground mt-4 text-center">{partner.nom}</h3>
+                  {partner.description && (
+                    <p className="text-sm text-muted-foreground text-center mt-2">{partner.description}</p>
+                  )}
+                </>
               );
               return partner.url ? (
                 <a key={partner.id} href={partner.url} target="_blank" rel="noopener noreferrer" className="flex flex-col items-center group">

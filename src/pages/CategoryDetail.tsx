@@ -1,7 +1,15 @@
+import { useMemo, useState } from "react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 import { useParams, Link } from "react-router-dom";
 import { PageHero } from "@/components/layout/PageHero";
 import { useQuery } from "@tanstack/react-query";
@@ -10,15 +18,15 @@ import { PlayerPhoto } from "@/components/PlayerPhoto";
 
 const CategoryDetail = () => {
   const { categoryId } = useParams();
+  const [posteFilter, setPosteFilter] = useState<string>("all");
 
-  const { data: category, isLoading: loadingCat } = useQuery({
-    queryKey: ["category", categoryId],
+  const { data: categories = [], isLoading: loadingCat } = useQuery({
+    queryKey: ["categories"],
     queryFn: async () => {
-      const res = await fetch(apiUrl(`/api/categories/${categoryId}`));
-      if (!res.ok) throw new Error("Failed to fetch category");
+      const res = await fetch(apiUrl("/api/categories"));
+      if (!res.ok) throw new Error("Failed to fetch categories");
       return res.json();
     },
-    enabled: !!categoryId,
   });
 
   const { data: allPlayers, isLoading: loadingPlayers } = useQuery({
@@ -30,9 +38,35 @@ const CategoryDetail = () => {
     },
   });
 
-  const players = allPlayers?.filter(
-    (p) => p.categorie?.id?.toString() === categoryId
+  const category = categories.find(
+    (c: { id: number }) => c.id?.toString() === categoryId
   );
+
+  const players = useMemo(
+    () =>
+      allPlayers?.filter(
+        (p: { categorie?: { id?: number } }) =>
+          p.categorie?.id?.toString() === categoryId
+      ) ?? [],
+    [allPlayers, categoryId]
+  );
+
+  const postes = useMemo(() => {
+    const unique = new Set<string>();
+    for (const player of players) {
+      const poste = player.poste?.trim();
+      if (poste) unique.add(poste);
+    }
+    return Array.from(unique).sort((a, b) => a.localeCompare(b, "fr"));
+  }, [players]);
+
+  const filteredPlayers = useMemo(() => {
+    if (posteFilter === "all") return players;
+    return players.filter((p: { poste?: string }) => p.poste === posteFilter);
+  }, [players, posteFilter]);
+
+  const categoryTitle =
+    category?.nom ?? players[0]?.categorie?.nom ?? "équipe";
 
   if (loadingCat || loadingPlayers) {
     return (
@@ -49,7 +83,7 @@ const CategoryDetail = () => {
     );
   }
 
-  if (!category) {
+  if (!category && players.length === 0) {
     return (
       <div className="min-h-screen">
         <Header />
@@ -69,47 +103,77 @@ const CategoryDetail = () => {
       <Header />
 
       <PageHero
-        title={`Équipe ${category.nom}`}
-        subtitle={category.description}
+        title={`Équipe ${categoryTitle}`}
+        subtitle={category?.description}
         backTo="/categories"
         backLabel="Toutes les catégories"
       />
 
-      {/* Description */}
-      <section className="py-8 bg-background">
-        <div className="container mx-auto px-4">
-          <p className="text-lg text-muted-foreground max-w-3xl">{category.description}</p>
-        </div>
-      </section>
-
-      {/* Joueurs */}
       <section className="py-16 bg-muted/50">
         <div className="container mx-auto px-4">
-          <h2 className="text-2xl font-bold text-foreground mb-6">Effectif</h2>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {players?.map((player) => (
-              <Card key={player.id} className="overflow-hidden hover:shadow-lg transition-shadow">
-                <PlayerPhoto
-                  photo={player.photo}
-                  prenom={player.prenom}
-                  nom={player.nom}
-                  className="w-full h-76"
-                  optimizeCloudinary
-                />
-                <CardHeader>
-                  <CardTitle className="text-primary">
-                    {player.prenom} {player.nom}
-                  </CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <p className="text-muted-foreground mb-4">Poste : {player.poste || "N/A"}</p>
-                  <Button asChild variant="outline" size="sm" className="w-full">
-                    <Link to={`/joueurs/${player.id}`}>Voir la fiche</Link>
-                  </Button>
-                </CardContent>
-              </Card>
-            ))}
+          <div className="mb-6 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+            <h2 className="text-2xl font-bold text-foreground">Effectif</h2>
+            {postes.length > 0 && (
+              <div className="flex items-center gap-3">
+                <label htmlFor="poste-filter" className="text-sm text-muted-foreground shrink-0">
+                  Filtrer par poste
+                </label>
+                <Select value={posteFilter} onValueChange={setPosteFilter}>
+                  <SelectTrigger id="poste-filter" className="w-[200px] bg-background">
+                    <SelectValue placeholder="Tous les postes" />
+                  </SelectTrigger>
+                  <SelectContent>
+                    <SelectItem value="all">Tous les postes</SelectItem>
+                    {postes.map((poste) => (
+                      <SelectItem key={poste} value={poste}>
+                        {poste}
+                      </SelectItem>
+                    ))}
+                  </SelectContent>
+                </Select>
+              </div>
+            )}
           </div>
+
+          {filteredPlayers.length === 0 ? (
+            <p className="text-muted-foreground">Aucun joueur pour ce filtre.</p>
+          ) : (
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+              {filteredPlayers.map(
+                (player: {
+                  id: number;
+                  prenom: string;
+                  nom: string;
+                  poste?: string;
+                  photo?: string | null;
+                }) => (
+                  <Card
+                    key={player.id}
+                    className="overflow-hidden hover:shadow-lg transition-shadow"
+                  >
+                    <PlayerPhoto
+                      photo={player.photo}
+                      prenom={player.prenom}
+                      nom={player.nom}
+                      className="w-full aspect-[3/4] object-cover"
+                      optimizeCloudinary
+                      cloudinaryCrop="portrait"
+                    />
+                    <CardHeader>
+                      <CardTitle className="text-primary">
+                        {player.prenom} {player.nom}
+                      </CardTitle>
+                    </CardHeader>
+                    <CardContent>
+                      <p className="text-muted-foreground">
+                        Poste : {player.poste || "N/A"}
+                      </p>
+                    </CardContent>
+                  </Card>
+                )
+              )}
+            </div>
+          )}
         </div>
       </section>
 

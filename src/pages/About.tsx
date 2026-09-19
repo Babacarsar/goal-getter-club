@@ -21,18 +21,10 @@ const About = () => {
           aria-hidden
         />
 
-        <div className="absolute inset-x-0 top-[42%] sm:top-[44%] md:top-[46%] lg:top-[48%] z-10 px-4 sm:px-6 text-center">
-          <div className="mx-auto max-w-2xl animate-fade-in-up">
-            <p className="mb-2 text-xs sm:text-sm font-semibold uppercase tracking-[0.25em] text-white/80">
-              Girona de Saly
-            </p>
-            <h1 className="font-display text-4xl sm:text-5xl md:text-6xl lg:text-[3.25rem] font-semibold italic leading-[1.1] text-white [text-shadow:0_2px_24px_rgba(0,0,0,0.45)]">
-              Notre Histoire
-            </h1>
-            <p className="mt-4 sm:mt-5 text-sm sm:text-base md:text-lg font-medium leading-relaxed text-white/95 max-w-lg mx-auto [text-shadow:0_1px_12px_rgba(0,0,0,0.5)]">
-              Plus qu&apos;un club, une famille unie par la passion du football depuis 2010
-            </p>
-          </div>
+        <div className="absolute inset-x-0 bottom-0 z-10 px-4 pb-8 sm:pb-10 md:pb-12 text-center">
+          <p className="mx-auto max-w-2xl animate-fade-in-up font-display text-base sm:text-lg md:text-xl font-medium italic leading-relaxed text-white/95 [text-shadow:0_2px_16px_rgba(0,0,0,0.55)]">
+            Plus qu&apos;un club, une famille unie par la passion du football depuis 2010
+          </p>
         </div>
       </section>
       {/* À Propos Section */}

@@ -117,8 +117,8 @@ const Hero = () => {
         <div className="grid grid-cols-3 gap-4 md:gap-8 max-w-2xl mt-16 md:mt-20 pt-8 border-t border-white/20">
           {[
             { icon: Trophy, value: "5", label: "Terrains" },
-            { icon: Users, value: "300+", label: "Jeunes" },
-            { icon: Target, value: "12", label: "Titres" },
+            { icon: Users, value: "100", label: "Jeunes" },
+            { icon: Target, value: "4", label: "Titres" },
           ].map(({ icon: Icon, value, label }) => (
             <div key={label} className="text-center md:text-left">
               <Icon className="h-5 w-5 text-primary-light mb-2 mx-auto md:mx-0" />

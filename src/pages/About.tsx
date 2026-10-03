@@ -46,12 +46,10 @@ const About = () => {
                     Inspiré par les valeurs du FC Girona et adapté à la culture sénégalaise, notre club 
                     a rapidement gagné en notoriété grâce à sa philosophie unique mêlant technique 
                     européenne et créativité africaine. Nos <strong className="text-foreground">5 hectares 
-                    d'installations modernes</strong> accueillent aujourd'hui plus de 300 jeunes talents.
+                    d'installations modernes</strong> accueillent aujourd'hui 100 jeunes talents.
                   </p>
                   <p>
-                    Depuis notre création, nous avons formé <strong className="text-foreground">45 joueurs 
-                    professionnels</strong>, dont 8 évoluent actuellement en Europe. Notre équipe senior 
-                    domine le championnat régional avec <strong className="text-foreground">12 titres 
+                    Notre équipe senior domine le championnat régional avec <strong className="text-foreground">4 titres 
                     remportés</strong> en 14 saisons.
                   </p>
                 </div>
@@ -61,15 +59,11 @@ const About = () => {
                 <div className="bg-gradient-to-br from-primary/10 to-accent/10 rounded-2xl p-4 sm:p-6 md:p-8">
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
                     <div className="text-center">
-                      <div className="text-2xl sm:text-3xl md:text-4xl font-bold text-primary mb-2">300+</div>
+                      <div className="text-2xl sm:text-3xl md:text-4xl font-bold text-primary mb-2">100</div>
                       <div className="text-xs sm:text-sm text-muted-foreground">Joueurs formés</div>
                     </div>
                     <div className="text-center">
-                      <div className="text-2xl sm:text-3xl md:text-4xl font-bold text-primary mb-2">45</div>
-                      <div className="text-xs sm:text-sm text-muted-foreground">Professionnels</div>
-                    </div>
-                    <div className="text-center">
-                      <div className="text-2xl sm:text-3xl md:text-4xl font-bold text-primary mb-2">12</div>
+                      <div className="text-2xl sm:text-3xl md:text-4xl font-bold text-primary mb-2">4</div>
                       <div className="text-xs sm:text-sm text-muted-foreground">Titres remportés</div>
                     </div>
                     <div className="text-center">

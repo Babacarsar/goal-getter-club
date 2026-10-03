@@ -135,8 +135,7 @@ const Contact = () => {
                   <div>
                     <h3 className="font-semibold text-foreground mb-2">Adresse</h3>
                     <p className="text-muted-foreground">
-                      123 Avenue du Stade<br />
-                      75000 Paris, France
+                      Saly, Sénégal
                     </p>
                   </div>
                 </div>

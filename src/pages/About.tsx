@@ -23,7 +23,7 @@ const About = () => {
 
         <div className="absolute inset-x-0 bottom-0 z-10 px-4 pb-8 sm:pb-10 md:pb-12 text-center">
           <p className="mx-auto max-w-2xl animate-fade-in-up font-display text-base sm:text-lg md:text-xl font-medium italic leading-relaxed text-white/95 [text-shadow:0_2px_16px_rgba(0,0,0,0.55)]">
-            Plus qu&apos;un club, une famille unie par la passion du football depuis 2010
+            Plus qu&apos;un club, une famille unie par la passion du football depuis 2020
           </p>
         </div>
       </section>
@@ -38,7 +38,7 @@ const About = () => {
                 </h2>
                 <div className="space-y-6 text-lg text-muted-foreground">
                   <p>
-                    Fondé en 2010 au cœur de Saly, <strong className="text-foreground">Girona de Saly</strong> est né 
+                    Fondé en 2020 au cœur de Saly, <strong className="text-foreground">Girona de Saly</strong> est né 
                     d'un rêve ambitieux : créer un centre de formation d'excellence qui rivalise avec 
                     les plus grandes académies africaines et européennes.
                   </p>
@@ -73,7 +73,7 @@ const About = () => {
                       <div className="text-xs sm:text-sm text-muted-foreground">Titres remportés</div>
                     </div>
                     <div className="text-center">
-                      <div className="text-2xl sm:text-3xl md:text-4xl font-bold text-primary mb-2">2010</div>
+                      <div className="text-2xl sm:text-3xl md:text-4xl font-bold text-primary mb-2">2020</div>
                       <div className="text-xs sm:text-sm text-muted-foreground">Année de création</div>
                     </div>
                   </div>
@@ -86,7 +86,7 @@ const About = () => {
                   </div>
                   <div className="flex items-center gap-3">
                     <Calendar className="h-6 w-6 text-primary" />
-                    <span className="text-foreground font-semibold">Fondé en 2010</span>
+                    <span className="text-foreground font-semibold">Fondé en 2020</span>
                   </div>
                   <div className="flex items-center gap-3">
                     <Award className="h-6 w-6 text-primary" />

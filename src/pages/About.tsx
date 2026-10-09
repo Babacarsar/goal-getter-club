@@ -43,8 +43,8 @@ const About = () => {
                     ancrée dans la culture sénégalaise.
                   </p>
                   <p>
-                    Aujourd'hui, l'académie accompagne <strong className="text-foreground">100 jeunes
-                    talents</strong>, des U15 aux U20. Nos équipes s'illustrent régulièrement dans les
+                    Aujourd'hui, l'académie forme <strong className="text-foreground">plusieurs jeunes
+                    talents</strong>, des U15 aux seniors. Nos équipes s'illustrent régulièrement dans les
                     compétitions régionales, en Coupe du Sénégal et dans les championnats PSG, avec
                     <strong className="text-foreground"> 3 titres remportés</strong> et de nombreuses
                     demi-finales.

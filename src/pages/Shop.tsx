@@ -3,7 +3,8 @@ import Footer from "@/components/Footer";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { ShoppingCart, Star } from "lucide-react";
+import { useState } from "react";
+import { MapPin, MessageCircle, ShoppingCart, ShieldCheck, Star } from "lucide-react";
 
 const Shop = () => {
   const products = [
@@ -17,12 +18,13 @@ const Shop = () => {
       category: "Maillots",
       rating: 4.8,
       inStock: true,
-      popular: true
+      popular: true,
+      sizes: ["S", "M", "L", "XL"]
     },
     {
       id: 2,
       name: "Maillot Extérieur Rouge Femme",
-      description: "Maillot extérieur rouge SELECT pour femme - Taille S, L disponibles",
+      description: "Maillot extérieur rouge SELECT pour femme",
       price: 10000,
       originalPrice: null,
       image: "/lovable-uploads/58d6d322-3f99-4234-9d79-82b5f3e73ade.png",
@@ -30,12 +32,12 @@ const Shop = () => {
       rating: 4.9,
       inStock: true,
       popular: true,
-      sizes: ["S", "L"]
+      sizes: ["S", "M", "L", "XL"]
     },
     {
       id: 3,
       name: "Maillot Extérieur Blanc Homme",
-      description: "Maillot extérieur blanc SELECT pour homme - Taille S, L disponibles",
+      description: "Maillot extérieur blanc SELECT pour homme",
       price: 10000,
       originalPrice: null,
       image: "/lovable-uploads/848ebddd-ee11-47a8-9eb2-e20dfb6be6be.png",
@@ -43,12 +45,12 @@ const Shop = () => {
       rating: 4.8,
       inStock: true,
       popular: true,
-      sizes: ["S", "L"]
+      sizes: ["S", "M", "L", "XL"]
     },
     {
       id: 4,
       name: "Maillot Extérieur Rouge Duo",
-      description: "Maillot extérieur rouge SELECT collection duo - Taille S, L disponibles",
+      description: "Maillot extérieur rouge SELECT collection duo",
       price: 10000,
       originalPrice: null,
       image: "/lovable-uploads/c201e9d9-478c-494c-befb-5199f35e562b.png",
@@ -56,100 +58,21 @@ const Shop = () => {
       rating: 4.9,
       inStock: true,
       popular: true,
-      sizes: ["S", "L"]
+      sizes: ["S", "M", "L", "XL"]
     },
-    {
-      id: 5,
-      name: "Short Officiel",
-      description: "Short de match officiel, même qualité que les pros",
-      price: 35,
-      originalPrice: 45,
-      image: "/placeholder.svg",
-      category: "Shorts",
-      rating: 4.6,
-      inStock: true,
-      popular: false
-    },
-    {
-      id: 6,
-      name: "Chaussettes Techniques",
-      description: "Chaussettes haute performance avec compression",
-      price: 15,
-      originalPrice: null,
-      image: "/placeholder.svg",
-      category: "Chaussettes",
-      rating: 4.5,
-      inStock: true,
-      popular: false
-    },
-    {
-      id: 7,
-      name: "Survêtement Entraînement",
-      description: "Survêtement complet pour l'entraînement, matière stretch",
-      price: 120,
-      originalPrice: 150,
-      image: "/placeholder.svg",
-      category: "Survêtements",
-      rating: 4.9,
-      inStock: true,
-      popular: true
-    },
-    {
-      id: 8,
-      name: "Sac de Sport Academy",
-      description: "Grand sac de sport avec compartiments séparés",
-      price: 45,
-      originalPrice: null,
-      image: "/placeholder.svg",
-      category: "Accessoires",
-      rating: 4.4,
-      inStock: true,
-      popular: false
-    },
-    {
-      id: 9,
-      name: "Ballon Officiel",
-      description: "Ballon d'entraînement officiel FootballAcademy",
-      price: 25,
-      originalPrice: 30,
-      image: "/placeholder.svg",
-      category: "Accessoires",
-      rating: 4.7,
-      inStock: false,
-      popular: false
-    },
-    {
-      id: 10,
-      name: "Casquette Academy",
-      description: "Casquette ajustable avec logo brodé",
-      price: 20,
-      originalPrice: null,
-      image: "/placeholder.svg",
-      category: "Accessoires",
-      rating: 4.3,
-      inStock: true,
-      popular: false
-    },
-    {
-      id: 11,
-      name: "Veste Softshell",
-      description: "Veste coupe-vent imperméable pour les jours de pluie",
-      price: 85,
-      originalPrice: 100,
-      image: "/placeholder.svg",
-      category: "Vestes",
-      rating: 4.8,
-      inStock: true,
-      popular: true
-    }
   ];
 
-  const categories = ["Tous", "Maillots", "Shorts", "Chaussettes", "Survêtements", "Vestes", "Accessoires"];
+  const categories = ["Tous", ...new Set(products.map((product) => product.category))];
+  const [selectedCategory, setSelectedCategory] = useState("Tous");
+  const filteredProducts =
+    selectedCategory === "Tous"
+      ? products
+      : products.filter((product) => product.category === selectedCategory);
 
   return (
     <div className="min-h-screen">
       <Header />
-      
+
       {/* Hero Section */}
       <section className="pt-20 pb-16 bg-gradient-to-br from-primary to-primary-dark">
         <div className="container mx-auto px-4 text-center">
@@ -167,10 +90,11 @@ const Shop = () => {
         <div className="container mx-auto px-4">
           <div className="flex flex-wrap gap-2">
             {categories.map((category) => (
-              <Button 
-                key={category} 
-                variant={category === "Tous" ? "default" : "outline"}
+              <Button
+                key={category}
+                variant={category === selectedCategory ? "default" : "outline"}
                 size="sm"
+                onClick={() => setSelectedCategory(category)}
               >
                 {category}
               </Button>
@@ -183,7 +107,7 @@ const Shop = () => {
       <section className="py-16 bg-background">
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-            {products.map((product) => (
+            {filteredProducts.map((product) => (
               <Card key={product.id} className="overflow-hidden hover:shadow-lg transition-shadow relative">
                 {product.popular && (
                   <Badge className="absolute top-2 left-2 z-10 bg-accent text-accent-foreground">
@@ -195,15 +119,15 @@ const Shop = () => {
                     Promo
                   </Badge>
                 )}
-                
+
                 <div className="aspect-square">
-                  <img 
-                    src={product.image} 
+                  <img
+                    src={product.image}
                     alt={product.name}
                     className="w-full h-full object-cover"
                   />
                 </div>
-                
+
                 <CardHeader className="pb-2">
                   <div className="flex items-center justify-between mb-1">
                     <Badge variant="outline">{product.category}</Badge>
@@ -215,7 +139,7 @@ const Shop = () => {
                   <CardTitle className="text-lg line-clamp-1">{product.name}</CardTitle>
                   <CardDescription className="line-clamp-2">{product.description}</CardDescription>
                 </CardHeader>
-                
+
                 <CardContent className="pt-0">
                   <div className="flex items-center justify-between mb-4">
                     <div className="flex items-center gap-2">
@@ -227,7 +151,7 @@ const Shop = () => {
                       )}
                     </div>
                   </div>
-                  
+
                   {product.sizes && (
                     <div className="mb-3">
                       <p className="text-sm text-muted-foreground mb-2">Tailles disponibles:</p>
@@ -240,11 +164,16 @@ const Shop = () => {
                       </div>
                     </div>
                   )}
-                  
-                  <Button 
-                    className="w-full" 
+
+                  <Button
+                    className="w-full"
                     disabled={!product.inStock}
                     variant={product.inStock ? "default" : "secondary"}
+                    onClick={() => {
+                      const message = `Bonjour, je souhaite commander le produit : ${product.name} (${product.price} FCFA).`;
+                      const url = `https://wa.me/221776639391?text=${encodeURIComponent(message)}`;
+                      window.open(url, "_blank");
+                    }}
                   >
                     {product.inStock ? (
                       <>
@@ -265,32 +194,32 @@ const Shop = () => {
       {/* CTA Section */}
       <section className="py-16 bg-muted/50">
         <div className="container mx-auto px-4 text-center">
-          <h2 className="text-3xl font-bold mb-4">Livraison gratuite dès 100€</h2>
+          <h2 className="text-3xl font-bold mb-4">Comment commander ?</h2>
           <p className="text-muted-foreground mb-8 max-w-2xl mx-auto">
-            Profitez de la livraison gratuite en France métropolitaine pour toute commande supérieure à 100€. 
-            Retours gratuits sous 30 jours.
+            Cliquez sur « Commander maintenant » : un message WhatsApp pré-rempli s'ouvre avec le produit choisi.
+            Indiquez votre taille et nous vous recontactons pour finaliser la commande.
           </p>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto">
             <div className="text-center">
               <div className="w-16 h-16 bg-primary rounded-full flex items-center justify-center mx-auto mb-4">
-                <ShoppingCart className="h-8 w-8 text-white" />
+                <MessageCircle className="h-8 w-8 text-white" />
               </div>
-              <h3 className="font-semibold mb-2">Commande sécurisée</h3>
-              <p className="text-sm text-muted-foreground">Paiement 100% sécurisé</p>
+              <h3 className="font-semibold mb-2">Commande via WhatsApp</h3>
+              <p className="text-sm text-muted-foreground">Un message suffit pour réserver votre article</p>
             </div>
             <div className="text-center">
               <div className="w-16 h-16 bg-primary rounded-full flex items-center justify-center mx-auto mb-4">
-                <span className="text-white font-bold">24h</span>
+                <MapPin className="h-8 w-8 text-white" />
               </div>
-              <h3 className="font-semibold mb-2">Expédition rapide</h3>
-              <p className="text-sm text-muted-foreground">Envoi sous 24h</p>
+              <h3 className="font-semibold mb-2">Retrait à Saly</h3>
+              <p className="text-sm text-muted-foreground">Modalités de retrait ou de livraison convenues ensemble</p>
             </div>
             <div className="text-center">
               <div className="w-16 h-16 bg-primary rounded-full flex items-center justify-center mx-auto mb-4">
-                <span className="text-white font-bold">30j</span>
+                <ShieldCheck className="h-8 w-8 text-white" />
               </div>
-              <h3 className="font-semibold mb-2">Retours gratuits</h3>
-              <p className="text-sm text-muted-foreground">Satisfait ou remboursé</p>
+              <h3 className="font-semibold mb-2">Produits officiels</h3>
+              <p className="text-sm text-muted-foreground">Équipements officiels de l'académie</p>
             </div>
           </div>
         </div>

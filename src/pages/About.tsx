@@ -38,19 +38,21 @@ const About = () => {
                 </h2>
                 <div className="space-y-6 text-lg text-muted-foreground">
                   <p>
-                    Fondé en 2020 au cœur de Saly, <strong className="text-foreground">Girona de Saly</strong> est né 
-                    d'un rêve ambitieux : créer un centre de formation d'excellence qui rivalise avec 
-                    les plus grandes académies africaines et européennes.
+                    Fondé en 2020 à Saly, <strong className="text-foreground">Girona de Saly</strong> est né
+                    d'une ambition simple : offrir aux jeunes de la région une formation de qualité,
+                    ancrée dans la culture sénégalaise.
                   </p>
                   <p>
-                    Inspiré par les valeurs du FC Girona et adapté à la culture sénégalaise, notre club 
-                    a rapidement gagné en notoriété grâce à sa philosophie unique mêlant technique 
-                    européenne et créativité africaine. Nos <strong className="text-foreground">5 hectares 
-                    d'installations modernes</strong> accueillent aujourd'hui 100 jeunes talents.
+                    Aujourd'hui, l'académie accompagne <strong className="text-foreground">100 jeunes
+                    talents</strong>, des U15 aux U20. Nos équipes s'illustrent régulièrement dans les
+                    compétitions régionales, en Coupe du Sénégal et dans les championnats PSG, avec
+                    <strong className="text-foreground"> 3 titres remportés</strong> et de nombreuses
+                    demi-finales.
                   </p>
                   <p>
-                    Notre équipe senior domine le championnat régional avec <strong className="text-foreground">4 titres 
-                    remportés</strong> en 14 saisons.
+                    Cette progression se voit aussi chez nos joueurs : deux évoluent en Europe, cinq
+                    ont été présélectionnés en équipe nationale, et d'autres jouent en Ligue 1
+                    sénégalaise et mauritanienne.
                   </p>
                 </div>
               </div>
@@ -63,7 +65,7 @@ const About = () => {
                       <div className="text-xs sm:text-sm text-muted-foreground">Joueurs formés</div>
                     </div>
                     <div className="text-center">
-                      <div className="text-2xl sm:text-3xl md:text-4xl font-bold text-primary mb-2">4</div>
+                      <div className="text-2xl sm:text-3xl md:text-4xl font-bold text-primary mb-2">3</div>
                       <div className="text-xs sm:text-sm text-muted-foreground">Titres remportés</div>
                     </div>
                     <div className="text-center">

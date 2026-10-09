@@ -118,7 +118,7 @@ const Hero = () => {
           {[
             { icon: Trophy, value: "5", label: "Terrains" },
             { icon: Users, value: "100", label: "Jeunes" },
-            { icon: Target, value: "4", label: "Titres" },
+            { icon: Target, value: "3", label: "Titres" },
           ].map(({ icon: Icon, value, label }) => (
             <div key={label} className="text-center md:text-left">
               <Icon className="h-5 w-5 text-primary-light mb-2 mx-auto md:mx-0" />

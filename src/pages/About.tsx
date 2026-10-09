@@ -173,22 +173,24 @@ const About = () => {
                   Titres Majeurs
                 </h3>
                 <ul className="space-y-3 text-muted-foreground">
-                  <li className="flex items-center gap-3">
-                    <span className="text-2xl">🏆</span>
-                    <span>Champions Régionaux Senior (2023, 2022, 2021)</span>
-                  </li>
-                  <li className="flex items-center gap-3">
-                    <span className="text-2xl">🥇</span>
-                    <span>Coupe du Sénégal U18 (2023)</span>
-                  </li>
-                  <li className="flex items-center gap-3">
-                    <span className="text-2xl">🏆</span>
-                    <span>Tournoi CEDEAO U17 (2022)</span>
-                  </li>
-                  <li className="flex items-center gap-3">
-                    <span className="text-2xl">🥈</span>
-                    <span>Championnat National U16 (2022)</span>
-                  </li>
+                  {[
+                    { icon: "🏅", label: "Demi-finalistes championnat régional junior 2024" },
+                    { icon: "🏅", label: "Demi-finalistes championnat régional junior 2025" },
+                    { icon: "🥈", label: "Vice-champion championnat U20 PSG 2023" },
+                    { icon: "🏅", label: "Demi-finalistes championnat U20 PSG 2024" },
+                    { icon: "🏅", label: "Demi-finalistes championnat U20 PSG 2020" },
+                    { icon: "🏆", label: "Champion régional cadet 2024" },
+                    { icon: "🏅", label: "Demi-finalistes championnat régional cadet 2025" },
+                    { icon: "🏅", label: "Demi-finalistes championnat U17 PSG 2025" },
+                    { icon: "🥈", label: "Vice-champion Coupe du Sénégal 2024" },
+                    { icon: "🏆", label: "Vainqueur du tournoi des académies U20 2025" },
+                    { icon: "🏆", label: "Vainqueur du tournoi U15 2026" },
+                  ].map((title) => (
+                    <li key={title.label} className="flex items-center gap-3">
+                      <span className="text-2xl">{title.icon}</span>
+                      <span>{title.label}</span>
+                    </li>
+                  ))}
                 </ul>
               </div>
               

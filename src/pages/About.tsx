@@ -202,19 +202,19 @@ const About = () => {
                 <ul className="space-y-3 text-muted-foreground">
                   <li className="flex items-center gap-3">
                     <span className="text-2xl">⭐</span>
-                    <span>8 joueurs en Europe</span>
+                    <span>2 joueurs en Europe</span>
                   </li>
                   <li className="flex items-center gap-3">
                     <span className="text-2xl">🇸🇳</span>
-                    <span>3 internationaux sénégalais</span>
+                    <span>5 joueurs présélectionnés en équipe nationale</span>
                   </li>
                   <li className="flex items-center gap-3">
                     <span className="text-2xl">⚽</span>
-                    <span>15 joueurs en Ligue 1 sénégalaise</span>
+                    <span>1 joueur en Ligue 1 sénégalaise</span>
                   </li>
                   <li className="flex items-center gap-3">
-                    <span className="text-2xl">🌟</span>
-                    <span>22 joueurs professionnels</span>
+                    <span className="text-2xl">🇲🇷</span>
+                    <span>1 joueur en Ligue 1 mauritanienne</span>
                   </li>
                 </ul>
               </div>

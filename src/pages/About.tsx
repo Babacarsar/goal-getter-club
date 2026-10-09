@@ -226,20 +226,24 @@ const About = () => {
                 </h3>
                 <ul className="space-y-3 text-muted-foreground">
                   <li className="flex items-center gap-3">
-                    <span className="text-2xl">🏅</span>
-                    <span>Meilleur Centre de Formation (2023)</span>
+                    <span className="text-2xl">🧤</span>
+                    <span>Meilleur gardien du championnat régional cadet 2024</span>
                   </li>
                   <li className="flex items-center gap-3">
-                    <span className="text-2xl">🌍</span>
-                    <span>Partenariat CAF Academy</span>
+                    <span className="text-2xl">⭐</span>
+                    <span>Meilleur joueur du championnat régional cadet 2024</span>
+                  </li>
+                  <li className="flex items-center gap-3">
+                    <span className="text-2xl">⚽</span>
+                    <span>Meilleur buteur du championnat régional cadet 2024</span>
+                  </li>
+                  <li className="flex items-center gap-3">
+                    <span className="text-2xl">⚽</span>
+                    <span>Meilleur buteur de la Coupe du Sénégal junior 2024</span>
                   </li>
                   <li className="flex items-center gap-3">
                     <span className="text-2xl">🤝</span>
-                    <span>Accord FC Girona (Espagne)</span>
-                  </li>
-                  <li className="flex items-center gap-3">
-                    <span className="text-2xl">📜</span>
-                    <span>Certification FIFA</span>
+                    <span>Meilleure équipe fair-play du championnat U17 PSG 2025</span>
                   </li>
                 </ul>
               </div>

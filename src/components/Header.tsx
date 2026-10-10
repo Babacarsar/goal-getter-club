@@ -11,6 +11,7 @@ const navLinks = [
   { to: "/staff", label: "Staff" },
   { to: "/news", label: "Actualités" },
   { to: "/calendrier", label: "Calendrier" },
+  { to: "/shop", label: "Boutique" },
   { to: "/contact", label: "Contact" },
 ];
 

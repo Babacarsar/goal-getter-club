@@ -7,6 +7,7 @@ const footerLinks = {
     { to: "/categories", label: "Équipes" },
     { to: "/staff", label: "Staff" },
     { to: "/news", label: "Actualités" },
+    { to: "/shop", label: "Boutique" },
   ],
   Rejoindre: [
     { to: "/inscription", label: "Pré-inscription" },

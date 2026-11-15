@@ -5,14 +5,13 @@ import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
 import { Calendar, ArrowRight } from "lucide-react";
 import { useQuery } from "@tanstack/react-query";
 import { useNavigate } from "react-router-dom";
-import { useState } from "react";
+import { FitImage } from "@/components/FitImage";
 import { apiUrl } from "@/lib/api";
 import { stripHtml } from "@/lib/html";
 import { SectionHeader } from "@/components/layout/SectionHeader";
 
 const LatestNews = () => {
   const navigate = useNavigate();
-  const [imageOrientations, setImageOrientations] = useState<{[key: string]: 'portrait' | 'landscape'}>({});
 
   const { data: news = [], isLoading } = useQuery({
     queryKey: ["actualites"],
@@ -45,15 +44,6 @@ const LatestNews = () => {
   const featuredNews = news.find((a: { a_la_une?: boolean }) => a.a_la_une) ?? news[0];
   const otherNews = news.filter((a: { id: number }) => a.id !== featuredNews?.id).slice(0, 3);
 
-  const handleImageLoad = (imageId: string, event: React.SyntheticEvent<HTMLImageElement>) => {
-    const img = event.currentTarget;
-    const orientation = img.naturalWidth > img.naturalHeight ? 'landscape' : 'portrait';
-    setImageOrientations(prev => ({
-      ...prev,
-      [imageId]: orientation
-    }));
-  };
-
   return (
     <section className="section-padding bg-background">
       <div className="container mx-auto px-4">
@@ -70,14 +60,11 @@ const LatestNews = () => {
               <div className="relative overflow-hidden lg:col-span-3">
                 <Dialog>
                   <DialogTrigger asChild>
-                    <img
-                      src={
-                        featuredNews.image
-                          ? `${featuredNews.image}?c_fill,w_1200,h_800,f_auto,q_auto`
-                          : "https://via.placeholder.com/1200x800"
-                      }
+                    <FitImage
+                      src={featuredNews.image}
                       alt={featuredNews.titre}
-                      className="w-full h-72 sm:h-96 lg:h-[30rem] object-cover group-hover:scale-105 transition-transform duration-500 cursor-pointer"
+                      width={1400}
+                      className="h-80 sm:h-[28rem] lg:h-[34rem] cursor-pointer"
                     />
                   </DialogTrigger>
                   <DialogContent className="max-w-4xl">
@@ -123,19 +110,11 @@ const LatestNews = () => {
             >
               <Dialog>
                 <DialogTrigger asChild>
-                  <img
-                    src={
-                      article.image
-                        ? `${article.image}?c_fill,w_350,h_180,f_auto,q_auto`
-                        : "https://via.placeholder.com/350x180"
-                    }
+                  <FitImage
+                    src={article.image}
                     alt={article.titre}
-                    onLoad={(e) => handleImageLoad(`article-${article.id}`, e)}
-                    className={`w-full object-cover cursor-pointer ${
-                      imageOrientations[`article-${article.id}`] === 'portrait' 
-                        ? 'h-80' 
-                        : 'h-64'
-                    }`}
+                    width={700}
+                    className="h-80 cursor-pointer"
                   />
                 </DialogTrigger>
                 <DialogContent className="max-w-4xl">

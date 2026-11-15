@@ -1,4 +1,5 @@
 import { useParams, useNavigate } from "react-router-dom";
+import { FitImage } from "@/components/FitImage";
 import { useQuery } from "@tanstack/react-query";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
@@ -105,17 +106,18 @@ const Article = () => {
               <div className="mb-6 sm:mb-8 md:mb-12 rounded-md sm:rounded-lg md:rounded-xl overflow-hidden shadow-md sm:shadow-lg md:shadow-2xl mx-2 sm:mx-0">
                 <Dialog>
                   <DialogTrigger asChild>
-                    <img
-                      src={`${article.image}?c_fill,w_1200,h_600,f_auto,q_auto`}
+                    <FitImage
+                      src={article.image}
                       alt={article.titre}
-                      className="w-full h-[600px] xs:h-[650px] sm:h-[700px] md:h-[800px] lg:h-[900px] xl:h-[950px] 2xl:h-[1000px] object-cover cursor-pointer hover:opacity-90 transition-opacity"
+                      width={1600}
+                      className="h-[70vh] min-h-[420px] max-h-[900px] cursor-pointer hover:opacity-90 transition-opacity"
                     />
                   </DialogTrigger>
                   <DialogContent className="max-w-6xl max-h-[90vh] overflow-auto">
                     <img
                       src={article.image}
                       alt={article.titre}
-                      className="w-full h-auto object-contain"
+                      className="mx-auto max-h-[85vh] w-auto max-w-full object-contain"
                     />
                   </DialogContent>
                 </Dialog>

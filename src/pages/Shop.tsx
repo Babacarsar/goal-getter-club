@@ -12,7 +12,7 @@ const Shop = () => {
       id: 1,
       name: "Maillot Domicile 2024",
       description: "Maillot officiel de l'équipe première, tissu respirant DriFit",
-      price: 3000,
+      price: 10000,
       originalPrice: null,
       image: "/produit1.jpg",
       category: "Maillots",
@@ -171,7 +171,7 @@ const Shop = () => {
                     variant={product.inStock ? "default" : "secondary"}
                     onClick={() => {
                       const message = `Bonjour, je souhaite commander le produit : ${product.name} (${product.price} FCFA).`;
-                      const url = `https://wa.me/221776639391?text=${encodeURIComponent(message)}`;
+                      const url = `https://wa.me/221777599327?text=${encodeURIComponent(message)}`;
                       window.open(url, "_blank");
                     }}
                   >

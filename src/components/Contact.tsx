@@ -92,7 +92,7 @@ const Contact = () => {
                 <label className="block text-sm font-medium text-foreground mb-2">
                   Téléphone
                 </label>
-                <Input placeholder="06 12 34 56 78" />
+                <Input placeholder="77 000 00 00" />
               </div>
               
               <div>
@@ -151,7 +151,7 @@ const Contact = () => {
                   <div>
                     <h3 className="font-semibold text-foreground mb-2">Téléphone</h3>
                     <p className="text-muted-foreground">
-                      +33 1 23 45 67 89<br />
+                      +221 77 505 96 59<br />
                       <span className="text-sm">Lun-Ven 9h-18h</span>
                     </p>
                   </div>

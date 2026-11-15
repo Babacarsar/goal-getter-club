@@ -64,25 +64,20 @@ const LatestNews = () => {
         />
 
         {/* À la une */}
-        <div className="mb-12 max-w-4xl mx-auto">
+        <div className="mb-12 max-w-6xl mx-auto">
           <Card className="overflow-hidden hover:shadow-lg transition-all duration-300 group">
-            <div className="grid grid-cols-1 lg:grid-cols-2">
-              <div className="relative overflow-hidden">
+            <div className="grid grid-cols-1 lg:grid-cols-5">
+              <div className="relative overflow-hidden lg:col-span-3">
                 <Dialog>
                   <DialogTrigger asChild>
                     <img
                       src={
                         featuredNews.image
-                          ? `${featuredNews.image}?c_fill,w_600,h_350,f_auto,q_auto`
-                          : "https://via.placeholder.com/600x350"
+                          ? `${featuredNews.image}?c_fill,w_1200,h_800,f_auto,q_auto`
+                          : "https://via.placeholder.com/1200x800"
                       }
                       alt={featuredNews.titre}
-                      onLoad={(e) => handleImageLoad(`featured-${featuredNews.id}`, e)}
-                      className={`w-full group-hover:scale-105 transition-transform duration-500 cursor-pointer ${
-                        imageOrientations[`featured-${featuredNews.id}`] === 'portrait' 
-                          ? 'h-64 lg:h-72 object-cover' 
-                          : 'h-48 lg:h-56 object-cover'
-                      }`}
+                      className="w-full h-72 sm:h-96 lg:h-[30rem] object-cover group-hover:scale-105 transition-transform duration-500 cursor-pointer"
                     />
                   </DialogTrigger>
                   <DialogContent className="max-w-4xl">
@@ -93,16 +88,16 @@ const LatestNews = () => {
                     />
                   </DialogContent>
                 </Dialog>
-                <div className="absolute top-3 left-3">
-                  <Badge className="bg-primary text-white text-xs">À la Une</Badge>
+                <div className="absolute top-4 left-4">
+                  <Badge className="bg-primary text-white text-sm px-3 py-1">À la Une</Badge>
                 </div>
               </div>
 
-              <div className="p-4 lg:p-6 flex flex-col justify-center">
-                <h3 className="text-lg lg:text-xl font-bold text-foreground mb-3 group-hover:text-primary transition-colors">
+              <div className="p-6 lg:p-8 flex flex-col justify-center lg:col-span-2">
+                <h3 className="text-xl lg:text-3xl font-bold text-foreground mb-4 group-hover:text-primary transition-colors">
                   {featuredNews.titre}
                 </h3>
-                <p className="text-muted-foreground text-sm mb-3 line-clamp-3">
+                <p className="text-muted-foreground text-base mb-4 line-clamp-5">
                   {stripHtml(featuredNews.contenu)}
                 </p>
                 <div className="flex items-center gap-2 text-xs text-muted-foreground mb-4">

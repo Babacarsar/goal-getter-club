@@ -24,7 +24,9 @@ const MediaGallery = () => {
   
   const currentMedia = activeTab === "videos" ? videos : photos;
 
-  // Auto-slide every 3 seconds
+  // Défilement automatique : plus lent pour les vidéos (le temps de les regarder)
+  const slideDelay = activeTab === "videos" ? 10000 : 5000;
+
   useEffect(() => {
     if (currentMedia.length > 3) {
       const interval = setInterval(() => {
@@ -32,10 +34,10 @@ const MediaGallery = () => {
           const maxSlides = Math.ceil(currentMedia.length / 3) - 1;
           return prev >= maxSlides ? 0 : prev + 1;
         });
-      }, 3000);
+      }, slideDelay);
       return () => clearInterval(interval);
     }
-  }, [currentMedia.length]);
+  }, [currentMedia.length, slideDelay, currentSlide]);
 
   // Reset slide when switching tabs
   useEffect(() => {
